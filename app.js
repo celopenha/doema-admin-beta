@@ -30,16 +30,12 @@ app.get('/', (req, res) => {
     } else {
         res.format({
             html: function () {
-                //if(NivelUser == 'ADMIN'){
-                    res.render('template/index', { informacoes: req.session.json, jsonescola: req.session.jsonescola});
-                //}else{
-                    //res.render('template/index-escola');
-                //}
+                res.render('template/index', {informacoes: req.session.json});
             }
         });
     }
 });
 
-// app.get('*', function(req, res) {
-//     res.redirect('/');
-// });
+app.get('*', function(req, res) {
+    res.redirect('/');
+});
