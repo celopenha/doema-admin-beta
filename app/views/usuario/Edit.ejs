@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<link rel="icon" href="/img/MPdL(Logo)/MPdL(logo).svg" type="image/x-icon">
 	<title><%- process.env.TITLE %></title>
 
 	<!-- Google Fonts -->
@@ -52,21 +52,6 @@
 
 
 	<section class="content">
-        <!-- início do preloader -->
-        <div id="preloader">
-            <div class="inner">
-                <div class="front">
-                    <img src="/img/sdc-color.svg" w/>
-                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
-                    <div class="bolas">
-                       <div></div>
-                       <div></div>
-                       <div></div>                    
-                    </div>
-                </div> 
-            </div>
-        </div>
-		<!-- fim do preloader --> 
 		<div class="content-fluid">
 			<%- messages() %>
 			<div class="block-header">
@@ -92,30 +77,23 @@
 									</div>
 									<div class="col-sm-4">
 										<div class="input-group">
-											Usuário
-											<input type="text" class="form-control" id="username" name="username"
-												value="<%= username %>" disabled>
+											<div class="form-line">
+												Username
+												<input type="text" class="form-control" id="username" name="username"
+													value="<%= username %>" disabled>
+											</div>
 										</div>
 									</div>
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
 												Telefone
-												<input type="phone" class="form-control" id="contato1" name="contato1" value="<%= contato1 %>">
+												<input type="phone" class="form-control" id="telefone" name="telefone" value="<%= telefone %>">
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="row clearfix">
-									<div class="col-sm-4">
-										<div class="input-group">
-											<div class="form-line">
-												Celular
-												<input type="phone" class="form-control" id="contato2" name="contato2"
-													value="<%= contato2 %>">
-											</div>
-										</div>
-									</div>
+								<div class="row clearfix">							
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
@@ -142,8 +120,7 @@
 								</div>
 								
 								<input type="hidden" id="id" name="id" value="<%= id %>">
-								<input type="hidden" id="username" name="username" value="<%= username %>">
-								<input type="hidden" id="nivel" name="nivel" value="<%= nivel %>">
+								<input type="hidden" id="username" name="username" value="<%= username %>">					
 
 							</div>
 							<div class="footer-card">
