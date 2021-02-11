@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<link rel="icon" href="/img/MPdL(Logo)/MPdL(logo).svg" type="image/x-icon">
 	<title><%- process.env.TITLE %></title>
 
 
@@ -43,6 +43,8 @@
 	<link href="/css/css/style.css" rel="stylesheet">
 	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
 
+	<link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body class="theme-teal">
@@ -50,21 +52,6 @@
 	<%- include ../template/menu.ejs %>
 	<!-- Page Wrapper -->
 	<section class="content">
-        <!-- início do preloader -->
-        <div id="preloader">
-            <div class="inner">
-                <div class="front">
-                    <img src="/img/sdc-color.svg" w/>
-                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
-                    <div class="bolas">
-                       <div></div>
-                       <div></div>
-                       <div></div>                    
-                    </div>
-                </div> 
-            </div>
-        </div>
-		<!-- fim do preloader --> 
 		<div class="content-fluid">
 			<%- messages() %>
 			<div class="block-header">
@@ -78,63 +65,64 @@
 								<h2>Informações gerais do usuário</h2>
 							</div>
 							<div class="body">
-								<div class="row clearfix">
-									<div class="col-sm-4">
-										<div class="input-group">
-											<div class="form-line">
-												Nome Completo
-										<input type="text" class="form-control" id="nome" name="nome" treatment="capitalize" value="<%= nome %>">
-											</div>
-										</div>
-										
-									</div>
-									<div class="col-sm-4">
-										<div class="input-group">
-											<div class="form-line">
-												Username
-												<input type="text" class="form-control" value="<%= username %>" disabled>
-											</div>
-										</div>
-									</div>
+								<div class="table-responsive">
+									<table
+										class="table table-bordered table-striped table-hover js-basic-example dataTable"
+										id="dataTable" width="100%" cellspacing="0">
+										<div class="row clearfix">
+											<div class="col-sm-3">
+												<div class="input-group">
+													<div class="form-line">
+														Nome Completo
+														<input type="text" class="form-control" id="nome" name="nome"
+															treatment="capitalize" value="<%= nome %>">
+													</div>
+												</div>
 
+											</div>
+											<div class="col-sm-3">
+												<div class="input-group">
+													<div class="form-line">
+														Username
+														<input type="text" class="form-control" value="<%= username %>"
+															disabled>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="row clearfix">
+											<div class="col-sm-3">
+												<div class="input-group">
+													<div class="form-line">
+														Email
+														<input type="email" class="form-control" name="email" id="email"
+															value="<%= email %>">
+													</div>
+												</div>
+
+											</div>
+											<div class="col-sm-3">
+												<div class="input-group">
+													<div class="form-line">
+														Telefone
+														<input type="phone" class="form-control" id="telefone"
+															name="telefone" value="<%= telefone %>">
+													</div>
+												</div>
+
+											</div>
+											
+										</div>
+										<input type="hidden" id="id" name="id" value="<%= id %>">
+									</table>
 								</div>
-								<div class="row clearfix">
-									<div class="col-sm-4">
-										<div class="input-group">
-											<div class="form-line">
-												Telefone
-										<input type="phone" class="form-control" id="contato1" name="contato1"
-											value="<%= contato1 %>">
-											</div>
-										</div>
-										
-									</div>
-									<div class="col-sm-4">
-										<div class="input-group">
-											<div class="form-line">
-												Celular
-										<input type="phone" class="form-control" id="contato2" name="contato2"
-											value="<%= contato2 %>">
-											</div>
-										</div>
-										
-									</div>
-									<div class="col-sm-4">
-										<div class="input-group">
-											<div class="form-line">
-												Email
-										<input type="email" class="form-control" name="email" id="email"
-										value="<%= email %>">
-											</div>
-										</div>
-										
-									</div>
-								</div>
-								<input type="hidden" id="id" name="id" value="<%= id %>">
 							</div>
 							<div class="footer-card">
-								<input type="submit" value="Salvar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
-								<a href="/" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+								<input type="submit" value="Salvar"
+									class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
+								<a href="/"
+									class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
 							</div>
 						</div>
 					</div>
@@ -203,7 +191,7 @@
 
 	<!-- Inclusão de Máscaras Js-->
 	<script src="/js/shopping-crianca-mask.js"></script>
-	
+
 
 </body>
 
