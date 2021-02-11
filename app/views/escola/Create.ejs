@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
+
+	<!-- Custom fonts for this template-->
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+		type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css" rel="stylesheet">
+
+	<style>
+		body {
+			overflow: auto;
+		}
+	</style>
+
+</head>
+
+<body class="signup-page">
+
+	<div class="signup-box">
+		<div class="logo">
+			<a href="#"><img src="/img/shopping_crianca400.png" alt="logo" height="90"
+					class="justify-content-center"></a>
+		</div>
+		<div class="card">
+			<div class="body">
+				<div class="msg">Tipo de Cadastro</div>
+				<div class="row clearfix">
+					<div class="col-sm-6">
+						<div>
+							<div class="form-line">
+								Escola ou Reponsável?
+								<input type="radio" id="escola" name="nivel" value="escola" required checked>
+								<label for="escola">Escola</label>
+								<input type="radio" id="responsavel" name="nivel" value="responsavel" required>
+								<label for="responsavel">Responsável</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<form id="sign_up" method="POST" action="/app/escola/create/submit" enctype="multipart/form-data">
+					<div id="div_ende">
+						<div class="msg">Cadastro</div>
+						<h2 class="card-inside-title">Informações Gerais da Escola</h2>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Nome da escola: *
+										<input type="text" class="form-control" id="nome" name="nome"
+											treatment="capitalize" required autofocus>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										CNPJ: *
+										<input type="text" class="form-control" id="cnpj" name="cnpj" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-group">
+									Tipo de Escola: *
+									<select class="form-control show-tick" name="tipoEscolaResponsavel"
+										id="tipoEscolaResponsavel" required>
+										<option value="PARTICULAR">Particular</option>
+										<option value="PUBLICA">Pública</option>
+										<option value="COMUNITARIA">Comunitária</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Gestor: *
+										<input type="text" class="form-control" id="gestor" name="gestor"
+											treatment="capitalize" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Email: *
+										<input type="email" class="form-control" id="email" name="email"
+											onchange="verificaEmail()" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Repetir email: *
+										<input type="email" class="form-control" id="emailrepetido" name="emailrepetido"
+											onchange="verificaEmail()" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Senha: <small>(min. 6 caract.)</small> *
+										<input type="password" name="password" id="password" class="form-control"
+											pattern=".{6,}" onchange="verificaSenha()" required
+											title="Mínimo de 6 caracteres">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Repetir senha: *
+										<input type="password" name="passwordrepetido" id="passwordrepetido"
+											class="form-control" pattern=".{6,}" onchange="verificaSenha()" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h2 class="card-inside-title">Endereço</h2>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="input-group">
+									<div class="form-line">
+										Logradouro: <small>(Rua e Número)</small> *
+										<input type="text" class="form-control" id="logradouro" name="logradouro"
+											treatment="capitalize" required>
+									</div>
+								</div>
+								<div class="input-group">
+									<div class="form-line">
+										Número
+										<input type="text" class="form-control" id="numero" treatment="capitalize"
+											name="numero">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Bairro: *
+										<input type="text" class="form-control" id="bairro" name="bairro"
+											treatment="capitalize" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										CEP: *
+										<input type="text" class="form-control" id="cep" name="cep" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Telefone fixo:
+										<input type="text" class="form-control" id="fone" name="fone">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<div class="form-line">
+										Celular: *
+										<input type="text" class="form-control" id="celular" name="celular" required>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<input type="hidden" id="niveis" name="niveis" value="ESCOLA">
+
+						<button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">CADASTRAR</button>
+
+						<div class="m-t-25 m-b--5 align-center">
+							<a href="/">Já tem uma conta?</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Validation Plugin Js -->
+	<script src="/js/plugins/jquery-validation/jquery.validate.js"></script>
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/examples/sign-up.js"></script>
+
+	<!-- Jquery Mask Js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+	<!-- Verifica o tipo de cadastro desejado - [ start ]-->
+	<script>
+		$("#escola").on('change', function () {
+			$("#div_ende").hide()
+		});
+		$("#responsavel").on('change', function () {
+			$("#div_ende").show();
+			window.location.href = '/app/verifica/';
+		});
+	</script>
+	<!-- Verifica o tipo de cadastro desejado - [ end ]-->
+
+	<!-- Pega do banco lista de municípios - [ start ]-->
+	<script>
+		function getMunicipios() {
+			var estadoId = $('#estado').val();
+			$('#municipio').empty()
+			$.ajax({
+				type: "GET",
+				url: "/app/instituicao/municipio/" + estadoId,
+				success: function (data) {
+					$.each(data, function (i, d) {
+						$('#municipio').append('<option value="' + d.id + '">' + d.nome + '</option>');
+					});
+				}
+			})
+		}
+	</script>
+
+	<!-- Mascaras do formulário - [ start ]-->
+	<script>
+		$(document).ready(function () {
+			$('#cpf').mask('000.000.000-00');
+			$('#cnpj').mask('00.000.000/0000-00');
+			$('#celular').mask('(00) 00000-0000');
+			$('#fone').mask('(00) 0000-0000');
+		});
+	</script>
+	<!-- Mascaras do formulário - [ end ]-->
+
+	<!-- Validação do formulário - [ start ]-->
+	<script>
+		controleEmail = 0
+		function verificaEmail() {
+			if (controleEmail == 0) {
+				controleEmail++;
+				return false;
+			}
+			var email = $('#email').val();
+			var emailrepetido = $('#emailrepetido').val();
+			if (emailrepetido != email) {
+				alert('Emails não correspondem.');
+				$('[type=submit]').prop('disabled', true);
+			} else {
+				$('[type=submit]').prop('disabled', false);
+			}
+		}
+
+		controleSenha = 0
+		function verificaSenha() {
+			if (controleSenha == 0) {
+				controleSenha++;
+				return false;
+			}
+			var senha = $('#password').val();
+			var senharepetida = $('#passwordrepetido').val();
+			if (senharepetida != senha) {
+				alert('Senhas não correspondem.')
+				$('[type=submit]').prop('disabled', true);
+			} else {
+				$('[type=submit]').prop('disabled', false);
+			}
+		}
+		var options = {
+			onKeyPress: function (tel, e, field, options) {
+				var masks = ['(00) 00000-0000', '(00) 0000-0000'];
+				var mask = (tel.slice(5).indexOf("9") == 0) ? masks[0] : masks[1];
+				$('#celular').mask(mask, options);
+			}
+		};
+		$('#celular').mask('(00) 00000-0000', options);
+	</script>
+	<!-- Validação do formulário - [ end ]-->
+
+</body>
+
+</html>

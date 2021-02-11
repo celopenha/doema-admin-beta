@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
+
+	<!-- Custom fonts for this template-->
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css" rel="stylesheet">
+
+	<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+</head>
+
+<body class="theme-teal">
+
+	<%- include topo.ejs %>
+	<%- include menu.ejs %>
+	<!-- End of Page Wrapper -->
+	<section class="content">
+        <!-- início do preloader -->
+        <div id="preloader">
+            <div class="inner">
+                <div class="front">
+                    <img src="/img/sdc-color.svg" w/>
+                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+                    <div class="bolas">
+                       <div></div>
+                       <div></div>
+                       <div></div>                    
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <!-- fim do preloader --> 
+		<div class="content-fluid">
+			<%- messages() %>			
+
+		</div>
+	</section>
+
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Select Plugin Js -->
+	<script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Jquery CountTo Plugin Js -->
+	<script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+
+	<!-- Morris Plugin Js -->
+	<script src="/js/plugins/raphael/raphael.min.js"></script>
+	<script src="/js/plugins/morrisjs/morris.js"></script>
+
+	<!-- ChartJs -->
+	<script src="/js/plugins/chartjs/Chart.bundle.js"></script>
+
+	<!-- Flot Charts Plugin Js -->
+	<script src="/js/plugins/flot-charts/jquery.flot.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.resize.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.pie.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.categories.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.time.js"></script>
+
+	<!-- Sparkline Chart Plugin Js -->
+	<script src="/js/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/index.js"></script>
+	<script src="/js/js/pages/ui/modals.js"></script>
+
+	<!-- Demo Js -->
+	<script src="js/demo.js"></script>
+	<script src="js/jquery.mask.js"></script>
+
+
+</body>
+
+</html>

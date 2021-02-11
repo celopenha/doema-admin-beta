@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
+
+	<!-- Custom fonts for this template-->
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+		type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css" rel="stylesheet">
+
+	<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+	<!-- Bootstrap Select Css -->
+	<link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+	<!-- Custom styles for this page -->
+	<link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/js/postapi-respon.js"></script>
+	<script>
+		function getpdf(id) {
+			$.ajax({
+				type: "GET",
+				url: "/app/crianca-sessao/" + id + "/gerarpdf",
+				success: function (data) {
+					let pdfWindow = window.open("");
+					pdfWindow.document.write("<object width='100%' height='100%' type='application/pdf' data='data:application/pdf;base64, " + data.arquivo + "'></object>");
+					pdfWindow.document.title = "Comprovante";
+					
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+					alert('Error occurred while opening fax template'
+						+ getAjaxErrorString(textStatus, errorThrown));
+				}
+			});
+		}
+	</script>
+	<style>
+		.bs-searchbox input {
+			padding-left: 20px !important;
+		}
+
+		.dropdown-menu .inner {
+			margin-left: 30px !important;
+		}
+
+		.dropdown-menu .no-results {
+			padding-left: 20px !important;
+		}
+
+		.dropdown-menu .inner a {
+			margin-left: 0 !important;
+		}
+	</style>
+
+	<script>
+		function openPdf(pdfbase64, nome) {
+
+			//var documento = 'data:application/pdf;base64,' + pdfbase64;
+			let pdfWindow = window.open("");
+			if (~pdfbase64.indexOf("data")) {
+				pdfWindow.document.write("<object width='100%' height='100%' type='application/pdf' data="+ pdfbase64 + "></object>");
+			} else {
+				pdfWindow.document.write("<object width='100%' height='100%' type='application/pdf' data='data:application/pdf;base64, " + pdfbase64 + "'></object>");
+			}
+			
+			pdfWindow.document.title = nome;
+		}
+	</script>
+
+</head>
+
+<body class="theme-teal">
+	<%- include ../template/topo.ejs %>
+	<%- include ../template/menu.ejs %>
+
+	<!-- Page Wrapper -->
+	<section class="content">
+        <!-- início do preloader -->
+        <div id="preloader">
+            <div class="inner">
+                <div class="front">
+                    <img src="/img/sdc-color.svg" w/>
+                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+                    <div class="bolas">
+                       <div></div>
+                       <div></div>
+                       <div></div>                    
+                    </div>
+                </div> 
+            </div>
+        </div>
+		<!-- fim do preloader --> 
+		<div class="content-fluid">
+			<%- messages() %>
+			<div class="row clearfix">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="card">
+						<div class="header">
+							<h2>Listagem de Agendamentos <%= informacoes.NivelUser == 'ADMIN' ? nomesessao :'' %></h2>
+							<% if (controlRota === "listSessao" && informacoes.NivelUser == 'ADMIN'){ %>
+								<a href="#" onclick="buscaCandidato('');" class="btn bg-blue" style="float: right; margin-top: -28px; margin-right: 5px;" data-toggle="modal" data-target="#agendamento" data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Adicionar agendamento">
+									<i class="material-icons" style="color: red;">alarm_add</i>
+								</a>
+								<input type="hidden" id="sessao" value="<%= sessaoId %>">
+							<% } %>
+
+							<% if (informacoes.NivelUser != 'ADMIN') { %>
+								<a href="/app/servico/list" class="btn bg-blue waves-effect" style="float: right; margin-top: -28px; margin-right: 5px;" data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Adicionar agendamento">
+									<i class="material-icons" style="color: red;">alarm_add</i>
+								</a>
+							<% } %>
+						</div>
+						<div class="body">
+							<!--	<div class="row clearfix">
+								<div class="col-sm-2">
+									<div class="input-group">
+										<div class="form-line">
+											Visualizar registros por página
+											<select name="size" id="size" class="form-control" onchange="mudaSize()">
+												<option value="10">10</option>
+												<option value="25">25</option>
+												<option value="50">50</option>
+												<option value="100">100</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="input-group">
+										<div class="form-line">
+											Pesquisar por nome
+											<input type="text" class="form-control" id="busca"
+												onchange="buscaCandidato(this.value);"><br />
+										</div>
+									</div>
+								</div>
+							</div> -->
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover js-basic-example dataTable"
+									id="dataTable" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th>Código</th>
+											<th>Serviço</th>
+											<% if(informacoes.NivelUser != 'ADMIN') { %>
+											<th>Sessão</th>											
+											<th>Horário</th>
+											<th>Status do Agendamento</th>
+											<% } else{ %>
+											<th>Responsável</th>
+											<th>Celular</th>											
+											<th>Horário</th>
+											<th>Status do Agendamento</th>
+											<th>Presença</th>
+											<% } %>
+											<th>Ação</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>Código</th>
+											<th>Serviço</th>
+											<% if(informacoes.NivelUser != 'ADMIN') { %>
+											<th>Sessão</th>											
+											<th>Horário</th>
+											<th>Status do Agendamento</th>
+											<% } else{ %>
+											<th>Responsável</th>
+											<th>Celular</th>											
+											<th>Horário</th>
+											<th>Status do Agendamento</th>
+											<th>Presença</th>
+											<% } %>
+											<th>Ação</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<script>
+											dados = [];
+										</script>
+										<% for (var i = 0; i < itens.length; i++) { %>
+										<tr>
+											<td><%= itens[i].codigo %></td>
+											<td><%= itens[i].servico %></td>
+											<% if(informacoes.NivelUser != 'ADMIN') { %>
+											<td><%= itens[i].sessao %></td>											
+											<td><%= itens[i].dia %></td>
+											<td><%= itens[i].statusCase == 'Pre-agendado' ? 'Pré-Agendado' : itens[i].statusCase %>
+											</td>
+											<% } else{ %>
+											<td><%= itens[i].responsavel %></td>
+											<td><%= itens[i].celular %></td>											
+											<td><%= itens[i].dia %></td>
+											<td><%= itens[i].statusCase == 'Pre-agendado' ? 'Pré-Agendado' : itens[i].statusCase %>
+											</td>
+											<td id="tdPresente<%= i %>"><%= itens[i].statusPresenca  == 'Nao-avaliado(a)' ? 'Não Avaliado(a)' : itens[i].statusPresenca%></td>
+											<% } %>
+
+											<td style="width: 120px;">
+												<% if(informacoes.NivelUser != 'ADMIN') { %>
+													<a href="javascript:void(0)" onclick="getpdf('<%= itens[i].id %>')" data-toggle="modal" data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Baixar Comprovante">
+														<i class="material-icons" style="color: orange;">get_app</i>
+													</a>
+												<% } else{ %>
+													<a href="/app/<%= page %>/edit/<%= itens[i].id %>" data-toggle="modal" data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Editar Agendamento">
+														<i class="material-icons" style="color: orange;">edit</i>
+													</a>
+													<script>
+														dados['<%= i %>'] = {
+															id: '<%= itens[i].id %>',
+															nome: '<%= itens[i].responsavel %>',
+															codigo: '<%= itens[i].codigo %>',
+															criancasList: JSON.parse('<%- JSON.stringify(itens[i].vagas) %>'),
+															confPresenca: '<%= itens[i].statusPresencaOriginal %>',
+															dia: '<%= itens[i].dia %>',
+															statusAgendamento: '<%= itens[i].statusAgendamento %>',
+															escolaId: '<%= itens[i].escolaId %>',
+															vagas: JSON.parse('<%- JSON.stringify(itens[i].vagas) %>'),
+															sessao: '<%= itens[i].sessao %>',
+															sessaoId: '<%= itens[i].sessaoId %>'
+														}
+													</script>
+													<a  data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Alterar status de presença" style="margin-left: 5px;" id="link<%= i %>" href="javascript:void(0)" onclick="modalPresent('<%= i %>');">
+														<% if (controlRota === "listSessao"){ %>
+															<% if (itens[i].statusPresenca == 'Presente') { %>
+																<i id="btn-present<%= i %>" class="material-icons" style="color: green;">assignment_turned_in</i>
+															<% } else { %>
+																<i id="btn-present<%= i %>" class="material-icons" style="color: red;">assignment_late</i>
+															<% } %>
+														<% } %>
+													</a>													
+												<% } %>
+
+											</td>
+
+										</tr>
+										<% } %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	
+	<script>
+		function modalPresent(item) {
+			$('#formConfPresent #title').html(dados[item].nome);
+			$('#formConfPresent #codigo').html(dados[item].codigo);
+			$('#formConfPresent #idAgendamento').val(dados[item].id);
+			$('#formConfPresent #criancasList').html('')
+
+			for (var i = 0; i < dados[item].criancasList.length; i++) {
+				$('#formConfPresent #criancasList').append(`
+				<tr>
+					<td>` + dados[item].criancasList[i].nome + `</td>	
+				</tr>
+			`);
+			}
+			$("#confPresent").modal('show');
+		}
+	</script>
+	
+	<div class="modal fade" id="confPresent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="confPresentModalLabel">Confirmação de Presença</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				
+                <div id="formConfPresent">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div>
+									<h4 style="margin-top: 0px;">Código: <span id="codigo">##########</span></h4>
+								</div>
+								<div>
+									<strong id="title">
+										<h4>Responsável xx</h4>
+									</strong>
+								</div>
+								<br>
+								<% if (itens.aniversario == false) { %>
+								<div><strong>Crianças:</strong></div>
+								<div class="table-responsive">
+									<table
+										class="table table-bordered table-striped table-hover js-basic-example dataTable"
+										id="dataTable" width="100%" cellspacing="0">
+										<tbody id="criancasList">
+										</tbody>
+									</table>
+								</div>
+								<% } %>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+						<input type="submit" id="btnPresent" value="Confirmar" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" />
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button" data-dismiss="modal">Cancelar</button>
+					</div>
+				<!--	<div class="modal-footer">
+						<input type="submit" value="Confirmar"
+							class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" />
+						<button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button"
+							data-dismiss="modal">Cancelar</button>
+					</div> -->
+
+					<input type="hidden" name="idAgendamento" id="idAgendamento" value="">
+                </div>
+			</div>
+		</div>
+	</div>
+
+	<% if(informacoes.NivelUser == 'ADMIN' && controlRota === "listSessao") { %>
+		<div class="modal fade" id="agendamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Responsável:</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="$('#busca').val('');">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+						<div class="modal-body" style="margin-top: 16px;">
+							<div class="row clearfix">
+								<div class="col-sm-12">
+									<div class="input-group" style="align-items: center; display: flex;">
+										Visualizar 
+										<div class="form-line" style="width: 70px; margin: 0 4px;">
+											<select name="size" id="size" class="form-control" onchange="mudaSize()" style="padding-left: 12px;">
+												<option value="10">10</option>
+												<option value="25">25</option>
+												<option value="50">50</option>
+												<option value="100">100</option>
+											</select>
+										</div>
+										registros por página
+									</div>
+								</div>
+							</div>
+							<div class="row clearfix">
+								
+								<div class="col-sm-12">
+									<div class="input-group" style="display: inline-flex; align-items: center;">
+										Pesquisar:
+										<div style="margin-left: 8px;" class="form-line">
+											<input type="text" class="form-control" id="busca" onchange="buscaCandidato(this.value);">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover js-basic-example dataTable"
+									id="tableResponsaveis" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th>Nome</th>
+											<th>CPF / CNPJ</th>
+											<th>Ação</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>Nome</th>
+											<th>CPF / CNPJ</th>
+											<th>Ação</th>
+										</tr>
+									</tfoot>
+									<tbody id="table_bodyrespon">
+										<td></td>
+										<td></td>
+										<td>
+											<a href="/app/crianca-sessao/create/<%= sessaoId %>" data-toggle="tooltip"
+												data-placement="left" title="Agendar">
+												<i class="material-icons" style="color: rebeccapurple;">alarm_add</i>
+											</a>
+										</td>
+									</tbody>
+								</table>
+								<div class="align-right">
+									<nav>
+										<ul class="pagination" style="display: inline-flex;">
+											<li id="page-anterior" data-page="0" class="page-item disabled">
+												<a class="disabled" id="page-link-anterior"
+													href="javascript:void(0);">Anterior</a>
+											</li>
+											<div id="page-number"
+												style="margin-left: 16px; margin-right: 16px; margin-top: 8px;">
+												1 de 1</div>
+											<li id="page-posterior" data-page="1" class="page-item">
+												<a id="page-link-posterior"
+													href="javascript:void(0);">Próxima</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" type="button" data-dismiss="modal" onclick="$('#busca').val('');">Cancelar</button>
+						</div>
+				</div>
+			</div>
+		</div>
+	<% } %>
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Select Plugin Js -->
+	<script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Jquery CountTo Plugin Js -->
+	<script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+
+	<!-- Morris Plugin Js -->
+	<script src="/js/plugins/raphael/raphael.min.js"></script>
+	<script src="/js/plugins/morrisjs/morris.js"></script>
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/index.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts 
+	<script src="/js/demo/datatables-demo.js"></script> -->
+
+	<script>
+		$('#page-posterior').click(function () {
+			var page = $(this).attr('data-page');
+			var pageAnterior = $("#page-anterior").attr('data-page');
+			var busca = $("#busca").val();
+			var size = $("#size").val();
+			var data;
+			if (busca != null) {
+				data = { page: page, busca: busca, size: size };
+			} else {
+				data = { page: page, size: size };
+			}
+
+			postApiPosterior(data, page, pageAnterior);
+
+		});
+
+		$('#page-anterior').click(function () {
+			var pagePosterior = $('#page-posterior').attr('data-page');
+			var pageAnterior = $("#page-anterior").attr('data-page');
+			var busca = $("#busca").val();
+			var size = $("#size").val();
+			var data;
+			if (busca != null) {
+				data = { page: pageAnterior - 1, busca: busca, size: size };
+			} else {
+				data = { page: pageAnterior - 1, size: size };
+			}
+
+			if (pageAnterior > 0) {
+				postApiAnterior(data, pageAnterior, pagePosterior);
+			}
+		});
+
+	</script>
+
+	<script>
+		function setaDadosModal(valor) {
+			document.getElementById('campo').value = valor;
+		}		
+	</script>
+
+	<!-- Jquery Mask Js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+	<!-- Inclusão de Máscaras Js-->
+	<script src="/js/shopping-crianca-mask.js"></script>
+
+	
+	<script>
+		function modalPresent(item) {
+			if (dados[item].confPresenca == 'AUSENTE' || dados[item].confPresenca == 'NAO_AVALIADO') {
+				dados[item].confPresenca = "PRESENTE";
+			}  else {
+				dados[item].confPresenca = "AUSENTE";
+			}
+			$('#formConfPresent #title').html(dados[item].nome);
+			$('#formConfPresent #codigo').html(dados[item].codigo);
+			$('#formConfPresent #idAgendamento').val(dados[item].id);
+			$('#formConfPresent #btnPresent').attr("onclick", "confPresent(event," + item + ");");
+			$('#formConfPresent #criancasList').html('')
+			
+			for (var i = 0; i < dados[item].criancasList.length; i++) {
+				$('#formConfPresent #criancasList').append(`
+					<tr>
+						<td>` + dados[item].criancasList[i].nome + `</td>	
+					</tr>
+				`);
+			}
+			$("#confPresent").modal('show');
+		}
+	</script>
+
+<% if (controlRota === "listSessao"){ %>
+		<script>
+			function confPresent(event,item) {
+				$('#link' + item).html(`
+					<div class="preloader" style="height: 23px; width: 23px;">
+						<div class="spinner-layer pl-light-blue">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+				`);
+
+				event.preventDefault()
+				$("#confPresent").modal('hide');
+				$.ajax({
+					type: "POST",
+					url: "/app/<%= page %>/edit-presenca/submit",
+					data: JSON.stringify(dados[item]),
+					dataType: "json",
+					contentType: "application/json",
+					success: function (data) {
+						if(data) {
+							switch (data.statusPresenca) {
+								case 'PRESENTE':
+									$("#tdPresente" + item).html("Presente");
+									$('#link' + item).html(`
+										<i id="btn-present" class="material-icons" style="color: green;">assignment_turned_in</i>
+									`);
+									break;
+								default:
+									if (data.statusPresenca == "AUSENTE") {
+										$("#tdPresente" + item).html("Ausente");
+									} else {
+										$("#tdPresente" + item).html("Não Avaliado(a)");
+									}
+									$('#link' + item).html(`
+										<i id="btn-present" class="material-icons" style="color: red;">assignment_late</i>
+									`);
+									break;
+							}
+						} else {
+							location.reload();
+						}
+					}
+				})
+			}
+		</script>
+	<% } %>
+
+</body>
+
+</html>

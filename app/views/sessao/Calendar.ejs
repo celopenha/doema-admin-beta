@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+    <title><%- process.env.TITLE %></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+        rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="/css/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+    <!-- Custom styles for this page -->
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+
+    <link href="/fullcalendar/wwwroot/fullcalendar.min.css" rel="stylesheet">
+    <link href="/fullcalendar/wwwroot/fullcalendar.print.min.css" rel="stylesheet" media="print">
+    <link href='fullcalendar/wwwroot/main.css' rel="stylesheet">
+
+
+    <meta name="msapplication-TileColor" content="#DA532C">
+    <meta name="theme-color" content="#FFFFFF">
+
+    <style>
+        .fc-sat,
+        .fc-sun {
+            background-color: whitesmoke;
+        }
+
+        #calendar {
+            background-color: white;
+        }
+    </style>
+
+
+    <% if (informacoes.NivelUser == 'ADMIN') { %>
+    <style>
+        .fc-day {
+            cursor: pointer;
+        }
+    </style>
+    <% } %>
+
+
+</head>
+
+<body class="theme-teal">
+    <%- include ../template/topo.ejs %>
+    <%- include ../template/menu.ejs %>
+    <section class="content">
+
+        <!-- início do preloader -->
+        <div id="preloader">
+            <div class="inner">
+                <div class="front">
+                    <img src="/img/sdc-color.svg" w/>
+                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+                    <div class="bolas">
+                       <div></div>
+                       <div></div>
+                       <div></div>                    
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <!-- fim do preloader --> 
+
+        <div class="container-fluid">    
+            <%- messages() %>
+
+            <div class="rowclearfix">
+                <div class="">
+                    <div class="card" style="padding: 15px;">
+                        <div class="header">
+                            <i class="material-icons" style="color: rebeccapurple;">home_work</i> <span style="font-weight: bold; font-size: 24px;"><%= nome %></span>
+                        </div>
+                        <div class="body">
+                            <div id="calendar"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Informações</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="modalExemplo" method="GET">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div><strong id="title2">
+                                        <h4>Sessão xx</h4>
+                                    </strong></div>
+                                <div>Inicio da Sessão: <span id="start">##:00</span></div>
+                                <div>Fim da Sessão: <span id="end">##:00</span></div>
+                                <br>
+                                <div><b>Total de vagas: </b><span id="vagas">##</span></div>
+                                <div><b>Vagas disponíveis: </b><span id="vagasRestantes">##</span></div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <% if (informacoes.NivelUser == 'ADMIN') {%>
+                        <div>
+                            <input type="submit" value="Agendamentos" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" />
+                            <a id="edit" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style=" padding: 8px 25px; margin: 0 7px;">Editar</a>
+                        </div>
+                        <% } else { %>
+                            <input type="submit" value="Agendar" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" />
+                        <% } %>
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery Core Js -->
+    <!-- Jquery Core Js -->
+    <script src="/js/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="/js/plugins/node-waves/waves.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="/js/plugins/autosize/autosize.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="/js/plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <!-- Custom Js -->
+
+    <script src="/js/js/pages/forms/basic-form-elements.js"></script>
+
+    <script src="/bootbox/bootbox.min.js"></script>
+    <script src="/bootbox/bootbox.locales.min.js"></script>
+
+    <script src='/fullcalendar/wwwroot/lib/jquery.min.js'></script>
+    <script src="/fullcalendar/wwwroot/lib/moment.min.js"></script>
+    <script src='/fullcalendar/wwwroot/fullcalendar.min.js'></script>
+    <script src="/fullcalendar/wwwroot/locale/pt-br.js"></script>
+
+    <script src="/js/js/admin.js"></script>
+
+    <script>
+        //
+        // CONFIGURACAO DO FULLCALENDAR
+        //
+
+        $(function () {
+            /* initialize the external events
+            -----------------------------------------------------------------*/
+            function init_events(ele) {
+                ele.each(function () {
+                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                    // it doesn't need to have a start or end
+                    var eventObject = {
+                        title: $.trim($(this).text()) // use the element's text as the event title
+                    }
+
+                    // store the Event Object in the DOM element so we can get to it later
+                    $(this).data('eventObject', eventObject)
+
+                    // make the event draggable using jQuery UI
+                    $(this).draggable({
+                        zIndex: 1070,
+                        revert: true, // will cause the event to go back to its
+                        revertDuration: 0  //  original position after the drag
+                    })
+                })
+            }
+
+            init_events($('#external-events div.external-event'))
+
+            /* initialize the calendar
+            -----------------------------------------------------------------*/
+            //Date for the calendar events (dummy data)
+            var date = new Date()
+            var d = date.getDate(),
+                m = date.getMonth(),
+                y = date.getFullYear(),
+                h = date.getHours(),
+                min = date.getMinutes(),
+                s = date.getSeconds()
+            var niveis = JSON.parse('<%- JSON.stringify(informacoes.NivelUser) %>')
+            var eventosList = JSON.parse('<%- JSON.stringify(eventos) %>');
+            var servico = JSON.parse('<%- JSON.stringify(servico) %>');
+            var sessaoId;
+
+
+            //Inicializa o Calendario	
+            $(document).ready(function () {
+                if ($(window).width() < 765) {
+                    for (var i = 0; i < eventosList.length; i++) { 
+                        eventosList[i].title = (eventosList[i].title.replace('v', ' vagas')).replace('h - ', '');
+                    }
+                }
+                $('#calendar').fullCalendar({
+                    defaultView: $(window).width() < 765 ? 'agendaDay':'month',
+                    header: {
+                        left: 'title',
+                        center: '',
+                        right: 'prev,next today'
+                    },
+                    buttonText: {
+                        today: 'Hoje',
+                        month: 'Mês',
+                        week: 'Semana',
+                        day: 'Dia'
+                    },
+
+                    defaultDate: Date(),
+                    navLinks: false, // can click day/week names to navigate views
+                    editable: false,
+                    eventLimit: true, // allow "more" link when too many events
+                    selectHelper: true,
+                    selectable: true,
+                    droppable: true, // this allows things to be dropped onto the calendar !!!
+
+                    // Função para criar evento ao clicar no dia
+                    dayClick: function (date, jsEvent, view) {
+                        if (date.isValid()) {
+                            // Redireciona para criar sessão
+                            var date = date.format('YYYY-MM-DD HH:mm')
+                            window.location.href = '/app/servico/'+ servico +'/sessao/Create/' + date;
+                        } else {
+                            alert('Invalid');
+                        }
+                    },
+                    
+                    // Mostrar eventos                                        
+                    events: eventosList,
+
+                    // Mostrar Descrição e redireciona para adicionar criança
+                    eventRender: function (event, element) {
+                        event.title = "h" + event.title;
+                        element.attr('data-toggle', 'modal');
+                        element.attr('data-target', '#logoutModal');
+                        element.click(function () {
+                            sessaoId = event.id;
+                            servicoId = event.servicoId;
+                            nomesessao = event.title2;
+                            if (niveis == 'ADMIN') {
+                                $('#modalExemplo').attr('action', '/app/crianca-sessao/list/' + sessaoId)
+                                $('#edit').attr('href', '/app/servico/' + servicoId + '/sessao/edit/' + sessaoId)
+                            } else {
+                                $('#modalExemplo').attr('action', '/app/crianca-sessao/create/' + sessaoId)
+                            }
+                            $('#modalExemplo #title2').html(event.title2);
+                            $('#modalExemplo #start').html(event.startModal);
+                            $('#modalExemplo #end').html(event.endModal);
+                            $('#modalExemplo #vagas').html(event.vagas);
+                            $('#modalExemplo #vagasRestantes').html(event.vagasRestantes);
+                            //$('.modal-body').html(event.description);
+                        });
+                    },
+                    viewRender: function (view, element) {
+                        var mes = montaMes(view.title);
+                        $.ajax({
+                            type: "POST",
+                            url: "/app/servico/<%= servico %>/calendar/mes/" + mes,
+                            success: function (data) {
+                                $('#calendar').fullCalendar('removeEventSources');
+                                $('#calendar').fullCalendar('addEventSource', data.eventos );
+                            }
+                        })
+                    }
+
+                })
+            })
+        })
+        function montaMes(titulo) {
+            if (titulo.includes('janeiro')) {
+                return '01';
+            } else if (titulo.includes('fevereiro')) {
+                return '02';
+            } else if (titulo.includes('março')) {
+                return '03';
+            } else if (titulo.includes('abril')) {
+                return '04';
+            } else if (titulo.includes('maio')) {
+                return '05';
+            } else if (titulo.includes('junho')) {
+                return '06';
+            } else if (titulo.includes('julho')) {
+                return '07';
+            } else if (titulo.includes('agosto')) {
+                return '08';
+            } else if (titulo.includes('setembro')) {
+                return '09';
+            } else if (titulo.includes('outubro')) {
+                return '10';
+            } else if (titulo.includes('novembro')) {
+                return '11';
+            } else if (titulo.includes('dezembro')) {
+                return '12';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

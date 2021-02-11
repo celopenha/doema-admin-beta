@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
+
+	<!-- Custom fonts for this template-->
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+		type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css" rel="stylesheet">
+
+	<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+	<!-- Custom styles for this page -->
+	<link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+
+</head>
+
+<body class="theme-teal">
+	<%- include ../template/topo.ejs %>
+	<%- include ../template/menu.ejs %>
+	<!-- Page Wrapper -->
+	
+	<section class="content">
+        <!-- início do preloader -->
+        <div id="preloader">
+            <div class="inner">
+                <div class="front">
+                    <img src="/img/sdc-color.svg" w/>
+                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+                    <div class="bolas">
+                       <div></div>
+                       <div></div>
+                       <div></div>                    
+                    </div>
+                </div> 
+            </div>
+        </div>
+		<!-- fim do preloader --> 
+		
+		<div class="content-fluid">
+			<%- messages() %>
+			<!-- Main Content -->
+			<div class="row clearfix">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="card">
+						<div class="header">
+							<h2>Listagem de Crianças <%= informacoes.NivelUser == 'ADMIN' ? 'do Responsável: ' + nomeResponsavel : ''%></h2>
+							<% if (informacoes.NivelUser != 'ADMIN') { %>
+								<a href="/app/<%= page %>/create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" class="btn bg-blue waves-effect" style="float: right; margin-top: -26px; margin-right: 5px; padding: 8px 14px;">Nova Criança</a>
+							<% } else {  %>
+								<a href="/app/<%= page %>/create" data-toggle="modal" data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Adicionar Criança" class="btn bg-blue waves-effect" style="float: right; margin-top: -28px; margin-right: 5px;">
+									<i class="material-icons">person_add</i>
+								</a>
+							<% } %>
+						</div>
+						<div class="body">
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="dataTable" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th>Nome Completo</th>
+											<th>Escolaridade</th>
+											<th>Parentesco</th>
+											<th>Ação</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>Nome Completo</th>
+											<th>Escolaridade</th>
+											<th>Parentesco</th>
+											<th>Ação</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<% for (var i = 0; i < itens.length; i++) { %>
+										<tr>
+											<td style="text-transform: capitalize"><%= itens[i].nome %></td>
+											<td style="text-transform: capitalize"><%= itens[i].serie_nome  == 'Pre Escola' ? 'Pré-Escola' : itens[i].serie_nome  %></td>
+											<td><%= itens[i].tipoResponsavel%></td>
+											<td>
+												<a href="/app/<%= page %>/edit/<%= itens[i].id %>" data-toggle="modal" data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Editar Criança">
+													<i class="material-icons"  style="color: orange;">edit</i>
+												</a>
+												<a href="" data-toggle="modal" data-target="#logoutModal" onclick="setaDadosModal('<%= itens[i].id %>', '<%= idResponsavel %>') " data-toggle="modal" data-toggle-alt="tooltip" data-placement="bottom" title="" data-original-title="Deletar Criança">
+													<i class="material-icons"  style="color: red;">delete</i>
+												</a>
+											</td>
+										</tr>
+										<% } %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</section>
+
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Atenção!</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<form id="modalExemplo" method="post" action="/app/<%= page %>/delete/">
+					<input type="hidden" name="idCrianca" id="campo1">
+					<input type="hidden" name="idResponsavel" id="campo2">
+					<div class="modal-body">Você realmente deseja apagar este item?</div>
+					<div class="modal-footer">
+						<input type="submit" value="Excluir" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" />
+						<button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button" data-dismiss="modal">Cancelar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Jquery CountTo Plugin Js -->
+	<script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+
+	<!-- Morris Plugin Js -->
+	<script src="/js/plugins/raphael/raphael.min.js"></script>
+	<script src="/js/plugins/morrisjs/morris.js"></script>
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/index.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="/js/demo/datatables-demo.js"></script> 
+
+	<!-- Jquery Mask Js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+	<!-- Inclusão de Máscaras Js-->
+	<script src="/js/shopping-crianca-mask.js"></script>
+
+
+	<script>
+		function setaDadosModal(IdCrianca, idResponsavel) {
+			$('#campo1').val(IdCrianca);
+			$('#campo2').val(idResponsavel);
+		}
+	</script>
+
+
+</body>
+
+</html>

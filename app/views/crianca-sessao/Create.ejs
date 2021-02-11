@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+		type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+	<!-- Bootstrap Material Datetime Picker Css -->
+	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+		rel="stylesheet" />
+
+	<!-- Bootstrap DatePicker Css -->
+	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+	<!-- Wait Me Css -->
+	<link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css" rel="stylesheet">
+	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+	<!-- Multi Select -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href=/css/multi-select.css>
+
+</head>
+
+<body class="theme-teal">
+	<%- include ../template/topo.ejs %>
+	<%- include ../template/menu.ejs %>
+	<!-- Page Wrapper -->
+	<section class="content">
+        <!-- início do preloader -->
+        <div id="preloader">
+            <div class="inner">
+                <div class="front">
+                    <img src="/img/sdc-color.svg" w/>
+                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+                    <div class="bolas">
+                       <div></div>
+                       <div></div>
+                       <div></div>                    
+                    </div>
+                </div> 
+            </div>
+        </div>
+		<!-- fim do preloader --> 
+		<div class="content-fluid">
+			<%- messages() %>
+			<div class="block-header">
+				<h2>Cadastrar Sessão para Criança</h2>
+			</div>
+			<form class="user" method="POST" action="/app/<%= page %>/create/submit" enctype="multipart/form-data">
+				<div class="row clearfix">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="card">
+							<div class="header">
+								<h2>Informações Gerais do Agendamento</h2>								
+							</div>
+							<div class="body">
+								<div class="row clearfix">
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												Dia
+												<input type="datetime-local" class="form-control" id="dia" name="dia" value="<%= itens.horaInicio %>" disabled>
+												<input type="hidden" id="dia" name="dia" value="<%= itens.horaInicio %>">
+											</div>
+										</div>
+
+									</div>
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Sessão:
+												<input type="text" class="form-control" value="<%= itens.sessao %>" disabled>
+												<input type="hidden" id="sessao_id" name="sessao_id" value="<%= sessaoId %>">
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<% if (itens.aniversario == false) { %>
+								<div class="row clearfix">
+									<div class="col-sm-12">
+										<div class="input-group form-line">
+											<h5>Criança:</h5>
+											<select class="searchable" data-width="100%" id="33multiselect" name="crianca_id"
+												multiple='multiple' required>
+												<% for (var i = 0; i < itensDois.length; i++) { %>
+												<option id="criancas" value="<%= itensDois[i].id %>">
+													<%= itensDois[i].nome %></option>										
+												<% } %>												
+											</select>
+										</div>
+									</div>
+									<div style="margin-left: 900px;">									
+										<div id="vagas_restantes"></div>									
+									</div>
+									
+									<input type="hidden" id="vagasRestantes" name="vagasRestantes" value="">
+									<input type="hidden" id="vagaControl" name="vagaControl" value="">
+								</div>
+								<% } else { %>
+									
+								<% } %>	
+								<input type="hidden" name="aniversario" value="<%= itens.aniversario %>">
+								<div id="div_campos">
+									<ul value="campos" class="list-unstyled"
+										id="campos">
+										<li id="campos">
+								<% if (camposAdicionais.length != 0) { %>
+									
+											<% for (var i = 0; i < camposAdicionais.length; i++) { %>
+												<div class="row input-group">
+													<input type="hidden" name="campoid" id="campoid" value="<%= camposAdicionais[i].id %>">
+													<div class="col-sm-3">
+														<div class="form-line">
+															<%= camposAdicionais[i].nome %> <%= camposAdicionais[i].obrigatorio == true ? '*' : '' %>
+														<% if (camposAdicionais[i].tipoArquivo == 'TEXTO') { %>
+														<input class="form-control show-tick" type="text"
+															name="campovalor" id="campovalor" <%= camposAdicionais[i].obrigatorio == true ? 'required' : '' %>>
+														<% } else if (camposAdicionais[i].tipoArquivo == 'TEXTAREA') { %>
+															<textarea rows="4" class="form-control no-resize" maxlength="145" id="campovalor" name="campovalor" <%= camposAdicionais[i].obrigatorio == true ? 'required' : '' %>></textarea>
+														<% } else { %>
+															<input type="file" class="form-control show-tick" id="campodvalor" name="campodvalor" onchange="convertfile(this.files)" accept="application/pdf" <%= camposAdicionais[i].obrigatorio == true ? 'required' : '' %>>
+														<% } %>
+														</div>
+													</div>
+												</div>
+											<% } %>
+								<% } %>
+							</li>
+						</ul>
+					</div>
+							</div>
+							<div class="footer-card">
+								<input type="submit" value="Salvar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
+								<a href="/app/crianca-sessao/list/<%= sessaoId %>" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</section>
+	<!-- End of Page Wrapper -->
+
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="login.html">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
+
+	<script src="/js/jquery.multi-select.js"></script>
+	<script src="/js/jquery.quicksearch.js"></script>
+
+	<script>
+		$(input_selector).quicksearch(elements_to_search, options);
+	</script>
+
+	<script type="text/javascript">
+		// run pre selected options
+		$('#pre-selected-options').multiSelect();
+	</script>
+	<script>
+		$('.searchable').multiSelect({
+			selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='\Buscar\'>",
+			selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='\Buscar\'>",
+			afterInit: function (ms) {
+				var that = this,
+					$selectableSearch = that.$selectableUl.prev(),
+					$selectionSearch = that.$selectionUl.prev(),
+					selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+					selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+				that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+					.on('keydown', function (e) {
+						if (e.which === 40) {
+							that.$selectableUl.focus();
+							return false;
+						}
+					});
+
+				that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+					.on('keydown', function (e) {
+						if (e.which == 40) {
+							that.$selectionUl.focus();
+							return false;
+						}
+					});
+			},
+			afterSelect: function () {
+				this.qs1.cache();
+				this.qs2.cache();
+			},
+			afterDeselect: function () {
+				this.qs1.cache();
+				this.qs2.cache();
+			}
+		});
+	</script>
+	<script>
+		$('#textMax p strong').html('<%= itens.vagasResponsavel %>');
+		vaga = '<%= itens.vagasRestantes %>';
+		vagaControl =  vaga;
+		aniversario = '<%= itens.aniversario %>';
+		controlCriancas();
+
+		$('.input1 li').on('click', function(){
+			vaga--;	
+			controlCriancas();				
+		});
+		$('.input2 li').on('click', function(){
+			vaga++;
+			controlCriancas();
+		});
+
+		function controlCriancas () {
+			$('.vagas-restantes h3').html(vaga);
+			$('#vagasRestantes').val(vaga);
+			$('#vagaControl').val(vaga);
+
+			if ((vagaControl - vaga) >= '<%= itens.vagasResponsavel %>' || vaga <= 0) {
+				$('.input1 li').css({ 
+					'pointer-events':'none',
+					'opacity':'0.6'
+				});
+			} else {
+				$('.input1 li').css({ 
+					'pointer-events':'all',
+					'opacity':'1'
+				});				
+			}
+		}
+		function convertfile(evt) {
+			var file = evt[0];
+			var reader = new FileReader();
+			var scntDiv = $('#div_campos');
+			reader.onload = function(readerEvt) {
+				var binaryString = readerEvt.target.result;
+				var base64str = btoa(binaryString);
+				$('<input type="hidden" value="'+ base64str +'" id="campovalor" name="campovalor">').appendTo(scntDiv);
+					//document.getElementById("base64textarea").value = btoa(binaryString);
+			};
+			reader.readAsBinaryString(file);
+		}
+	</script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Autosize Plugin Js -->
+	<script src="/js/plugins/autosize/autosize.js"></script>
+
+	<!-- Moment Plugin Js -->
+	<script src="/js/plugins/momentjs/moment.js"></script>
+
+	<!-- Bootstrap Material Datetime Picker Plugin Js -->
+	<script src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+	<!-- Bootstrap Datepicker Plugin Js -->
+	<script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/forms/basic-form-elements.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<section>
+	<!-- Left Sidebar -->
+	<aside id="leftsidebar" class="sidebar">
+		<!-- User Info -->
+		<div class="user-info" style="background: url('/img/images/user-img-background.jpg') no-repeat no-repeat;">			
+			<div class="info-container">
+				<div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= informacoes.NomeUser%></div>
+			    <div class="email"><%= informacoes.EmailUser %></div>
+				<div class="btn-group user-helper-dropdown">
+					<i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+					<ul class="dropdown-menu pull-right">
+							<li><a href="/app/escola/Perfil/<%= jsonescola.IdEscola%>"><i class="material-icons" style="color: rebeccapurple;">person</i>Perfil</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/app/usuario/Alterar-Senha/<%= informacoes.IdUser%>"><i class="material-icons" style="color: rebeccapurple;">miscellaneous_services</i>Alterar Senha</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/app/sair"><i class="material-icons" style="color: rebeccapurple;">input</i>Sair</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- #User Info -->
+		<!-- Menu -->
+		<div class="menu">
+			<ul class="list">
+				<li class="header">NAVEGAÇÃO</li>
+				<li>
+					<a href="/app/funcionario/list">
+						<i class="material-icons" style="color: rebeccapurple;">person</i>
+						<span>Funcionário</span>
+					</a>
+				</li>
+				<li>
+					<a href="/app/responsavel/list">
+						<i class="material-icons" style="color: rebeccapurple;">person_outline</i>
+						<span>Responsável</span>
+					</a>
+				</li>
+				<li>
+					<a href="/app/crianca/list">
+						<i class="material-icons" style="color: rebeccapurple;">people</i>
+						<span>Criança</span>
+					</a>
+				</li>
+				<!-- 
+				<li>
+					<a href="/app/crianca-sessao/list">
+						<i class="material-icons" style="color: rebeccapurple;">assignment</i>
+						<span>Agendamento Crianças</span>
+					</a>
+				</li>
+				-->
+				<li>
+					<a href="/app/sessao/calendar">
+						<i class="material-icons" style="color: rebeccapurple;">schedule</i>
+						<span>Calendário</span>
+					</a>
+				</li>
+			   
+			 <!--   <li>
+					<a href="javascript:void(0);" class="menu-toggle">
+						<i class="material-icons">widgets</i>
+						<span>Widgets</span>
+					</a>
+					<ul class="ml-menu">
+						<li>
+							<a href="javascript:void(0);" class="menu-toggle">
+								<span>Cards</span>
+							</a>
+							<ul class="ml-menu">
+								<li>
+									<a href="pages/widgets/cards/basic.html">Basic</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0);">
+								<span>Infobox</span>
+							</a>
+						</li>
+					</ul>
+				</li> -->
+			   
+			</ul>
+		</div>
+		<!-- #Menu -->
+		<!-- Footer -->
+		<div class="legal">
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="copyright" style="margin-top: 14px;">
+						&copy; 2020 <a href="https://seati.ma.gov.br/" target="_blank">SEATI</a>.
+					</div>
+					<div class="version">
+						<b>Versão: </b> 1.0.0
+					</div>
+				</div>
+				<div class="col-sm-7">
+					<img src="/img/maranhao.png" width="120">
+				</div>
+			</div>
+		</div>
+		<!-- #Footer -->
+	</aside>
+	<!-- #END# Left Sidebar -->
+	<!-- Right Sidebar -->
+	<!-- #END# Right Sidebar -->
+</section>

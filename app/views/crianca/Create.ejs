@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+		type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+	<!-- Bootstrap Material Datetime Picker Css -->
+	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+		rel="stylesheet" />
+
+	<!-- Bootstrap DatePicker Css -->
+	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+	<!-- Wait Me Css -->
+	<link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+	<!-- Bootstrap Select Css -->
+	<link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css" rel="stylesheet">
+	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body class="theme-teal">
+	<%- include ../template/topo.ejs %>
+	<%- include ../template/menu.ejs %>
+	<!-- Page Wrapper -->
+	<section class="content">
+        <!-- início do preloader -->
+        <div id="preloader">
+            <div class="inner">
+                <div class="front">
+                    <img src="/img/sdc-color.svg" w/>
+                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+                    <div class="bolas">
+                       <div></div>
+                       <div></div>
+                       <div></div>                    
+                    </div>
+                </div> 
+            </div>
+        </div>
+		<!-- fim do preloader --> 
+		<div class="content-fluid">
+			<%- messages() %>
+			<div class="block-header">
+				<h2>Cadastrar Criança</h2>
+			</div>			
+			<form class="user" method="POST" action="/app/<%= page %>/create/submit" enctype="multipart/form-data">
+				<div class="row clearfix">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="card">
+							<div class="header">
+								<h2>Dados da Criança</h2>
+							</div>
+							<div class="body">
+								<div class="row clearfix">
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Nome Completo: *
+												<input type="text" class="form-control" id="nome" name="nome" treatment="capitalize" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Escolaridade: *
+												<select class="form-control show-tick" name="serie_nome" id="serie_nome" required>
+													<option value="" disabled selected hidden>Selecione uma opção</option>
+													<option value="EDUCACAO_INFANTIL">Educação Infantil</option>
+													<option value="PRE_ESCOLA">Pré-Escola</option>
+													<option value="ENSINO_FUNDAMENTAL">Ensino Fundamental</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Data de Nascimento: *
+												<input type="date" class="form-control" id="nascimento" name="nascimento" required>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Parentesco: *
+												<select class="form-control show-tick" name="tipoResponsavel" id="tipoResponsavel" required>
+													<option value="" disabled selected hidden>Selecione uma opção</option>
+													<option value="FILHO">Filho(a)</option>
+													<option value="SOBRINHO">Sobrinho(a)</option>
+													<option value="NETO">Neto(a)</option>
+													<option value="IRMAO">Irmão(ã)</option>
+													<option value="PRIMO">Primo(a)</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Deficiência: *
+												<select class="form-control show-tick" name="tipoDeficiencia" id="tipoDeficiencia" required>
+													<option value="" disabled selected hidden>Selecione uma opção</option>
+													<option value="FALSE">Não</option>
+													<option value="VISUAL">Visual</option>
+													<option value="MOTORA">Motora</option>
+													<option value="AUDITIVA">Auditiva</option>
+													<option value="MENTAL">Mental</option>
+													<option value="MUDEZ">Mudez</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<% if (informacoes.NivelUser == 'ESCOLA') { %>										
+									<div class="col-sm-3">
+										<div class="input-group">
+											Responsável: 
+											<select class="selectpicker form-control" data-width="100%" style="margin-left: 30px;" id="responsavel" data-live-search="true" name="responsavel">
+												<option style="margin-left: 30px;" value="">Selecione Responsável
+												</option>
+												<% for (var i = 0; i < itens.length; i++) { %>
+												<option style="margin-left: 30px;" value="<%= [itens[i].id, itens[i].logradouro, itens[i].numero, itens[i].bairro, itens[i].cep, itens[i].fone, itens[i].celular ]%>">
+												<%= itens[i].nome %></option>
+
+												<% } %>
+											</select>
+										</div>
+									</div>
+									<% } else { %>
+										<div id="controle">
+										</div>
+									<% } %>
+									<div class="row clearfix">
+										<div class="col-sm-3">
+											<div class="input-group">
+												Possui Alergia Alimentar? *
+												<div style="padding-top: 5px;">
+													<input type="radio" id="tem_alergia" name="alergico" value="true" required>
+													<label for="tem_alergia">Sim</label>
+													<input type="radio" id="nao_alergia" name="alergico" value="false" required>
+													<label for="nao_alergia">Não</label>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="input-group" id="divAlergia">
+												<div class="form-line">
+													Descreva a Alergia: *
+													<input type="text" class="form-control" id="descAlergia" name="tipoAlergia" value="" required>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-3">
+										<div class="input-group">											
+											Adicionar Observações?
+											<div style="padding-top: 5px;">
+												<input type="radio" id="tem_obs" name="observacoes" value="true" required>
+												<label for="tem_obs">Sim</label>
+												<input type="radio" id="nao_obs" name="observacoes" value="false" required>
+												<label for="nao_obs">Não</label>
+											</div>											
+										</div>
+									</div>								
+									<div class="col-sm-4">
+										<div class="input-group" id="divObs">
+											<div class="form-line">
+												Observação: *
+												<input type="text" class="form-control" id="observacao" name="observacao" required>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row clearfix">
+									<div class="col-sm-3">
+										Mora Com o Responsável? *
+										<div style="padding-top: 5px;">
+											<input type="radio" id="mora" name="mora" value="mora" required>
+											<label for="mora">Sim</label>
+											<input type="radio" id="nao_mora" name="mora" value="nao_mora" required>
+											<label for="nao_mora">Não</label>
+										</div>
+									</div>
+								</div>
+
+								<div id="div_ende"></div>
+								
+							</div>
+							<div class="footer-card">
+								<input type="submit" value="Salvar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
+								<a href="/app/<%= page %>/list/<%= escola %>" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<input type="hidden" id="nomeResponsavel" name="nomeResponsavel" value="<%= itens[0].nome %>">
+			</form>
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</section>
+	<!-- End of Page Wrapper -->
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="login.html">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$('.toast').toast('show');
+	</script>
+
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Select Plugin Js -->
+	<script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Autosize Plugin Js -->
+	<script src="/js/plugins/autosize/autosize.js"></script>
+
+	<!-- Moment Plugin Js -->
+	<script src="/js/plugins/momentjs/moment.js"></script>
+
+	<!-- Bootstrap Material Datetime Picker Plugin Js -->
+	<script src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+	<!-- Bootstrap Datepicker Plugin Js -->
+	<script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/forms/basic-form-elements.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+
+	<!-- Validação do formulário - [ start ]-->
+	<script>
+		$('#nascimento').focusout(function(){
+
+			nascimento = this.value;
+
+			var age = Math.floor(moment(new Date()).diff(moment(nascimento),'years',true));
+			if (age > 12) {
+				alert('A idade  da criança ultrapassa o limite de 12 anos.');
+				$('[type=submit]').prop('disabled', true);
+			} else {
+				$('[type=submit]').prop('disabled', false);
+			}
+		});
+	</script>
+	<!-- Validação do formulário - [ end ]-->
+
+	<!-- Mostra/Oculta input de alergia - [ start ]-->
+	<script>
+		$(document).ready(function () {
+			$('#divAlergia').hide();
+
+			$('#tem_alergia').on('change', function () {
+				$('#divAlergia').show();
+			});
+
+			$('#nao_alergia').on('change', function () {
+				$('#divAlergia').hide();
+				$('#descAlergia').removeAttr("required").val(null);
+			});
+		})
+	</script>
+
+	<script>
+		$("#nao_mora").on('change', function () {
+			$("#endereco").show()
+			$("#controle").html('');
+			$("#div_ende").html(`
+				<h5>Endereço da Criança:</h5>
+				</br>	
+			<div class="row clearfix">
+				<div class="col-sm-3">
+					<div class="input-group">
+						<div class="form-line">
+							Logradouro: 
+							<input type="text" class="form-control" id="logradouro" name="logradouro" treatment="capitalize" required>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="input-group">
+						<div class="form-line">
+							Número
+							<input type="text" class="form-control" id="numero" treatment="capitalize" name="numero">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="input-group">
+						<div class="form-line">
+						Bairro:
+						<input type="text" class="form-control" id="bairro" name="bairro" treatment="capitalize" required>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="input-group">
+						<div class="form-line">
+							CEP:
+							<input type="text" class="form-control" id="cep" name="cep" required>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-sm-3">
+					<div class="input-group">
+						<div class="form-line">
+							Telefone:
+							<input type="phone" class="form-control" id="fone" name="fone" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="input-group">
+						<div class="form-line">
+							Celular:
+							<input type="phone" class="form-control" id="celular" name="celular" required>
+						</div>
+					</div>
+				</div>
+			</div>
+			`)
+		});
+
+		$("#mora").on('change', function () {
+			$("#endereco").hide();
+			$("#div_ende").html('');
+			$("#controle").html(`
+				<input type="hidden" name="responsavel_id" style="margin-left: 30px;" value="<%= itens[0].id %>">
+				<input type="hidden" name="logradouro" style="margin-left: 30px;" value="<%= itens[0].logradouro %>">
+				<input type="hidden" name="numero" style="margin-left: 30px;" value="<%= itens[0].numero %>">
+				<input type="hidden" name="bairro" style="margin-left: 30px;" value="<%= itens[0].bairro %>">
+				<input type="hidden" name="cep" style="margin-left: 30px;" value="<%= itens[0].cep %>">
+				<input type="hidden" name="fone" style="margin-left: 30px;" value="<%= itens[0].fone %>">
+				<input type="hidden" name="celular" style="margin-left: 30px;" value="<%= itens[0].celular %>">
+			`);
+		});
+
+	</script>
+
+	<!-- Jquery Mask Js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+	<!-- Inclusão de Máscaras Js-->
+	<script src="/js/shopping-crianca-mask.js"></script>
+
+	<!-- Mostra/Oculta input de observação - [ start ]-->
+	<script>
+		$(document).ready(function () {
+			$('#divObs').hide();
+
+			$('#tem_obs').on('change', function () {
+				$('#divObs').show();
+			});
+
+			$('#nao_obs').on('change', function () {
+				$('#divObs').hide();
+				$('#observacao').removeAttr("required").val(null);
+			});
+		})
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+	<!-- Bootstrap Material Datetime Picker Css -->
+	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+		rel="stylesheet" />
+
+	<!-- Bootstrap DatePicker Css -->
+	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+	<!-- Wait Me Css -->
+	<link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css" rel="stylesheet">
+	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-teal">
+	<%- include ../template/topo.ejs %>
+	<%- include ../template/menu.ejs %>
+
+	<% if(informacoes.NivelUser == 'ADMIN'){%>
+	<!-- Page Wrapper -->
+	<section class="content">
+        <!-- início do preloader -->
+        <div id="preloader">
+            <div class="inner">
+                <div class="front">
+                    <img src="/img/sdc-color.svg" w/>
+                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
+                    <div class="bolas">
+                       <div></div>
+                       <div></div>
+                       <div></div>                    
+                    </div>
+                </div> 
+            </div>
+        </div>
+		<!-- fim do preloader --> 
+		<div class="content-fluid">
+			<%- messages() %>
+			<div class="block-header">
+				<h2>Editar Agendamento</h2>
+			</div>
+			<form class="user" method="POST" action="/app/servico/<%= servico %>/<%= page %>/edit/submit">
+				<div class="row clearfix">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="card">
+							<div class="header">
+								<h2>Informações Gerais do Agendamento</h2>
+							</div>
+							<div class="body">
+								<div class="row clearfix">		
+									<div class="col-sm-6">
+										<div class="input-group">
+											<div class="form-line">
+												Sessão:
+												<input type="text" class="form-control show-tick" name="sessao" id="sessao" value="<%= sessao %>" required>
+											</div>
+										</div>
+									</div>							
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Início da Sessão
+												<input type="datetime-local" class="form-control" id="horaInicio" name="horaInicio" value="<%= horaInicio %>" onchange="verificaDataHora()">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="input-group">
+											<div class="form-line">
+												Fim da Sessão
+												<input type="datetime-local" class="form-control" id="horaFim" name="horaFim" value="<%= horaFim %>" onchange="verificaDataHora()">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												Vagas: *
+												<input type="number" class="form-control" id="vagas" name="vagas" min="1" value="<%= vagas %>" required>
+											</div>
+										</div>
+									</div>
+									<% if (aniversario == false) { %>
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												Vagas Por Responsável: *
+												<input type="number" class="form-control" id="vagasResponsavel" name="vagasResponsavel" min="1" value="<%= vagasResponsavel %>" required>
+											</div>
+										</div>
+									</div>
+									<% } %>
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												Data de Fechamento: *
+												<input type="datetime-local" class="form-control" id="diasAntes" name="diasAntes" value="<%= diasAntes %>" onchange="verificaDataHora()" required>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												Status: *
+												<select class="form-control show-tick" name="status"
+													id="status" required>
+													<option value="true" <%= status == true ? 'selected' : '' %>>Ativa</option>
+													<option value="false" <%= status == false ? 'selected' : '' %>>Inativa</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="footer-card">
+								<input type="submit" value="Salvar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
+								<a href="/app/servico/<%= servico %>/<%= page %>/list" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<input type="hidden" id="id" name="id" value="<%= id %>">
+			<input type="hidden" id="aniversario" name="aniversario" value="<%= aniversario %>">
+		
+		</form>
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</section>
+	<!-- End of Page Wrapper -->
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current
+					session.
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="login.html">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% } %>
+
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
+	
+	<!-- Jquery mask Js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Autosize Plugin Js -->
+	<script src="/js/plugins/autosize/autosize.js"></script>
+
+	<!-- Moment Plugin Js -->
+	<script src="/js/plugins/momentjs/moment.js"></script>
+
+	<!-- Bootstrap Material Datetime Picker Plugin Js -->
+	<script src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+	<!-- Bootstrap Datepicker Plugin Js -->
+	<script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/forms/basic-form-elements.js"></script>
+
+	<script>
+		function verificaDataHora() {
+			var dataHoraInicio = new Date($('#horaInicio').val());
+			var dataHoraFim = new Date($('#horaFim').val());
+			var diasAntes = new Date($('#diasAntes').val());
+
+			function calDate (date1, date2) {
+				diff = (date1.getTime() - date2.getTime());
+				return (Math.ceil(diff / (1000 * 60 * 60 * 24)));
+			}
+			
+			if (calDate(dataHoraFim, dataHoraInicio) <= 0 || dataHoraInicio.getMonth() != dataHoraFim.getMonth() || dataHoraInicio.getYear() != dataHoraFim.getYear()) {
+				alert('O inicio da sessão deve ser antes do seu fim e precisam conter o mesmo mês e ano.');
+				$('[type=submit]').prop('disabled', true);
+			} else if (calDate(dataHoraInicio, diasAntes) <= 0) {
+				alert('A data limite dos agendamentos deve ser antes do inicio da sessão.');
+				$('[type=submit]').prop('disabled', true);
+			} else {
+				$('[type=submit]').prop('disabled', false);
+			}
+		}
+	</script>
+</body>
+
+</html>
