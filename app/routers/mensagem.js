@@ -165,6 +165,13 @@ module.exports = async function (app) {
     // Rota para receber parametros via post editar item
     app.post('/app/' + rota + '/edit/submit', upload.single('photo'), function (req, res) {
 
+        const file = req.file;
+        let foto = "";
+        if (file) {
+            const buf = Buffer.from(file.buffer);
+            foto = buf.toString('base64');
+        }
+
         request({
             url: process.env.API_HOST + rota,
             method: "PUT",
@@ -176,7 +183,7 @@ module.exports = async function (app) {
             json: {
                 "id": req.body.id,
                 "titulo": req.body.titulo,
-                "mensagem": req.body.mensagem,
+                "mensagem": foto,
                 "dataExpiracao": req.body.dataExpiracao
             },
         }, function (error, response, body) {
