@@ -116,6 +116,39 @@ module.exports = async function (app) {
 
 
     // Rota para exibição da View Editar
+    app.get('/app/' + rota + '/view/:id', function (req, res) {
+        if (!req.session.token) {
+            res.redirect('/app/login');
+
+        } else {
+            request({
+                url: process.env.API_HOST + rota + "/" + req.params.id,
+                method: "GET",
+                json: true,
+                headers: {
+                    "content-type": "application/json",
+                    "Authorization": req.session.token
+                },
+            }, function (error, response, body) {
+
+                res.format({
+                    html: function () {
+                        res.render(rota + '/View', {
+                            id: body.data.id,
+                            titulo: body.data.titulo,
+                            mensagem: body.data.mensagem,
+                            dataExpiracao: body.data.dataExpiracao,
+                            page: rota,
+                            informacoes: req.session.json
+                        });
+                    }
+                });
+
+            });
+        }
+    });
+
+    // Rota para exibição da View Editar
     app.get('/app/' + rota + '/edit/:id', function (req, res) {
         if (!req.session.token) {
             res.redirect('/app/login');

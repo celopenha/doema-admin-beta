@@ -2416,12 +2416,11 @@ a {
   animation: none !important; }
 
 section.content {
-  background: url("/img/logo.png") center top 40% no-repeat;
-  background-size: 20%;
-  margin: 75px 0px 0 300px;
+  background: url("/img/sdc-escala-cinza.svg") center top 40% no-repeat !important;
+  margin: 70px 0px 0 300px;
   padding: 15px 15px 0 0;
   overflow: auto;
-  height: calc(100% - 75px);
+  height: calc(100% - 70px);
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -3078,8 +3077,9 @@ section.content {
 /* Infobox ===================================== */
 .info-box {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  height: 170px;
+  height: 80px;
   display: flex;
+  cursor: default;
   background-color: #fff;
   position: relative;
   overflow: hidden;
@@ -3088,7 +3088,7 @@ section.content {
     display: inline-block;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.12);
-    width: 120px; }
+    width: 80px; }
     .info-box .icon i {
       color: #fff;
       font-size: 50px;
@@ -3110,18 +3110,11 @@ section.content {
         vertical-align: baseline !important; }
   .info-box .content {
     display: inline-block;
-    padding: 7px 15px;}
+    padding: 7px 10px; }
     .info-box .content .text {
-      font-size: 12px;
-      margin-top: 8px;
-      text-align: justify;
-      padding-bottom: 10px;
+      font-size: 13px;
+      margin-top: 11px;
       color: #555; }
-      .info-box .content .text-nome {
-        font-size: 16px;
-        font-weight: bold;
-        margin-top: 11px;
-        color: #555; }
     .info-box .content .number {
       font-weight: normal;
       font-size: 26px;
@@ -6245,17 +6238,17 @@ fieldset[disabled] .form-control {
     border-radius: 0; }
 
 .wizard .steps .done a {
-  background-color: rgba(0, 150, 136, 0.6); }
+  background-color: #8a7d51c0; }
   .wizard .steps .done a:hover, .wizard .steps .done a:active, .wizard .steps .done a:focus {
-    background-color: rgba(0, 150, 136, 0.5); }
+    background-color: #8a7d51c0; }
 
 .wizard .steps .error a {
   background-color: #F44336 !important; }
 
 .wizard .steps .current a {
-  background-color: #009688; }
+  background-color: #8A7D51; }
   .wizard .steps .current a:active, .wizard .steps .current a:focus, .wizard .steps .current a:hover {
-    background-color: #009688; }
+    background-color: #8A7D51; }
 
 /* Waves ======================================= */
 .waves-effect.waves-red .waves-ripple {
@@ -7792,40 +7785,20 @@ fieldset[disabled] .form-control {
 
 /* Login Page ================================== */
 .login-page {
-  background: url("/img/bg-login.png") no-repeat center center;
-  background-size: cover;
+  background-color: #009688;
   padding-left: 0;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  padding-top: 150px;
-  overflow-x: hidden; 
-  display: flex;
-  justify-content: center;}
-  .login-page .login-box {
-    max-width: 450px;
-    min-width: 280px;
-    width: 450px;
-    margin: 0 2%;
-    margin-top: -30px;
-  }
-  .login-page .login-box .logo {
+  max-width: 360px;
+  margin: 5% auto;
+  overflow-x: hidden; }
+  .login-page .login-box .msg {
     color: #555;
     margin-bottom: 30px;
-    margin-top: 10px;
     text-align: center; }
-    .login-page .login-box button {
-      width: 100%;
-      height: 40px;
-    }
   .login-page .login-box a {
     font-size: 14px;
     text-decoration: none;
     color: #009688; }
   .login-page .login-box .logo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
     margin-bottom: 20px; }
     .login-page .login-box .logo a {
       font-size: 36px;
@@ -7842,15 +7815,11 @@ fieldset[disabled] .form-control {
 
 /* Sign Up Page ================================ */
 .signup-page {
-  background: url("/img/bg-login.png") no-repeat center center;
-  background-size: cover;
+  background-color: #009688;
   padding-left: 0;
   max-width: 700px;
   margin: 5% auto;
   overflow-x: hidden; }
-  .signup-page .signup-box {
-    margin: 2%;
-  }
   .signup-page .signup-box .msg {
     color: #555;
     margin-bottom: 30px;
@@ -7860,9 +7829,7 @@ fieldset[disabled] .form-control {
     text-decoration: none;
     color: #009688; }
   .signup-page .signup-box .logo {
-    color: #555;
-    margin-bottom: 30px;
-    text-align: center; }
+    margin-bottom: 20px; }
     .signup-page .signup-box .logo a {
       font-size: 36px;
       display: block;
@@ -7878,25 +7845,11 @@ fieldset[disabled] .form-control {
 
 /* Forgot Password Page ======================== */
 .fp-page {
-  background: url("/img/bg-login.png") no-repeat center center;
-  background-size: cover;
+  background-color: #009688;
   padding-left: 0;
-  width: 100vw;
-  padding-top: 150px;
-  overflow-x: hidden; 
-  display: flex;
-  justify-content: center;}
-  .fp-page .fp-box {
-    max-width: 450px;
-    min-width: 280px;
-    width: 450px;
-    margin: 0 2%;
-    margin-top: -30px;
-  }
-  .fp-page .fp-box button {
-    width: 100%;
-    height: 40px;
-  }
+  max-width: 360px;
+  margin: 5% auto;
+  overflow-x: hidden; }
   .fp-page .fp-box .msg {
     color: #555;
     margin-bottom: 30px;
@@ -7906,10 +7859,7 @@ fieldset[disabled] .form-control {
     text-decoration: none;
     color: #009688; }
   .fp-page .fp-box .logo {
-    color: #555;
-    margin-bottom: 30px;
-    margin-top: 10px;
-    text-align: center; }
+    margin-bottom: 20px; }
     .fp-page .fp-box .logo a {
       font-size: 36px;
       display: block;
@@ -8324,13 +8274,10 @@ html.ie11 .bs-searchbox .form-control {
   margin-left: 15px !important;
 }
 
-@media (max-width: 520px) {
-  section.content {
-    background-size: 95%;}}
-
+/* Card de Imagem para galeria */
 .image-card {
   display: flex;
-  height: 170px;
+  height: 300px;
   overflow: hidden;
 }
 .image-card img {
@@ -8341,106 +8288,190 @@ html.ie11 .bs-searchbox .form-control {
   object-position: center;
 }
 
-
-
-/* PreLoader - [ start ] */
-@keyframes rotate {
-  0% {
-      transform: rotate(-2deg)
-  }
-  50% {
-      transform: rotate(2deg)
-  }
-  100% {
-      transform: rotate(-2deg)
-  }
-}        
-#preloader {
-  position: absolute;
-  width: calc(100% - 300px);
-  height: calc(100% - 70px);
-  margin: auto;
-  margin-top: -20px;
-  background-color: #e91e62cc !important; /* cor do background que vai ocupar o body */
-  z-index:1999; /* z-index para jogar para frente e sobrepor tudo */
-}
-.blur-test {
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
-  -o-filter: blur(10px);
-  -ms-filter: blur(10px);
-  filter: blur(10px);
-}
-#preloader .inner {
-  position: absolute;
-  display: flex;
-  width: 15%;
-  height: 15%;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  top: 50%; /* centralizar a parte interna do preload (onde fica a animação)*/
-  left: 50%;
-  transform: translate(-50%, -50%);  
-}
-.front {
+/* ARVORE */
+.arvore {
   width: 100%;
   height: 100%;
-  animation: rotate 1s infinite ease-in-out;
+  background-color: #e7e6e6ce;
+  padding: 20px;
 }
-.front img {
-  width: 100%;
+.arvore ol {
+  list-style: none;
 }
-.bolas {
+.arvore .predio {
   width: 100%;
+  height: 100%;
+}
+.arvore .predio .andar {
+  width: 100%;
+  height: 100%;
+}
+.arvore .predio .andar .item-andar, .arvore .predio .andar .ambiente {
+  margin-left: -40px;
+}
+.arvore .predio .andar .body-item {
+  width: 100%;
+  height: 50px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafcfc;
+  border: #cecbcb solid 1px;
+}
+.arvore .predio .body-item .form-control {
+  background-color: #ffffff69 !important;
+  padding-left: 10px;
+}
+.arvore .predio .andar .body-item .icon-item {
+  width: 45px;
+  height: 100%;
+  background-color: #8A7D51;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.arvore .predio .andar .body-item .nome-item {
+  width: calc(100% - 47px);
+  height: 100%;
+  padding: 5px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+}
+.arvore .predio .andar .body-item .nome-item p {
+  font-weight: 600;
+  margin-bottom: 0 !important;
+}
+.arvore .predio .andar .body-item .actions-item {
+  width: auto;
+  height: 100%;
+  display: inline-flex;
   justify-content: flex-end;
-  padding-right: 9px;
-  margin-top: -5px;
+  align-items: center;
+  padding: 5px;
+  padding-right: 10px;
+}
+.arvore .predio .andar .body-item .actions-item .btn {
+  margin: 5px;
+  font-size: 10px;
+  padding: 4px 11px;
+  box-shadow: none;
+}
+.arvore .predio .andar .body-item .actions-item .add-item i {
+  margin-right: -3px;
+}
+.arvore .predio .andar .body-item .actions-item .add-sub-item sup {
+  top: -1.1em;
+  margin-right: -4px;
+}
+.arvore .predio .andar .body-item .actions-item .add-sub-item sup i {
+  font-size: 13px;
 }
 
-.bolas > div {
-  display: inline-block;
-  background-color: #ffffffe5;
-  width: 8px;
-  height: 8px;
+
+
+
+/* INVOICE EDIT */
+.invoice-header {
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.invoice-header .dados-header {
+  width: 100%;
+  background-image: linear-gradient(to top left, #6180bbaf, #3767aff8, #12439e);
+  padding: 55px 75px 15px;
+  height: 200px;
+
+}
+
+.invoice-header .icon-print {
+  position: absolute;
+  right: 23px;
+  top: 11px;
   border-radius: 100%;
-  margin: 3px;
-  margin-left: 1px;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  animation-name: animarBola;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.bolas > div:nth-child(1) {
-  animation-duration:0.75s ;
-  animation-delay: 0;
-}
-.bolas > div:nth-child(2) {
-  animation-duration: 0.75s ;
-  animation-delay: 0.12s;
-}
-.bolas > div:nth-child(3) {
-  animation-duration: 0.75s  ;
-  animation-delay: 0.24s;
+.invoice-header .icon-print i {
+  color: #ffffff;
+  font-size: 22px;
 }
 
-@keyframes animarBola {
-  0% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      opacity: 1;
-  }
-  16% {
-      -webkit-transform: scale(0.1);
-      transform: scale(0.1);
-      opacity: 0.7;
-  }
-  33% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      opacity: 1; 
-  } 
+.invoice-header p {
+  line-height: 9px;
+  opacity: .7 !important;
 }
-/* PreLoader - [ end ] */
+.invoice-header .nome {
+  padding-bottom: 10px;
+  color: white;
+}
+.invoice-header .infor {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.invoice-header .infor .title-lft {
+  z-index: 1;
+  width: 300px;
+}
+.invoice-header .infor .title-lft h3 {
+  text-transform: uppercase;
+}
+
+.invoice-header .infor .title-center {
+  z-index: 1;
+  margin-top: -15px;
+}
+.invoice-header .infor .title-center i {
+  font-size: 61px;
+}
+
+.invoice-header .infor .title-rgt {
+  z-index: 1;
+  width: 300px;
+}
+
+.invoice-header .infor .infor-table table tbody tr th,
+.invoice-header .infor .infor-table table tbody tr td {
+  border: none !important;
+  padding: 2px !important;
+  opacity: .8 !important;
+}
+
+.invoice-body {
+  padding: 35px 75px 30px;
+}
+.invoice-body .campos-add {
+  border: solid 1px #eadcdc;
+  border-radius: 3px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+.invoice-body .campos-add .nome-campo {
+  text-transform: uppercase;
+  opacity: .7 !important;
+}
+.invoice-body .campos-add p {
+  line-height: normal;
+}
+.invoice-body .movimentacao {
+  margin-top: 40px;
+}
+
+.invoice-body .galeria {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+}
