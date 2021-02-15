@@ -46,7 +46,6 @@ module.exports = async function (app) {
                         id: body.data[i].id,
                         titulo: body.data[i].titulo,
                         dataExpiracao: body.data[i].dataExpiracao,
-                        mensagem: body.data[i].mensagem,
                     };
                     lista.push(finallista);
                 }
@@ -55,9 +54,7 @@ module.exports = async function (app) {
                         res.render(rota + '/List', {
                             itens: lista,
                             page: rota,
-                            informacoes: req.session.json,
-                            number: body.data.number,
-                            totalPages: body.data.totalPages,
+                            informacoes: req.session.json
                         });
 
                     }
@@ -91,16 +88,6 @@ module.exports = async function (app) {
             foto = buf.toString('base64');
         }
 
-        console.log(foto);
-
-        json = {
-            "titulo": req.body.titulo,
-            "dataExpiracao": req.body.dataExpiracao,
-            "mensagem": foto
-        }
-
-        console.log(json);
-
         request({
             url: process.env.API_HOST + rota,
             method: "POST",
@@ -119,7 +106,7 @@ module.exports = async function (app) {
             if (response.statusCode != 200) {
                 req.flash("danger", "Não foi possível criar usuário. " + body.errors);
             } else {
-                req.flash("success", "Usuário criado com sucesso.");
+                req.flash("success", "Mensagem cadastrada com sucesso.");
             }
 
             res.redirect('/app/' + rota + '/list');
@@ -168,7 +155,7 @@ module.exports = async function (app) {
         const file = req.file;
         let foto = "";
         if (file) {
-            const buf = Buffer.from(file.buffer);
+            const buf = Buffer.from(req.file.buffer);
             foto = buf.toString('base64');
         }
 

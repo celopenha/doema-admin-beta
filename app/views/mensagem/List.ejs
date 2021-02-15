@@ -84,7 +84,6 @@
 											<tr>
 												<th>Título</th>
 												<th>Data de Expiração</th>
-												<th>Mensagem</th>
 												<th>Ação</th>
 											</tr>
 										</thead>
@@ -92,7 +91,6 @@
 											<tr>
 												<th>Título</th>
 												<th>Data de Expiração</th>
-												<th>Mensagem</th>
 												<th>Ação</th>
 											</tr>
 										</tfoot>
@@ -101,9 +99,12 @@
 											<tr>
 												<td><%= itens[i].titulo %></td>
 												<td><%= itens[i].dataExpiracao %></td>
-												<td>-=-=-=-=-=-</td>
 	
 												<td>
+													<a href="#" data-toggle="modal"data-toggle-alt="tooltip"
+													data-placement="bottom" title="Visualizar Mensagem" data-original-title="Visualizar Mensagem">
+														<i class="material-icons" style="color: rgb(25, 41, 133);">remove_red_eye</i>
+													</a>
 													<a href="/app/<%= page %>/edit/<%= itens[i].id %>" 
 														data-toggle-alt="tooltip" data-placement="bottom" title="Editar usuário" data-original-title="Editar usuário">
 														<i class="material-icons" style="color: orange;">edit</i>
@@ -112,8 +113,7 @@
 													<a href="#" data-toggle="modal" data-target="#logoutModal"
 														onclick="setaDadosModal('<%= itens[i].id %>')" data-toggle-alt="tooltip" data-placement="bottom" title="Deletar usuário" data-original-title="Deletar usuário">
 														<i class="material-icons" style="color: red;">delete</i>
-													</a>
-	
+													</a>													
 												</td>
 	
 											</tr>
