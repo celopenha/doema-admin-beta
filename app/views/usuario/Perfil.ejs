@@ -70,7 +70,7 @@
 										class="table table-bordered table-striped table-hover js-basic-example dataTable"
 										id="dataTable" width="100%" cellspacing="0">
 										<div class="row clearfix">
-											<div class="col-sm-3">
+											<div class="col-sm-4">
 												<div class="input-group">
 													<div class="form-line">
 														Nome Completo
@@ -89,7 +89,24 @@
 													</div>
 												</div>
 											</div>
-
+											<div class="col-sm-4">
+												<div class="input-group">
+													Nivel
+													<select class="form-control show-tick" name="niveis" id="niveis" disabled>
+														<option value="" disabled selected hidden>Selecione uma
+															opção
+														</option>
+														<option value="ADMIN" <%= nivel == 'ADMIN'
+															? 'selected' : '' %>>Administrador</option>
+														<option value="COORDENADOR" <%= nivel == 'COORDENADOR'
+															? 'selected' : '' %>>Coordenador
+														</option>
+														<option value="ESPECIAL" <%= nivel == 'ESPECIAL'
+															? 'selected' : '' %>>Especial
+														</option>
+													</select>
+												</div>
+											</div>
 										</div>
 										<div class="row clearfix">
 											<div class="col-sm-3">
@@ -115,6 +132,7 @@
 											
 										</div>
 										<input type="hidden" id="id" name="id" value="<%= id %>">
+										<input type="hidden" id="niveis" name="niveis" value="<%= nivel %>">
 									</table>
 								</div>
 							</div>

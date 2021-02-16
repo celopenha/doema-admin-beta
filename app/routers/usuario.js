@@ -7,7 +7,7 @@ const rota = require('path').basename(__filename, '.js');
 const fs = require('fs');
 var multer = require('multer');
 var upload = multer();
-
+var S = require('string');
 let nivel;
 let lista = [];
 let username;
@@ -31,7 +31,13 @@ module.exports = async function(app) {
         if (!req.session.token) {
             res.redirect('/app/login');
         } else {
-            teste = request({
+
+            if (req.session.json.NivelUser != 'ADMIN') {
+                res.redirect('/');
+                return false
+            }
+
+            request({
                 url: process.env.API_HOST + rota,
                 method: "GET",
                 json: true,
@@ -40,13 +46,17 @@ module.exports = async function(app) {
                     "Authorization": req.session.token
                 },
             }, function(error, response, body) {
+                function convertCase(str) {
+                    str = S(str).replaceAll('_', ' de ');
+                    return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+                }
                 lista = [];
                 for (var i = 0; i < Object.keys(body.data).length; i++) {
                     const finallista = {
                         id: body.data[i].id,
                         nome: body.data[i].nome,
                         username: body.data[i].username,
-                        niveis: body.data[i].niveis,
+                        niveis: convertCase(body.data[i].niveis),
                         ativo: body.data[i].ativo,
                         telefone: body.data[i].telefone,
                         email: body.data[i].email
@@ -76,6 +86,10 @@ module.exports = async function(app) {
         if (!req.session.token) {
             res.redirect('/app/login');
         } else {
+            if (req.session.json.NivelUser != 'ADMIN') {
+                res.redirect('/');
+                return false
+            }
             res.format({
                 html: function() {
                     res.render(rota + '/Create', { page: rota, informacoes: req.session.json });
@@ -110,7 +124,7 @@ module.exports = async function(app) {
                     "nome": req.body.nome,
                     "username": req.body.username,
                     "password": req.body.password,
-                    "niveis": ["ADMIN"],
+                    "niveis": [req.body.niveis],
                     "ativo": req.body.ativo,
                     "habilitado": true,
                     "expirado": false,
@@ -138,6 +152,12 @@ module.exports = async function(app) {
             res.redirect('/app/login');
 
         } else {
+
+            if (req.session.json.NivelUser != 'ADMIN') {
+                res.redirect('/');
+                return false
+            }
+            
             request({
                 url: process.env.API_HOST + rota + "/" + req.params.id,
                 method: "GET",
@@ -157,6 +177,7 @@ module.exports = async function(app) {
                             password: body.data.password,
                             page: rota,
                             ativo: body.data.ativo,
+                            nivel: body.data.niveis,
                             telefone: body.data.telefone,
                             email: body.data.email,
                             number: body.data.number,
@@ -186,7 +207,7 @@ module.exports = async function(app) {
                     "id": req.body.id,
                     "nome": req.body.nome,
                     "username": username,
-                    "niveis": nivel,
+                    "niveis": [req.body.niveis],
                     "telefone": req.body.telefone,
                     "email": req.body.email,
                     "ativo": req.body.ativo,
@@ -250,6 +271,11 @@ module.exports = async function(app) {
                 },
             }, function (error, response, body) {
 
+                function convertCase(str) {
+                    str = S(str).replaceAll('_', ' de ');
+                    return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+                }
+
                 res.format({
                     html: function () {
                         res.render(rota + '/Perfil', {
@@ -292,7 +318,7 @@ module.exports = async function(app) {
                 "id": req.body.id,
                 "nome": req.body.nome,
                 "username": username,
-                "niveis": nivel,
+                "niveis": [req.body.niveis],
                 "telefone": req.body.telefone,
                 "email": req.body.email,
                 /*

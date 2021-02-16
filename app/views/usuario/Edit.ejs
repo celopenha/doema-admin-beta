@@ -103,7 +103,26 @@
 											</div>
 										</div>
 									</div>
-
+									<% if (informacoes.NivelUser == "ADMIN") {%>
+										<div class="col-sm-4">
+											<div class="input-group">
+												Nivel:
+												<select class="form-control show-tick" name="niveis" id="niveis">
+													<option value="" disabled selected hidden>Selecione uma
+														opção
+													</option>
+													<option value="ADMIN" <%= nivel =='ADMIN'
+														? 'selected' : '' %>>Administrador</option>
+													<option value="COORDENADOR" <%= nivel =='COORDENADOR'
+														? 'selected' : '' %>>Coordenador
+													</option>
+													<option value="ESPECIAL" <%= nivel =='ESPECIAL'
+														? 'selected' : '' %>>Especial
+													</option>
+												</select>
+											</div>
+										</div>
+									<% } %>
 								</div>
 								<div class="row clearfix">
 									<div class="col-sm-3">

@@ -66,7 +66,7 @@
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Nome Completo
+												Nome Completo: *
 												<input type="text" class="form-control" id="nome" name="nome"
 												treatment="capitalize" required>
 											</div>
@@ -75,15 +75,15 @@
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Username
-												<input type="text" class="form-control" id="username" name="username">
+												Username: *
+												<input type="text" class="form-control" id="username" name="username" required>
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Senha
+												Senha: *
 												<input type="password" class="form-control" id="password" 
 												name="password" required>
 											</div>
@@ -94,7 +94,7 @@
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Telefone
+												Telefone:
 												<input type="phone" class="form-control" id="telefone" name="telefone">
 											</div>
 										</div>
@@ -102,9 +102,23 @@
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Email
+												Email: *
 												<input type="email" class="form-control" id="email" name="email" required>
 											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="input-group">
+											Nível: *
+											<select class="form-control show-tick" name="niveis"
+												id="niveis">
+												<option value="" disabled selected hidden>Selecione
+													uma opção
+												</option>
+												<option value="ADMIN">Administrador</option>
+												<option value="COORDENADOR">Coordenador</option>												
+												<option value="ESPECIAL">Especial</option>
+											</select>
 										</div>
 									</div>
 
@@ -112,7 +126,7 @@
 								<div class="row clearfix">
 									<div class="col-sm-3">
 										<div class="input-group">
-											Ativo
+											Ativo:
 											<select class="form-control" id="ativo" name="ativo">
 												<option value="true">Sim</option>
 												<option value="false">Não</option>

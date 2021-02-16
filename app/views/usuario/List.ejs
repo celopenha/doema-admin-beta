@@ -71,7 +71,7 @@
 							<div class="header">
 								<h2>Listagem de Locais</h2>
 								<a href="/app/<%= page %>/create" style="float: right; margin-top: -20px; margin-right: 10px;" data-toggle-alt="tooltip" data-placement="bottom" title="Adicionar usuário" data-original-title="Adicionar usuário">
-									<i class="material-icons" style="color: goldenrod;">add_circle</i>
+									<i class="material-icons" style="color: green;">add_circle</i>
 								</a>
 							</div>
 
@@ -85,6 +85,7 @@
 												<th>Nome</th>
 												<th>Telefone</th>
 												<th>E-mail</th>
+												<th>Nível</th>
 												<th>Ativo</th>
 												<th>Ação</th>
 											</tr>
@@ -93,7 +94,8 @@
 											<tr>
 												<th>Nome</th>
 												<th>Telefone</th>
-												<th>E-mail</th>
+												<th>E-mail</th>												
+												<th>Nível</th>
 												<th>Ativo</th>
 												<th>Ação</th>
 											</tr>
@@ -104,7 +106,7 @@
 												<td><%= itens[i].nome %></td>
 												<td id="telefone"><%= itens[i].telefone %></td>
 												<td><%= itens[i].email %></td>
-	
+												<td><%= itens[i].niveis %></td>
 												<td><%= itens[i].ativo === true ? 'Sim' : 'Não' %></td>
 	
 												<td>
