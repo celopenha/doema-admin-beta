@@ -1,58 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="/img/MPdL(Logo)/MPdL(logo).svg" type="image/x-icon">
-	<title><%- process.env.TITLE %></title>
-
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
-		type="text/css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-	<!-- Bootstrap Core Css -->
-	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-	<!-- Waves Effect Css -->
-	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
-
-	<!-- Animation Css -->
-	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
-
-	<!-- Bootstrap Material Datetime Picker Css -->
-	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-		rel="stylesheet" />
-
-	<!-- Bootstrap DatePicker Css -->
-	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
-
-	<!-- Wait Me Css -->
-	<link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
-
-	<!-- Bootstrap Select Css -->
-	<link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-
-	<!-- Custom Css -->
-	<link href="/css/css/style.css" rel="stylesheet">
-	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-
-
-</head>
+<%- include ../template/head.ejs %>
 
 <body class="theme-teal">
 	<%- include ../template/topo.ejs %>
 	<%- include ../template/menu.ejs %>
 	<section class="content">
-        <!-- início do preloader -->
-		<!-- fim do preloader --> 
+		<!-- início do preloader -->
+		<!-- fim do preloader -->
 		<div class="content-fluid">
 			<%- messages() %>
 			<form class="user" method="POST" action="/app/<%= page %>/alterar-senha/submit"
@@ -69,7 +24,8 @@
 										<div class="input-group">
 											<div class="form-line">
 												Senha Atual
-												<input type="password" class="form-control" id="senhaAtual" name="senhaAtual">
+												<input type="password" class="form-control" id="senhaAtual"
+													name="senhaAtual">
 											</div>
 										</div>
 									</div>
@@ -79,7 +35,9 @@
 										<div class="input-group">
 											<div class="form-line">
 												Nova Senha: <small>(min. 6 caract.)</small> *
-												<input type="password" name="novaSenha" id="novaSenha" class="form-control" pattern=".{6,}" onchange="verificaSenha()" required title="Mínimo de 6 caracteres">
+												<input type="password" name="novaSenha" id="novaSenha"
+													class="form-control" pattern=".{6,}" onchange="verificaSenha()"
+													required title="Mínimo de 6 caracteres">
 											</div>
 										</div>
 									</div>
@@ -89,16 +47,20 @@
 										<div class="input-group">
 											<div class="form-line">
 												Repetir Nova Senha: *
-												<input type="password" name="passwordrepetido" id="passwordrepetido" class="form-control" pattern=".{6,}" onchange="verificaSenha()" required>
+												<input type="password" name="passwordrepetido" id="passwordrepetido"
+													class="form-control" pattern=".{6,}" onchange="verificaSenha()"
+													required>
 											</div>
 										</div>
 									</div>
 								</div>
-								<input type="hidden" id="id" name="id" value="<%= informacoes.IdUser %>">								
+								<input type="hidden" id="id" name="id" value="<%= informacoes.IdUser %>">
 							</div>
 							<div class="footer-card">
-								<input type="submit" value="Salvar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
-								<a href="/" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+								<input type="submit" value="Salvar"
+									class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
+								<a href="/"
+									class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
 							</div>
 						</div>
 					</div>
@@ -120,7 +82,7 @@
 	<!-- Select Plugin Js -->
 	<script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
-	
+
 
 	<!-- Slimscroll Plugin Js -->
 	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
@@ -144,13 +106,14 @@
 	<script src="/js/js/admin.js"></script>
 	<script src="/js/js/pages/forms/basic-form-elements.js"></script>
 
-	
+
 	<!-- Validação do formulário - [ start ]-->
 	<script>
 		controleSenha = 0
+
 		function verificaSenha() {
 			if (controleSenha == 0) {
-				controleSenha ++;
+				controleSenha++;
 				return false;
 			}
 			var senha = $('#novaSenha').val();

@@ -2416,15 +2416,17 @@ a {
   animation: none !important; }
 
 section.content {
-  background: url("/img/sdc-escala-cinza.svg") center top 40% no-repeat !important;
+  background-image: url('/img/doema-logo-grey.svg');
+  background-size: 25%;
+  background-position: 50% 70%;
+  background-repeat: no-repeat;
+
+
   margin: 70px 0px 0 300px;
   padding: 15px 15px 0 0;
   overflow: auto;
   height: calc(100% - 70px);
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s; }
+ }
 
 /* Dashboard =================================== */
 .dashboard-flot-chart {
