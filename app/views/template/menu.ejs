@@ -1,9 +1,7 @@
 <!-- Sidebar -->
-<% if (informacoes.NivelUser != "ADMIN" && jsonescola.bloqEscola == true) { %>
-    <%- include menu-escola.ejs %>
-<% } if (informacoes.NivelUser == "RESPONSAVEL" && jsonescola.bloqEscola == true) { %>
-    <%- include menu-responsavel.ejs %>
-<% }  if(informacoes.NivelUser == "ADMIN" || jsonescola.bloqEscola == false) { %>
+<% if (informacoes.NivelUser == "COORDENADOR") { %>
+    <%- include menu-coordenador.ejs %>
+<% }  if(informacoes.NivelUser == "ADMIN") { %>
 
     <section>
         <!-- Left Sidebar -->
@@ -18,21 +16,21 @@
                         <ul class="dropdown-menu pull-right">
                             <li>
                                 <a href="/app/usuario/Perfil">
-                                    <i class="material-icons" style="color: rebeccapurple;">assignment_ind</i>
+                                    <i class="material-icons" style="color: red;">assignment_ind</i>
                                     Perfil
                                 </a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="/app/usuario/Alterar-Senha">
-                                    <i class="material-icons" style="color: rebeccapurple;">miscellaneous_services</i>
+                                    <i class="material-icons" style="color: red;">vpn_key</i>
                                     Alterar Senha
                                 </a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="/app/sair">
-                                    <i class="material-icons" style="color: rebeccapurple;">input</i>
+                                    <i class="material-icons" style="color: red;">input</i>
                                     Sair
                                 </a>
                             </li>
@@ -56,6 +54,19 @@
                         <a href="/app/mensagem/list">
                             <i class="material-icons" style="color: red;">campaign</i>
                             <span>Mensagem</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons" style="color: red;">book</i>
+                            <span>Diários</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            <i class="material-icons" style="color: red;">history</i>
+                            <span>Logs</span>
                         </a>
                     </li>                
                  <!--   <li>
