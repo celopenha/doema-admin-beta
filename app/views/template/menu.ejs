@@ -3,11 +3,17 @@
     <%- include menu-coordenador.ejs %>
 <% }  if(informacoes.NivelUser == "ADMIN") { %>
 
+    <style>
+        .user-info{
+            background-image: linear-gradient(to right, #eb3349, #f45c43), url('/img/palacio-bg.png') no-repeat no-repeat !important;
+        }
+    </style>
+
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info" style="background: url('/img/images/user-img-background.jpg') no-repeat no-repeat;">                
+            <div class="user-info" >                
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= informacoes.NomeUser%></div>
                     <div class="email"><%= informacoes.EmailUser %></div>
