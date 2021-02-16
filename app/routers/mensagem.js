@@ -7,6 +7,7 @@ const rota = require('path').basename(__filename, '.js');
 const fs = require('fs');
 var multer = require('multer');
 var upload = multer();
+var moment = require('moment');
 
 let nivel;
 let lista = [];
@@ -31,7 +32,13 @@ module.exports = async function (app) {
         if (!req.session.token) {
             res.redirect('/app/login');
         } else {
-            teste = request({
+
+            if (req.session.json.NivelUser != 'ADMIN') {
+                res.redirect('/');
+                return false
+            }
+
+            request({
                 url: process.env.API_HOST + rota,
                 method: "GET",
                 json: true,
@@ -45,7 +52,7 @@ module.exports = async function (app) {
                     const finallista = {
                         id: body.data[i].id,
                         titulo: body.data[i].titulo,
-                        dataExpiracao: body.data[i].dataExpiracao,
+                        dataExpiracao: moment(body.data[i].dataExpiracao).format('DD/MM/YYYY'),
                     };
                     lista.push(finallista);
                 }
@@ -70,6 +77,12 @@ module.exports = async function (app) {
         if (!req.session.token) {
             res.redirect('/app/login');
         } else {
+
+            if (req.session.json.NivelUser != 'ADMIN') {
+                res.redirect('/');
+                return false
+            }
+
             res.format({
                 html: function () {
                     res.render(rota + '/Create', { page: rota, informacoes: req.session.json });
@@ -121,6 +134,12 @@ module.exports = async function (app) {
             res.redirect('/app/login');
 
         } else {
+
+            if (req.session.json.NivelUser != 'ADMIN') {
+                res.redirect('/');
+                return false
+            }
+
             request({
                 url: process.env.API_HOST + rota + "/" + req.params.id,
                 method: "GET",
@@ -130,14 +149,13 @@ module.exports = async function (app) {
                     "Authorization": req.session.token
                 },
             }, function (error, response, body) {
-
                 res.format({
                     html: function () {
                         res.render(rota + '/View', {
                             id: body.data.id,
                             titulo: body.data.titulo,
                             mensagem: body.data.mensagem,
-                            dataExpiracao: body.data.dataExpiracao,
+                            dataExpiracao: moment(body.data.dataExpiracao).format('DD/MM/YYYY'),
                             page: rota,
                             informacoes: req.session.json
                         });
@@ -154,6 +172,12 @@ module.exports = async function (app) {
             res.redirect('/app/login');
 
         } else {
+
+            if (req.session.json.NivelUser != 'ADMIN') {
+                res.redirect('/');
+                return false
+            }
+            
             request({
                 url: process.env.API_HOST + rota + "/" + req.params.id,
                 method: "GET",
