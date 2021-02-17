@@ -1,5 +1,15 @@
-﻿/* Navbar ====================================== */
+﻿body{
+  background-image: url(/img/doema-logo-grey.svg);
+    background-size: 20%;
+    background-position: 50% 75%;
+    background-repeat: no-repeat;
+}
+
+
+/* Navbar ====================================== */
 @import url(materialize.css);
+
+
 
 
 /* --- [ ScrollBars ] - start ---*/
@@ -2416,10 +2426,10 @@ a {
   animation: none !important; }
 
 section.content {
-  background-image: url('/img/doema-logo-grey.svg');
+  /* background-image: url('/img/doema-logo-grey.svg');
   background-size: 25%;
-  background-position: 50% 70%;
-  background-repeat: no-repeat;
+  background-position: 50% 30%;
+  background-repeat: no-repeat; */
 
 
   margin: 70px 0px 0 300px;
