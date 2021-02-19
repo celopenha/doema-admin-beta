@@ -1,136 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<%- include ../template/head.ejs %>
+<head>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/img/MPdL(Logo)/MPdL(logo).svg" type="image/x-icon">
+    <title>
+        <%- process.env.TITLE %>
+    </title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Light Gallery Plugin Css -->
+    <link href="/js/plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
+
+    <!-- Custom Css -->
+    <link href="/css/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+    <!-- Custom styles for this page -->
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
 
 <body class="theme-teal">
     <%- include ../template/topo.ejs %>
     <%- include ../template/menu.ejs %>
+            
+            <!-- Page Wrapper -->
 
-    <!-- Page Wrapper -->
-
-    <section class="content">
-        <div class="content-fluid">
-            <%- messages() %>
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="invoice-header"
-                        style='background-image: url("data:image/png;base64, <%= mensagem %>"); background-size: 100%; background-position: center; background-repeat: no-repeat;'>
-                        <div class="dados-header">
-                            <div class="row nome">
-                                <div class="col-lg-12">
-                                    <h3 class="nome-obj">
-                                        <%= titulo %>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="infor">
-                                <div class="title-lft">
-                                    <div class="infor-table">
-                                        <table
-                                            class="table table-responsive invoice-table invoice-order table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <th>DATA DE EXPIRAÇÃO: </th>
-                                                    <td><%= dataExpiracao %></td>
-                                                </tr>
-                                        </table>
+            <section class="content">
+                <div class="content-fluid">
+                    <%- messages() %>
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="invoice-header"
+                                    style='background-image: url("data:image/png;base64, <%= mensagem %>"); background-size: 100%; background-position: center; background-repeat: no-repeat;'>
+                                    <div class="dados-header">
+                                        <div class="row nome">
+                                            <div class="col-lg-12">
+                                                <h3 class="nome-obj">
+                                                    <%= titulo %>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="infor">
+                                            <div class="title-lft">
+                                                <div class="infor-table">
+                                                    <table class="table table-responsive invoice-table invoice-order table-borderless">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>DATA DE EXPIRAÇÃO: </th>
+                                                                <td><%= dataExpiracao %></td>
+                                                            </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card invoice-body">
+                                <div class="card invoice-body">
 
-                        <div class="row galeria">
-                            <div class="col-lg-12">
-                                <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
+                                    <div class="row galeria">
+                                        <div class="col-lg-12">
+                                            <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
-                                        style="height:220px; overflow: hidden;">
-                                        <a href="data:image/png;base64, <%= mensagem %>" data-sub-html="<%= titulo %>">
-                                            <img class="img-responsive thumbnail"
-                                                src="data:image/png;base64, <%= mensagem %>"
-                                                style="object-fit:cover; object-position: center; width: 100%; height: 100%;">
-                                        </a>
+                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+                                                    style="height:220px; overflow: hidden;">
+                                                    <a href="data:image/png;base64, <%= mensagem %>"
+                                                        data-sub-html="<%= titulo %>">
+                                                        <img class="img-responsive thumbnail"
+                                                            src="data:image/png;base64, <%= mensagem %>"
+                                                            style="object-fit:cover; object-position: center; width: 100%; height: 100%;">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
+                </div>
+            </section>
+
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current
+                            session.
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.html">Logout</a>
+                        </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
 
+            <!-- Jquery Core Js -->
+            <script src="/js/plugins/jquery/jquery.min.js"></script>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current
-                    session.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+            <!-- Bootstrap Core Js -->
+            <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
 
-    <!-- Jquery Core Js -->
-    <script src="/js/plugins/jquery/jquery.min.js"></script>
+            <!-- Slimscroll Plugin Js -->
+            <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+            <!-- Waves Effect Plugin Js -->
+            <script src="/js/plugins/node-waves/waves.js"></script>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+            <!-- Jquery CountTo Plugin Js -->
+            <script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="/js/plugins/node-waves/waves.js"></script>
+            <!-- Morris Plugin Js -->
+            <script src="/js/plugins/raphael/raphael.min.js"></script>
+            <script src="/js/plugins/morrisjs/morris.js"></script>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+            <!-- Light Gallery Plugin Js -->
+            <script src="/js/plugins/light-gallery/js/lightgallery-all.js"></script>
 
-    <!-- Morris Plugin Js -->
-    <script src="/js/plugins/raphael/raphael.min.js"></script>
-    <script src="/js/plugins/morrisjs/morris.js"></script>
+            <!-- Custom Js -->
+            <script src="/js/js/pages/medias/image-gallery.js"></script>
 
-    <!-- Light Gallery Plugin Js -->
-    <script src="/js/plugins/light-gallery/js/lightgallery-all.js"></script>
+            <!-- Custom Js -->
+            <script src="/js/js/admin.js"></script>
+            <script src="/js/js/pages/index.js"></script>
 
-    <!-- Custom Js -->
-    <script src="/js/js/pages/medias/image-gallery.js"></script>
+            <!-- Page level plugins -->
+            <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+            <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Custom Js -->
-    <script src="/js/js/admin.js"></script>
-    <script src="/js/js/pages/index.js"></script>
+            <!-- Page level custom scripts -->
+            <script src="/js/demo/datatables-demo.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+            <!-- Jquery Mask Js -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="/js/demo/datatables-demo.js"></script>
-
-    <!-- Jquery Mask Js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-
-    <!-- Inclusão de Máscaras Js-->
-    <script src="/js/shopping-crianca-mask.js"></script>
+            <!-- Inclusão de Máscaras Js-->
+            <script src="/js/shopping-crianca-mask.js"></script>
 
 </body>
 

@@ -9,6 +9,40 @@ var multer = require('multer');
 var upload = multer();
 var moment = require('moment');
 
+const TelegramBot = require(`node-telegram-bot-api`);
+const TOKEN = '1655413008:AAEed01JS6zG4AIgowcM5HXzweajthVD3yA';
+
+const telegramUrl = (message) => `https://api.telegram.org/bot${TOKEN}/sendMessage?text=${message}&chat_id=-543169616`;
+
+
+
+
+
+const bot = new TelegramBot(TOKEN, { polling: true });
+
+var logErrorEcho = function logErrorEcho(msg) {
+    return function (err) {
+        return console.log(msg, err);
+    };
+};
+
+var logSuccessEcho = function (msg, match) {
+    return function (data) {
+        console.log('Success:', data);
+    };
+};
+
+var enviarMsg = (msg, match) => {
+    bot.sendMessage(msg.chat.id, match[1])
+        .then(logSuccessEcho(msg, match))
+        .catch(logErrorEcho('Error:'));
+
+}
+
+bot.onText(/\/echo (.*)/, enviarMsg);
+
+
+
 let nivel;
 let lista = [];
 let username;
@@ -28,6 +62,14 @@ module.exports = async function (app) {
 
     // Rota para exibição da View Listar
     app.get('/app/' + rota + '/list', function (req, res) {
+
+
+        date = new Date();
+        date = moment(date).toDate();
+        data = moment(req.body.date).toDate();
+        data = moment(data).format('DD/MM/YYYY HH:Mm')
+
+        console.log(data);
 
         if (!req.session.token) {
             res.redirect('/app/login');
@@ -94,6 +136,9 @@ module.exports = async function (app) {
     // Rota para receber parametros via post criar item
     app.post('/app/' + rota + '/create/submit', upload.single('photo'), function (req, res) {
 
+
+
+
         const file = req.file;
         let foto = "";
         if (file) {
@@ -120,6 +165,17 @@ module.exports = async function (app) {
                 req.flash("danger", "Não foi possível criar usuário. " + body.errors);
             } else {
                 req.flash("success", "Mensagem cadastrada com sucesso.");
+
+                request
+                    .get(
+                        telegramUrl(req.body.titulo)
+
+                    )
+                    .on('response', function (response) {
+                        console.log(response.statusCode) // 200
+                        // console.log(response.headers['content-type']) // 'image/png'
+                    });
+                // .pipe(request.put('http://localhost:3001'));
             }
 
             res.redirect('/app/' + rota + '/list');
@@ -177,7 +233,7 @@ module.exports = async function (app) {
                 res.redirect('/');
                 return false
             }
-            
+
             request({
                 url: process.env.API_HOST + rota + "/" + req.params.id,
                 method: "GET",
