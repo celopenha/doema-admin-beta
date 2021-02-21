@@ -1,69 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
+<%- include head.ejs %>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
-	<title><%- process.env.TITLE %></title>
 
-	<!-- Custom fonts for this template-->
-	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-	<!-- Bootstrap Core Css -->
-	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-	<!-- Waves Effect Css -->
-	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
-
-	<!-- Animation Css -->
-	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
-
-	<!-- Custom Css -->
-	<link href="/css/css/style.css" rel="stylesheet">
-
-	<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
-
-</head>
 
 <body class="theme-teal">
 
 	<%- include topo.ejs %>
 	<%- include menu.ejs %>
-	<!-- End of Page Wrapper -->
 	<section class="content">
-        <!-- início do preloader -->
-        <div id="preloader">
-            <div class="inner">
-                <div class="front">
-                    <img src="/img/sdc-color.svg" w/>
-                    <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
-                    <div class="bolas">
-                       <div></div>
-                       <div></div>
-                       <div></div>                    
-                    </div>
-                </div> 
-            </div>
-        </div>
-        <!-- fim do preloader --> 
 		<div class="content-fluid">
-			<%- messages() %>			
+			<%- messages() %>
+
+
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="card">
+						<div class="header">
+							Chart
+						</div>
+						<div class="body">
+							<canvas style="display: block; height: 165px;" id="myChart"></canvas>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
 
 		</div>
 	</section>
+
+
+
+
+
+	<!-- <script src="/js/plugins/chartjs/Chart.bundle.min.js"></script>
+
+
+	<script>
+		var ctx = document.getElementById('myChart').getContext('2d');
+
+		ctx.canvas.width = 10;
+		ctx.canvas.height = 10;
+
+
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+
+				datasets: [{
+					label: '# of Votes',
+					data: [3, 2, 3, 5, 2, 3],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+	</script> -->
+
 
 	<!-- Jquery Core Js -->
 	<script src="/js/plugins/jquery/jquery.min.js"></script>

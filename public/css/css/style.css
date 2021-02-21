@@ -1,5 +1,15 @@
-﻿/* Navbar ====================================== */
+﻿body{
+  background-image: url(/img/doema-logo-grey.svg);
+    background-size: 20%;
+    background-position: 50% 75%;
+    background-repeat: no-repeat;
+}
+
+
+/* Navbar ====================================== */
 @import url(materialize.css);
+
+
 
 
 /* --- [ ScrollBars ] - start ---*/
@@ -2416,15 +2426,17 @@ a {
   animation: none !important; }
 
 section.content {
-  background: url("/img/sdc-escala-cinza.svg") center top 40% no-repeat !important;
+  /* background-image: url('/img/doema-logo-grey.svg');
+  background-size: 25%;
+  background-position: 50% 30%;
+  background-repeat: no-repeat; */
+
+
   margin: 70px 0px 0 300px;
   padding: 15px 15px 0 0;
   overflow: auto;
   height: calc(100% - 70px);
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s; }
+ }
 
 /* Dashboard =================================== */
 .dashboard-flot-chart {
@@ -7581,7 +7593,11 @@ fieldset[disabled] .form-control {
     white-space: nowrap;
     position: relative;
     border-bottom: 1px solid #e9e9e9;
-    background: url("../images/user-img-background.jpg") no-repeat no-repeat;
+    background: linear-gradient(to right, #eb3349, #f45c431c),
+    url(/img/palacio-bg.png) no-repeat no-repeat;
+
+
+
     height: 105px; }
     .sidebar .user-info .image {
       margin-right: 12px;

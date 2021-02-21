@@ -1,49 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
+<%- include ../template/head.ejs %>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="/img/MPdL(Logo)/MPdL(logo).svg" type="image/x-icon">
-	<title><%- process.env.TITLE %></title>
-
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
-		type="text/css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-	<!-- Bootstrap Core Css -->
-	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-	<!-- Waves Effect Css -->
-	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
-
-	<!-- Animation Css -->
-	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
-
-	<!-- Bootstrap Material Datetime Picker Css -->
-	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-		rel="stylesheet" />
-
-	<!-- Bootstrap DatePicker Css -->
-	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
-
-	<!-- Bootstrap Select Css -->
-	<link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-
-	<!-- Wait Me Css -->
-	<link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
-
-
-	<!-- Custom Css -->
-	<link href="/css/css/style.css" rel="stylesheet">
-	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
-
-</head>
 
 <body class="theme-teal">
 	<%- include ../template/topo.ejs %>
@@ -71,7 +30,7 @@
 											<div class="form-line">
 												Nome Completo
 												<input type="text" class="form-control" id="nome" name="nome"
-												treatment="capitalize" value="<%= nome %>">
+													treatment="capitalize" value="<%= nome %>">
 											</div>
 										</div>
 									</div>
@@ -88,40 +47,41 @@
 										<div class="input-group">
 											<div class="form-line">
 												Telefone
-												<input type="phone" class="form-control" id="telefone" name="telefone" value="<%= telefone %>">
+												<input type="phone" class="form-control" id="telefone" name="telefone"
+													value="<%= telefone %>">
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="row clearfix">							
+								<div class="row clearfix">
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
 												Email
 												<input type="email" class="form-control" name="email" id="email"
-												value="<%= email %>">
+													value="<%= email %>">
 											</div>
 										</div>
 									</div>
 									<% if (informacoes.NivelUser == "ADMIN") {%>
-										<div class="col-sm-4">
-											<div class="input-group">
-												Nivel:
-												<select class="form-control show-tick" name="niveis" id="niveis">
-													<option value="" disabled selected hidden>Selecione uma
-														opção
-													</option>
-													<option value="ADMIN" <%= nivel =='ADMIN'
+									<div class="col-sm-4">
+										<div class="input-group">
+											Nivel:
+											<select class="form-control show-tick" name="niveis" id="niveis">
+												<option value="" disabled selected hidden>Selecione uma
+													opção
+												</option>
+												<option value="ADMIN" <%= nivel =='ADMIN'
 														? 'selected' : '' %>>Administrador</option>
-													<option value="COORDENADOR" <%= nivel =='COORDENADOR'
+												<option value="COORDENADOR" <%= nivel =='COORDENADOR'
 														? 'selected' : '' %>>Coordenador
-													</option>
-													<option value="ESPECIAL" <%= nivel =='ESPECIAL'
+												</option>
+												<option value="ESPECIAL" <%= nivel =='ESPECIAL'
 														? 'selected' : '' %>>Especial
-													</option>
-												</select>
-											</div>
+												</option>
+											</select>
 										</div>
+									</div>
 									<% } %>
 								</div>
 								<div class="row clearfix">
@@ -137,14 +97,16 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<input type="hidden" id="id" name="id" value="<%= id %>">
-								<input type="hidden" id="username" name="username" value="<%= username %>">					
+								<input type="hidden" id="username" name="username" value="<%= username %>">
 
 							</div>
 							<div class="footer-card">
-								<input type="submit" value="Salvar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
-								<a href="/app/<%= page %>/list" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+								<input type="submit" value="Salvar"
+									class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
+								<a href="/app/<%= page %>/list"
+									class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
 							</div>
 						</div>
 					</div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -210,7 +172,7 @@
 
 	<!-- Demo Js -->
 	<script src="../../js/demo.js"></script>
-	
+
 	<!-- Jquery Mask Js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
