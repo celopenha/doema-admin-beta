@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<% if (informacoes.NivelUser == "COORDENADOR") { %>
+<% if (informacoes.NivelUser != "ADMIN") { %>
     <%- include menu-coordenador.ejs %>
 <% }  if(informacoes.NivelUser == "ADMIN") { %>
 
