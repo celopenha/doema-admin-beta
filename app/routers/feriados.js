@@ -72,12 +72,6 @@ module.exports = async function (app) {
         if (!req.session.token) {
             res.redirect('/app/login');
         } else {
-
-            if (req.session.json.NivelUser != 'ADMIN') {
-                res.redirect('/');
-                return false
-            }
-
             res.format({
                 html: function () {
                     res.render(rota + '/Create', { page: rota, informacoes: req.session.json });
@@ -89,13 +83,6 @@ module.exports = async function (app) {
     // Rota para receber parametros via post criar item
     app.post('/app/' + rota + '/create/submit', upload.single('photo'), function (req, res) {
 
-        const file = req.file;
-        let foto = "";
-        if (file) {
-            const buf = Buffer.from(file.buffer);
-            foto = buf.toString('base64');
-        }
-
         request({
             url: process.env.API_HOST + rota,
             method: "POST",
@@ -106,8 +93,8 @@ module.exports = async function (app) {
             },
             json: {
                 "titulo": req.body.titulo,
-                "dataExpiracao": req.body.dataExpiracao,
-                "mensagem": foto
+                "dia": req.body.dia,
+                "descricao": req.body.descricao
             },
         }, function (error, response, body) {
 
@@ -122,45 +109,6 @@ module.exports = async function (app) {
         });
     });
 
-
-    // Rota para exibição da View Editar
-    app.get('/app/' + rota + '/view/:id', function (req, res) {
-        if (!req.session.token) {
-            res.redirect('/app/login');
-
-        } else {
-
-            if (req.session.json.NivelUser != 'ADMIN') {
-                res.redirect('/');
-                return false
-            }
-
-            request({
-                url: process.env.API_HOST + rota + "/" + req.params.id,
-                method: "GET",
-                json: true,
-                headers: {
-                    "content-type": "application/json",
-                    "Authorization": req.session.token
-                },
-            }, function (error, response, body) {
-                res.format({
-                    html: function () {
-                        res.render(rota + '/View', {
-                            id: body.data.id,
-                            titulo: body.data.titulo,
-                            mensagem: body.data.mensagem,
-                            dataExpiracao: moment(body.data.dataExpiracao).format('DD/MM/YYYY'),
-                            page: rota,
-                            informacoes: req.session.json
-                        });
-                    }
-                });
-
-            });
-        }
-    });
-
     // Rota para exibição da View Editar
     app.get('/app/' + rota + '/edit/:id', function (req, res) {
         if (!req.session.token) {
@@ -168,11 +116,6 @@ module.exports = async function (app) {
 
         } else {
 
-            if (req.session.json.NivelUser != 'ADMIN') {
-                res.redirect('/');
-                return false
-            }
-            
             request({
                 url: process.env.API_HOST + rota + "/" + req.params.id,
                 method: "GET",
@@ -188,8 +131,8 @@ module.exports = async function (app) {
                         res.render(rota + '/Edit', {
                             id: body.data.id,
                             titulo: body.data.titulo,
-                            mensagem: body.data.mensagem,
-                            dataExpiracao: body.data.dataExpiracao,
+                            dia: body.data.dia,
+                            descricao: body.data.descricao,
                             page: rota,
                             number: body.data.number,
                             informacoes: req.session.json
@@ -204,13 +147,6 @@ module.exports = async function (app) {
     // Rota para receber parametros via post editar item
     app.post('/app/' + rota + '/edit/submit', upload.single('photo'), function (req, res) {
 
-        const file = req.file;
-        let foto = "";
-        if (file) {
-            const buf = Buffer.from(req.file.buffer);
-            foto = buf.toString('base64');
-        }
-
         request({
             url: process.env.API_HOST + rota,
             method: "PUT",
@@ -222,8 +158,8 @@ module.exports = async function (app) {
             json: {
                 "id": req.body.id,
                 "titulo": req.body.titulo,
-                "mensagem": foto,
-                "dataExpiracao": req.body.dataExpiracao
+                "dia": req.body.dia,
+                "descricao": req.body.descricao
             },
         }, function (error, response, body) {
 
