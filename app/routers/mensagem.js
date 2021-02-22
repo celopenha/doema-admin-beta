@@ -114,6 +114,52 @@ module.exports = async function (app) {
         }
     });
 
+    app.get('/app/' + rota + '/mostraMensagem', function (req, res) {
+
+
+        date = new Date();
+        date = moment(date).toDate();
+        data = moment(req.body.date).toDate();
+        data = moment(data).format('DD/MM/YYYY HH:Mm')
+
+            request({
+                url: process.env.API_HOST + rota,
+                method: "GET",
+                json: true,
+                headers: {
+                    "content-type": "application/json",
+                    "Authorization": req.session.token
+                },
+            }, function (error, response, body) {
+                listaDois = [];
+                const finallista = {};
+                for (var i = 0; i < Object.keys(body.data).length; i++) {
+                    finallistaDois = {
+                        id: body.data[i].id,
+                        titulo: body.data[i].titulo,
+                        dataExpiracao: moment(body.data[i].dataExpiracao).format('DD/MM/YYYY'),
+                        mensagem: body.data[i].mensagem
+                    };
+                }
+                listaDois.push(finallistaDois);
+                const tam = listaDois.length;
+                res.format({
+                    html: function () {
+                        res.render('mensagem/MostraMensagem', {
+                            itens: listaDois,
+                            tamanho: tam,
+                            page: rota,
+                            informacoes: req.session.json
+                        });
+
+                    }
+                });
+                console.log(listaDois);
+                return listaDois;
+            });
+        
+    });
+
     // Rota para exibição da View Criar
     app.get('/app/' + rota + '/create', function (req, res) {
         if (!req.session.token) {
