@@ -154,7 +154,6 @@ module.exports = async function (app) {
 
                     }
                 });
-                console.log(listaDois);
                 return listaDois;
             });
         
