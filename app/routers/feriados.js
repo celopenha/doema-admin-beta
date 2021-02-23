@@ -68,13 +68,17 @@ module.exports = async function (app) {
     });
 
     // Rota para exibição da View Criar
-    app.get('/app/' + rota + '/create', function (req, res) {
+    app.get('/app/' + rota + '/create/:date?', function (req, res) {
         if (!req.session.token) {
             res.redirect('/app/login');
         } else {
             res.format({
                 html: function () {
-                    res.render(rota + '/Create', { page: rota, informacoes: req.session.json });
+                    var date;
+                    if (req.params.date) {
+                        date = req.params.date.replace(' ', 'T');
+                    }
+                    res.render(rota + '/Create', { page: rota, informacoes: req.session.json, dia: date });
                 }
             });
         }

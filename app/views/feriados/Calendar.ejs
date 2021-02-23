@@ -107,13 +107,11 @@
         <!-- fim do preloader --> 
 
         <div class="container-fluid">    
-            <%- messages() %>
-
             <div class="rowclearfix">
                 <div class="">
                     <div class="card" style="padding: 15px;">
                         <div class="header">
-                            <i class="material-icons" style="color: rebeccapurple;">home_work</i> <span style="font-weight: bold; font-size: 24px;">Feriados</span>
+                            <i class="material-icons" style="color: red;">today</i> <span style="font-weight: bold; font-size: 24px;">Feriados</span>
                         </div>
                         <div class="body">
                             <div id="calendar"></div>
@@ -122,9 +120,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </section>
 
@@ -143,14 +138,10 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div><strong id="title2">
-                                        <h4>Sessão xx</h4>
-                                    </strong></div>
-                                <div>Inicio da Sessão: <span id="start">##:00</span></div>
-                                <div>Fim da Sessão: <span id="end">##:00</span></div>
+                                <div>Data do feriado: <span id="start"></span></div>
+                                <div>Feriado: <b><span id="title2"></span></b></div>
                                 <br>
-                                <div><b>Total de vagas: </b><span id="vagas">##</span></div>
-                                <div><b>Vagas disponíveis: </b><span id="vagasRestantes">##</span></div>
+                                <div><b>Observações: </b><span id="end"></span></div>
                                 <br>
                             </div>
                         </div>
@@ -158,7 +149,7 @@
                     <div class="modal-footer">
                         <% if (informacoes.NivelUser == 'ADMIN') {%>
                         <div>
-                            <input type="submit" value="Agendamentos" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" />
+                            <a href="/app/feriados/list" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style=" padding: 8px 25px; margin: 0 7px;">Lista de Feriados</a>                               
                             <a id="edit" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style=" padding: 8px 25px; margin: 0 7px;">Editar</a>
                         </div>
                         <% } else { %>
@@ -254,11 +245,16 @@
                 min = date.getMinutes(),
                 s = date.getSeconds()
             var niveis = JSON.parse('<%- JSON.stringify(informacoes.NivelUser) %>')
+            var eventosList = JSON.parse('<%- JSON.stringify(eventos) %>');
             var feriadoId;
 
             //Inicializa o Calendario	
             $(document).ready(function () {
-
+                if ($(window).width() < 765) {
+                    for (var i = 0; i < eventosList.length; i++) { 
+                        eventosList[i].title = (eventosList[i].title);
+                    }
+                }
                 $('#calendar').fullCalendar({
                     defaultView: $(window).width() < 765 ? 'agendaDay':'month',
                     header: {
@@ -285,39 +281,40 @@
                     dayClick: function (date, jsEvent, view) {
                         if (date.isValid()) {
                             // Redireciona para criar sessão
-                            var date = date.format('YYYY-MM-DD HH:mm')
-                            window.location.href = '/app/feriados//Create/' + date;
+                            var date = date.format('YYYY-MM-DD')
+                            window.location.href = '/app/feriados/Create/' + date;
                         } else {
                             alert('Invalid');
                         }
                     },
                     
-                    // Mostrar eventos                                        
+                    // Mostrar eventos                                
                     events: eventosList,
 
                     // Mostrar Descrição e redireciona para adicionar criança
                     eventRender: function (event, element) {
-                        event.title = "h" + event.title;
+                        event.title = event.title;
                         element.attr('data-toggle', 'modal');
                         element.attr('data-target', '#logoutModal');
                         element.click(function () {
                             feriadoId = event.id;
-                            nomeferiado = event.title2;
+                            nomeFeriado = event.title2;
                             if (niveis == 'ADMIN') {
-                                $('#modalExemplo').attr('action', '/app/feriados/list/' + feriadoId)                                
+                                $('#modalExemplo').attr('action', '/app/feriados/list/' + feriadoId)
+                                $('#edit').attr('href', '/app/feriados/edit/' + feriadoId)
+                            } else {
+                                $('#modalExemplo').attr('action', '/app/feriados/create/' + feriadoId)
                             }
-
                             $('#modalExemplo #title2').html(event.title2);
                             $('#modalExemplo #start').html(event.startModal);
                             $('#modalExemplo #end').html(event.endModal);
-                            //$('.modal-body').html(event.description);
                         });
                     },
                     viewRender: function (view, element) {
                         var mes = montaMes(view.title);
                         $.ajax({
                             type: "POST",
-                            url: "/app/feriado/calendar/mes/" + mes,
+                            url: "/app/feriados/calendar/" + mes,
                             success: function (data) {
                                 $('#calendar').fullCalendar('removeEventSources');
                                 $('#calendar').fullCalendar('addEventSource', data.eventos );
