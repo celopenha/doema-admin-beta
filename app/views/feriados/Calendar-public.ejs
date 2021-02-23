@@ -33,7 +33,6 @@
     <div id="preloader">
         <div class="inner">
             <div class="front">
-                <img src="/img/sdc-color.svg" w/>
                 <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
                 <div class="bolas">
                    <div></div>
@@ -58,20 +57,19 @@
                 </div>
                 <form id="modalExemplo" method="GET">
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div><strong id="title2"><h4>Sessão xx</h4></strong></div>
-                                <div>Inicio: <span id="start">##:00</span></div>
-                                <div>Fim: <span id="end">##:00</span></div>
-                                <br>
-                                <div><b>Total de vagas: </b><span id="vagas">##</span></div>
-                                <div><b>Vagas disponíveis: </b><span id="vagasRestantes">##</span></div>
-                                <br>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div>Data do feriado: <span id="start"></span></div>
+                                    <div>Feriado: <b><span id="title2"></span></b></div>
+                                    <br>
+                                    <div><b>Observações: </b><span id="end"></span></div>
+                                    <br>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" value="Agendar" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"/>
                         <button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
@@ -129,7 +127,8 @@
                 min = date.getMinutes(),
                 s = date.getSeconds()
             var eventosList = JSON.parse('<%- JSON.stringify(eventos) %>');
-            var sessaoId;
+            var feriadoId;
+;
 
 
             //Inicializa o Calendario	
@@ -160,7 +159,7 @@
                     dayClick: function (date, jsEvent, view) {
                         if (date.isValid()) {  
                             // Redireciona para criar sessão
-                            var date = date.format('YYYY-MM-DD HH:mm')
+                            var date = date.format('YYYY-MM-DD')
                             window.location.href = '/app/sessao/Create/' + date;
                         } else {
                             alert('Invalid');
@@ -175,13 +174,11 @@
                         element.attr('data-toggle', 'modal');
                         element.attr('data-target', '#logoutModal');
                         element.click(function () {
-                            sessaoId = event.id;
-                            $('#modalExemplo').attr('action', '/app/crianca-sessao/create/' + sessaoId)
+                            feriadoId = event.id;
+                            nomeFeriado = event.title2;
                             $('#modalExemplo #title2').html(event.title2);
-                            $('#modalExemplo #start').html(moment(event.start).format('HH:mm'));
-                            $('#modalExemplo #end').html(moment(event.end).format('HH:mm'));
-                            $('#modalExemplo #vagas').html(event.vagas);
-                            $('#modalExemplo #vagasRestantes').html(event.vagasRestantes);
+                            $('#modalExemplo #start').html(event.startModal);
+                            $('#modalExemplo #end').html(event.endModal);
                             //$('.modal-body').html(event.description);
                         });
                     },
@@ -189,7 +186,7 @@
                         var mes = montaMes(view.title);
                         $.ajax({
                             type: "POST",
-                            url: "/app/calendar/mes/" + mes,
+                            url: "/app/feriados/calendar/" + mes,
                             success: function (data) {
                                 console.log(data);
                                 $('#calendar').fullCalendar('removeEventSources');
