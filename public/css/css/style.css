@@ -1,11 +1,4 @@
-﻿body{
-  background-image: url(/img/doema-logo-grey.svg);
-    background-size: 20%;
-    background-position: 50% 75%;
-    background-repeat: no-repeat;
-}
-
-
+﻿
 /* Navbar ====================================== */
 @import url(materialize.css);
 

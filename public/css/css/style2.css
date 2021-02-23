@@ -1,0 +1,147 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: visible;
+    background-color: white;
+}
+
+nav {
+    margin-bottom: 300px;
+    height: 80px;
+    box-shadow: none;
+    margin: 0 !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+header {
+    display: block;
+    text-transform: uppercase;
+    height: 175px;
+    background: linear-gradient(269.51deg, #D04A4A -0.72%, rgba(251, 71, 31, 0.83) 99.76%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0 100%);
+}
+
+.header-page span {
+    font-weight: 300;
+
+    display: block;
+    font-size: 25px;
+
+}
+
+.header-page h1 {
+    color: white;
+    font-weight: 800;
+    font-size: 65px;
+    padding: 25px;
+}
+
+.jornal-box:before{
+    content: '';
+
+
+    width: 200px;
+
+
+    height: 30px;
+
+    
+    background-color: red;
+}
+
+
+.jornal-box .jornal-cover {
+    transform: translateY(-60px);
+    border-radius: 40px 5px 10px 10px !important;
+    box-shadow: 0px 0px 17px 5px #0000004d;
+}
+
+.form {
+    padding: 30px;
+}
+
+.navbar-nav>li>a {
+    font-weight: 900;
+    color: #e75948;
+}
+
+.navbar-brand {
+    width: 100px;
+    height: 80px;
+}
+
+
+
+.bg-red {
+    background: linear-gradient(269.51deg, #D04A4A -0.72%, rgba(251, 71, 31, 0.83) 99.76%) !important;
+
+    border-radius: 7px 3px 3px 30px !important;
+    padding: 15px;
+    font-size: 20px !important;
+    font-weight: 900;
+    margin: 4px 0;
+}
+
+.bg-red .material-icons {
+    font-size: 40px !important;
+    position: absolute !important;
+    top: 9px !important;
+    right: 9px !important;
+}
+
+.box-card {}
+
+.box-icon {
+    text-align: center;
+    display: block;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 5px;
+    border: 7px solid #4564ff;
+    max-width: 150px;
+
+}
+
+.box-icon img {
+    width: 80px;
+}
+
+.box-text {}
+
+.box-text h6,
+.box-text p {
+    text-align: center;
+}
+
+.box-text h6 {
+    color: #4564ff;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.box-text p {}
+
+.form-container {
+    max-width: 330px;
+    height: 100%;
+    background: red;
+
+    margin: 0 auto;
+    margin-top: 35px;
+
+    max-width: 330px;
+    height: 310px;
+    background: linear-gradient(269.51deg, #D04A4A -0.72%, rgba(251, 71, 31, 0.83) 99.76%) !important;
+    border: 0 0 20px 20px;
+    border-radius: 5px 20px 40px 5px;
+}

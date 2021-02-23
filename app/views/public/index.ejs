@@ -1,502 +1,286 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<%- include ../template/head.ejs %>
+<head>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+    <title><%- process.env.TITLE %></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Dropzone Css -->
+    <link href="/js/plugins/dropzone/dropzone.css" rel="stylesheet">
+
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="/css/css/style.css" rel="stylesheet">
+    <link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/css/css/style2.css">
+
+
+</head>
 <!-- Bootstrap Material Datetime Picker Css -->
 <link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
 
-<style>
-
-
-
-
-
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    body {
-        background-color: white;
-    }
-
-    nav {
-        height: 120px;
-        background-image: url('/img/doema-logo.png');
-        background-size: 23%;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        box-shadow: none !important;
-    }
-
-    ul {
-        list-style-type: none;
-    }
-
-    header {
-        display: block;
-        text-transform: uppercase;
-        margin-top: 132px;
-        height: 175px;
-        background: linear-gradient(269.51deg, #D04A4A -0.72%, rgba(251, 71, 31, 0.83) 99.76%);
-        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0 100%);
-    }
-
-    .header-page span {
-        font-weight: 300;
-
-        display: block;
-        font-size: 25px;
-
-    }
-    .header-page h1 {
-        color: white;
-        font-weight: 800;
-        font-size: 65px;
-        padding: 25px;
-    }
-
-
-    .jornal-box .jornal-cover {
-        transform: translateY(-60px);
-        border-radius: 40px 5px 10px 10px !important;
-        box-shadow: 0px 0px 17px 5px #0000004d;
-    }
-
-    .form {
-        padding: 30px;
-    }
-
-    .navbar-nav > li  > a{
-        font-weight: 900;
-    color: #e75948;
-    }
-</style>
-
-
 <body>
-    <nav class="navbar">
+    <nav style="position: relative !important;" class="navbar">
         <div class="container-fluid">
-           <div class="navbar-header">
+            <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../../index.html">
-                    <img src="/img/doema-logo.png" alt="">
-                </a>
+
+                <a class="navbar-brand" href="index.html">ADMINBSB - MATERIAL DESIGN</a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
+            <div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true">INÍCIO</a>
-                    </li>
+
                     <!-- #END# Call Search -->
                     <!-- Notifications -->
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            INSTRUÇÕES
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">7</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">INSTRUÇÕES</li>
+                            <li class="header">NOTIFICATIONS</li>
                             <li class="body">
-                                <ul class="menu">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-light-green">
-                                                <i class="material-icons">receipt_long
-                                                </i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>Como fazer publicação</h4>
-                                                <p>
-                                                    <i class="material-icons">task_alt </i> aprenda como publicar no DOEMA
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-indigo
-
-                                            ">
-                                                <i class="material-icons">find_in_page</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>Como pesquisar edições</h4>
-                                                <p>
-                                                    <i class="material-icons">task_alt </i> pesquise por jornais anteriores
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-indigo">
-                                                <i class="material-icons">delete_forever</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>MANUAL</b> do sistema E-DOEMA</h4>
-                                                <p>
-                                                    <i class="material-icons">task_alt </i> aprenda a utilizar o sistema E-DOEMA
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-indigo
-
-                                            ">
-                                                <i class="material-icons">mode_edit</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>Nancy</b> changed name</h4>
-                                                <p>
-                                                    <i class="material-icons">task_alt </i> 2 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-indigo
-
-                                            ">
-                                                <i class="material-icons">comment</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> commented your post</h4>
-                                                <p>
-                                                    <i class="material-icons">task_alt </i> 4 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-indigo
-
-                                            ">
-                                                <i class="material-icons">cached</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> updated status</h4>
-                                                <p>
-                                                    <i class="material-icons">task_alt </i> 3 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-indigo
-
-                                            ">
-                                                <i class="material-icons">settings</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>Settings updated</h4>
-                                                <p>
-                                                    <i class="material-icons">task_alt </i> Yesterday
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div class="slimScrollDiv"
+                                    style="position: relative; overflow: hidden; width: auto; height: 254px;">
+                                    <ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
+                                        <li>
+                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                <div class="icon-circle bg-light-green">
+                                                    <i class="material-icons">person_add</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4>12 new members joined</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> 14 mins ago
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                <div class="icon-circle bg-cyan">
+                                                    <i class="material-icons">add_shopping_cart</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4>4 sales made</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> 22 mins ago
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                <div class="icon-circle bg-red">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4><b>Nancy Doe</b> deleted account</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> 3 hours ago
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                <div class="icon-circle bg-orange">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4><b>Nancy</b> changed name</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> 2 hours ago
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                <div class="icon-circle bg-blue-grey">
+                                                    <i class="material-icons">comment</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4><b>John</b> commented your post</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> 4 hours ago
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                <div class="icon-circle bg-light-green">
+                                                    <i class="material-icons">cached</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4><b>John</b> updated status</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> 3 hours ago
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                                <div class="icon-circle bg-purple">
+                                                    <i class="material-icons">settings</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4>Settings updated</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> Yesterday
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="slimScrollBar"
+                                        style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 0px; z-index: 99; right: 1px;">
+                                    </div>
+                                    <div class="slimScrollRail"
+                                        style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+                                    </div>
+                                </div>
                             </li>
                             <li class="footer">
-                                <a href="javascript:void(0);">View All Notifications</a>
+                                <a href="javascript:void(0);" class=" waves-effect waves-block">View All
+                                    Notifications</a>
                             </li>
                         </ul>
                     </li>
                     <!-- #END# Notifications -->
                     <!-- Tasks -->
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            INFORMATIVO
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">TASKS</li>
-                            <li class="body">
-                                <ul class="menu tasks">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Footer display issue
-                                                <small>32%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-pink" role="progressbar" aria-valuenow="85"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: 32%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Make new buttons
-                                                <small>45%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-cyan" role="progressbar" aria-valuenow="85"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Create new dashboard
-                                                <small>54%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="85"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: 54%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Solve transition issue
-                                                <small>65%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-orange" role="progressbar"
-                                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 65%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Answer GitHub questions
-                                                <small>92%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-purple" role="progressbar"
-                                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 92%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="javascript:void(0);">View All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
+
+                    <!-- #END# Tasks -->
+
                 </ul>
             </div>
         </div>
     </nav>
     <header>
-        <div class="header-page">
-            <h1>Diário Oficial
-                <span>do estado do maranhão</span>
-            </h1>
+        <div class="row clearfix">
+            <div class="header-page">
+                <h1 style="float: left;">Diário Oficial
+                    <span>do estado do maranhão</span>
+                </h1>
+            </div>
+
+
+            <div style=" color: white; display: flex; flex-direction: row;  float: right;" class="box-edicao">
+                <div style="padding: 20px; border-right: 3px solid white;" class="edicao-label">
+                    <h3>EDIÇÃO Nº</h3>
+                    <p>15 de janeiro de 2020</p>
+                </div>
+                <div class="edicao-number">
+                    <h1 style="padding: 30px;">123</h1>
+                </div>
+            </div>
         </div>
+
     </header>
 
-    <aside id="leftsidebar" class="sidebar">
-        <!-- User Info -->
-        <div class="user-info">                
-            <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</div>
-                <div class="email">egma@seati.ma.gov.br</div>
-                <div class="btn-group user-helper-dropdown">
-                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                    <ul class="dropdown-menu pull-right">
-                        <li>
-                            <a href="/app/usuario/Perfil" class=" waves-effect waves-block">
-                                <i class="material-icons" style="color: red;">assignment_ind</i>
-                                Perfil
-                            </a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-                            <a href="/app/usuario/Alterar-Senha" class=" waves-effect waves-block">
-                                <i class="material-icons" style="color: red;">vpn_key</i>
-                                Alterar Senha
-                            </a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-                            <a href="/app/sair" class=" waves-effect waves-block">
-                                <i class="material-icons" style="color: red;">input</i>
-                                Sair
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- #User Info -->
-        <!-- Menu -->
-        <div class="menu">
-            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 167px;"><ul class="list" style="overflow: hidden; width: auto; height: 167px;">
-                <li class="header">NAVEGAÇÃO</li>
-                <li>
-                    <a href="/app/usuario/list" class=" waves-effect waves-block">
-                        <i class="material-icons" style="color: red;">admin_panel_settings</i>
-                        <span>Usuários</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/app/mensagem/list" class=" waves-effect waves-block">
-                        <i class="material-icons" style="color: red;">campaign</i>
-                        <span>Mensagem</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class=" waves-effect waves-block">
-                        <i class="material-icons" style="color: red;">book</i>
-                        <span>Diários</span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="#" class=" waves-effect waves-block">
-                        <i class="material-icons" style="color: red;">history</i>
-                        <span>Logs</span>
-                    </a>
-                </li>                
-             <!--   <li>
-                    <a href="/app/sessao/list">
-                        <i class="material-icons" style="color: rebeccapurple;">book_online</i>
-                        <span>Sessões</span>
-                    </a>
-                </li> 
-                <li>
-                    <a href="/app/sessao/calendar">
-                        <i class="material-icons" style="color: rebeccapurple;">schedule</i>
-                        <span>Horários de Sessões</span>
-                    </a>
-                </li> -->
-               
-             <!--   <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">widgets</i>
-                        <span>Widgets</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <span>Cards</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/widgets/cards/basic.html">Basic</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span>Infobox</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li> -->
-               
-            </ul><div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 112.004px;"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
-        </div>
-        <!-- #Menu -->
-        <!-- Footer -->
-        <div class="legal">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="copyright" style="margin-top: 14px;">
-                        © 2020 <a href="https://seati.ma.gov.br/" target="_blank">SEATI</a>.
-                    </div>
-                    <div class="version">
-                        <b>Versão: </b> 1.0.0
-                    </div>
-                </div>
-                <div class="col-sm-7">
-                    <img src="/img/maranhao.png" width="120">
-                </div>
-            </div>
-        </div>
-        <!-- #Footer -->
-    </aside>
     <div class="container">
-        <div class="row ">
-            <div class="col-md-4 col-sm-4">
-                <div class="form-inicial">
-                    <form action="#" class="form">
-                        <div class="row clearfix">
-                            <div class="col-md-6">
-                                <label for="caderno">CADERNO</label>
-                                <select class="form-control show-tick">
-                                    <option>Selecione o caderno...</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
+        <div class="row clearfix">
+            <div class="col-sm-12 col-md-12">
 
+                    <div class="form-container">
+                        <form action="#">
+                            <div class="row">
+                                <div class="input-group">
+                                    <label style="display: block;" for="pesquisar">Pesquisar jornal</label>
+                                    <input type="text">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row clearfix">
-
-                        </div>
-
-                        <div class="row clearfix">
-
-                        </div>
-
-                    </form>
-
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-4">
-                <div class="jornal-box">
-                    <img src="/img/jornal-bg.png" class=" jornal-cover img-thumbnail ">
+        </div>
 
+        <div class="row clearfix">
+            <div class="col-sm-12 col-md-12">
+                <div class="col-sm-3 col-md-3">
+                    <div class="box-card">
+                        <div class="box-icon">
+                            <img src="/img/icons/sistema.svg" alt="">
+                        </div>
+                        <div class="box-text">
+                            <h6>Sistema</h6>
+                            <p>Acesse o sistema E-DOEMA
+                                clicanto neste link aqui agora rapaz
+                            </p>
+                        </div>
+                    </div>
                 </div>
-
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="form-inicial">
-                    <form action="#" class="form">
-                        <div class="row clearfix">
-                            <div class="col-md-6">
-                                <label for="caderno">CADERNO</label>
-                                <select class="form-control show-tick">
-                                    <option>Selecione o caderno...</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-
-                            </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="box-card">
+                        <div class="box-icon">
+                            <img src="/img/icons/sistema.svg" alt="">
                         </div>
-
-                        <div class="row clearfix">
-
+                        <div class="box-text"></div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="box-card">
+                        <div class="box-icon">
+                            <img src="/img/icons/sistema.svg" alt="">
                         </div>
-
-                        <div class="row clearfix">
-
+                        <div class="box-text"></div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="box-card">
+                        <div class="box-icon">
+                            <img src="/img/icons/sistema.svg" alt="">
                         </div>
-
-                    </form>
-
+                        <div class="box-text"></div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-
-
 
     <!-- Jquery Core Js -->
     <script src="/js/plugins/jquery/jquery.min.js"></script>
@@ -544,19 +328,6 @@
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
     <script src="js/jquery.mask.js"></script>
-
-
-
-    <script>
-        $(function () {
-            $('#date-time').bootstrapMaterialDatePicker({
-                format: 'YYYY-MM-DD HH:mm'
-            });
-        });
-
-        console.log(bootstrapMaterialDatePicker)
-    </script>
-
 
 </body>
 
