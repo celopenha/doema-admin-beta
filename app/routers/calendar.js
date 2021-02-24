@@ -26,9 +26,7 @@ module.exports = async function (app) {
 
     // Rota para exibição da View Listar
     app.get('/app/feriados/' + rota, function (req, res) {
-        if (!req.session.token) {
-            res.redirect('/app/login');
-        } else {
+          
             var data = new Date();
             var mes = data.getMonth() + 1;
             mes = mes.toString();
@@ -36,7 +34,7 @@ module.exports = async function (app) {
                 mes = '0' + mes.toString();
             }
                 request({
-                    url: process.env.API_HOST + 'feriados/' + req.params.id,
+                    url: process.env.API_HOST + 'feriados/',
                     method: "GET",
                     json: true,
                     headers: {
@@ -53,12 +51,10 @@ module.exports = async function (app) {
                             descricao: body.data[i].descricao,
                             feriados: body.data[i].feriados,
                         };
-                        
-                        if (req.session.json.NivelUser == 'ADMIN') {
-                            lista.push(finallista);
-                        }
 
+                        lista.push(finallista);
                     }
+                    
                     dias = [];
 
                     for (var i = 0; i < lista.length; i++) {
@@ -68,15 +64,14 @@ module.exports = async function (app) {
                             id: lista[i].id,
                             title: lista[i].titulo,
                             start: lista[i].dia,
-                            startModal: moment(lista[i].dia).format('DD/MM/YYYY HH:mm'),
-                            endModal: moment(lista[i].dia).format("DD/MM/YYYY HH:mm"),
-                            color: "blue",
+                            startModal: moment(lista[i].dia).format('DD/MM/YYYY'),
+                            endModal: lista[i].descricao,
+                            color: "#0086d3",
                             title2: lista[i].titulo,
 
                         };
-                        if (req.session.json.NivelUser == 'ADMIN') {
-                            dias.push(diaslista);
-                        }
+
+                        dias.push(diaslista);
 
                     };
                     if (!req.session.token) {
@@ -95,11 +90,6 @@ module.exports = async function (app) {
                         return lista;
                     }
                 });
-            
-            
-        }
-
-
 
     });
 
