@@ -9,37 +9,7 @@ var multer = require('multer');
 var upload = multer();
 var moment = require('moment');
 
-const TelegramBot = require(`node-telegram-bot-api`);
-const TOKEN = '1655413008:AAEed01JS6zG4AIgowcM5HXzweajthVD3yA';
-
-const telegramUrl = (message) => `https://api.telegram.org/bot${TOKEN}/sendMessage?text=${message}&chat_id=-543169616`;
-
-
-
-
-
-const bot = new TelegramBot(TOKEN, { polling: true });
-
-var logErrorEcho = function logErrorEcho(msg) {
-    return function (err) {
-        return console.log(msg, err);
-    };
-};
-
-var logSuccessEcho = function (msg, match) {
-    return function (data) {
-        console.log('Success:', data);
-    };
-};
-
-var enviarMsg = (msg, match) => {
-    bot.sendMessage(msg.chat.id, match[1])
-        .then(logSuccessEcho(msg, match))
-        .catch(logErrorEcho('Error:'));
-
-}
-
-bot.onText(/\/echo (.*)/, enviarMsg);
+const sendTelegramMessage = require('../../config/telegramBot')
 
 
 
@@ -114,9 +84,7 @@ module.exports = async function (app) {
         }
     });
 
-    app.get('/app/' + rota + '/mostraMensagem', function (req, res) {
-
-
+    app.get('/app/' + 'public' + '/mostraMensagem', function (req, res) {
         date = new Date();
         date = moment(date).toDate();
         data = moment(req.body.date).toDate();
@@ -145,7 +113,7 @@ module.exports = async function (app) {
                 const tam = listaDois.length;
                 res.format({
                     html: function () {
-                        res.render('mensagem/MostraMensagem', {
+                        res.render('public/MostraMensagem', {
                             itens: listaDois,
                             tamanho: tam,
                             page: rota,
@@ -212,14 +180,11 @@ module.exports = async function (app) {
                 req.flash("success", "Mensagem cadastrada com sucesso.");
 
                 request
-                    .get(
-                        telegramUrl(req.body.titulo)
-
-                    )
+                    .get(sendTelegramMessage(req.body.titulo))
                     .on('response', function (response) {
                         console.log(response.statusCode) // 200
                         // console.log(response.headers['content-type']) // 'image/png'
-                    });
+                    })
                 // .pipe(request.put('http://localhost:3001'));
             }
 
