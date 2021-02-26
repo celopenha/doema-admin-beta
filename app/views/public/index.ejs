@@ -2,395 +2,390 @@
 <html lang="pt-br">
 
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible"
+				content="IE=edge">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description"
+				content="">
+	<meta name="author"
+				content="">
+	<link rel="icon"
+				href="/img/sdc-color.svg"
+				type="image/x-icon">
+	<title><%- process.env.TITLE %></title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
-    <title><%- process.env.TITLE %></title>
+	<!-- Custom fonts for this template-->
+	<link href="/vendor/fontawesome-free/css/all.min.css"
+				rel="stylesheet"
+				type="text/css">
+	<link
+				href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+				rel="stylesheet">
 
-    <!-- Custom fonts for this template-->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+	<!-- Google Fonts -->
 
-    <!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext"
+				rel="stylesheet"
+				type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+				rel="stylesheet"
+				type="text/css">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
-        type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+	<!-- Bootstrap Core Css -->
+	<link href="/js/plugins/bootstrap/css/bootstrap.css"
+				rel="stylesheet">
 
-    <!-- Bootstrap Core Css -->
-    <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<!-- Waves Effect Css -->
+	<link href="/js/plugins/node-waves/waves.css"
+				rel="stylesheet" />
 
-    <!-- Waves Effect Css -->
-    <link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+	<!-- Animation Css -->
+	<link href="/js/plugins/animate-css/animate.css"
+				rel="stylesheet" />
 
-    <!-- Animation Css -->
-    <link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Dropzone Css -->
-    <link href="/js/plugins/dropzone/dropzone.css" rel="stylesheet">
-
-
-    <!-- Bootstrap DatePicker Css -->
-    <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
-
-    <!-- Wait Me Css -->
-    <link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
-
-    <!-- Bootstrap Select Css -->
-    <link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="/css/css/style.css" rel="stylesheet">
-    <link href="/css/css/themes/all-themes.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="/css/css/style2.css">
+	<!-- Dropzone Css -->
+	<link href="/js/plugins/dropzone/dropzone.css"
+				rel="stylesheet">
 
 
+	<!-- Bootstrap DatePicker Css -->
+	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css"
+				rel="stylesheet" />
+
+	<!-- Wait Me Css -->
+	<link href="/js/plugins/waitme/waitMe.css"
+				rel="stylesheet" />
+
+	<!-- Bootstrap Select Css -->
+	<link href="/js/plugins/bootstrap-select/css/bootstrap-select.css"
+				rel="stylesheet" />
+
+	<!-- Custom Css -->
+	<link href="/css/css/style.css"
+				rel="stylesheet">
+	<link rel="stylesheet"
+				href="/css/css/style2.css">
+	<link href="/css/css/themes/all-themes.css"
+				rel="stylesheet" />
+
+	<!-- Bootstrap Material Datetime Picker Css -->
+	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+				rel="stylesheet" />
+
+	<style>
+		* {
+
+			box-sizing: border-box;
+		}
+
+		header h1 spanc {
+			font-size: 72px;
+			background: -webkit-linear-gradient(#4345f4, #43abf4);
+
+			font-weight: 900;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		section .main {
+			height: 100vh;
+			background-color: aquamarine !important;
+		}
+
+		section .main--2 {
+			height: 100vh;
+			background-color: rgb(21, 29, 26) !important;
+		}
+	</style>
 </head>
-<!-- Bootstrap Material Datetime Picker Css -->
-<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+<%- include ../template/topo-public.ejs %>
 
 <body>
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars" style="display: none;"></a>
-                <a class="navbar-brand" href="index.html">ADMINBSB - MATERIAL DESIGN</a>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="false" style="height: 1px;">
-                <ul class="nav navbar-nav navbar-left">
-                    <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true">Início</a></li>
-                    <!-- #END# Call Search -->
-                    <!-- Notifications -->
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            Informativo
-                            
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">NOTIFICATIONS</li>
-                            <li class="body">
-                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;"><ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <div class="icon-circle bg-light-green">
-                                                <i class="material-icons">person_add</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>12 new members joined</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 14 mins ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <div class="icon-circle bg-cyan">
-                                                <i class="material-icons">add_shopping_cart</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>4 sales made</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 22 mins ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <div class="icon-circle bg-red">
-                                                <i class="material-icons">delete_forever</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>Nancy Doe</b> deleted account</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 3 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <div class="icon-circle bg-orange">
-                                                <i class="material-icons">mode_edit</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>Nancy</b> changed name</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 2 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <div class="icon-circle bg-blue-grey">
-                                                <i class="material-icons">comment</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> commented your post</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 4 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <div class="icon-circle bg-light-green">
-                                                <i class="material-icons">cached</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> updated status</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 3 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <div class="icon-circle bg-purple">
-                                                <i class="material-icons">settings</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>Settings updated</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> Yesterday
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul><div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
-                            </li>
-                            <li class="footer">
-                                <a href="javascript:void(0);" class=" waves-effect waves-block">View All Notifications</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- #END# Notifications -->
-                    <!-- Tasks -->
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            Instruções
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">TASKS</li>
-                            <li class="body">
-                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 254px;"><ul class="menu tasks" style="overflow: hidden; width: auto; height: 254px;">
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <h4>
-                                                Footer display issue
-                                                <small>32%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-pink" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 32%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <h4>
-                                                Make new buttons
-                                                <small>45%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-cyan" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <h4>
-                                                Create new dashboard
-                                                <small>54%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 54%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <h4>
-                                                Solve transition issue
-                                                <small>65%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
-                                            <h4>
-                                                Answer GitHub questions
-                                                <small>92%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 92%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul><div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
-                            </li>
-                            <li class="footer">
-                                <a href="javascript:void(0);" class=" waves-effect waves-block">View All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- #END# Tasks -->
-                    
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <header>
-        <div class="row clearfix">
-            <div class="header-page">
-                <h1 style="float: left;">Diário Oficial
-                    <span>do estado do maranhão</span>
-                </h1>
-            </div>
 
 
-            <div style=" color: white; display: flex; flex-direction: row;  float: right;" class="box-edicao">
-                <div style="padding: 20px; border-right: 3px solid white;" class="edicao-label">
-                    <h3>EDIÇÃO Nº</h3>
-                    <p>15 de janeiro de 2020</p>
-                </div>
-                <div class="edicao-number">
-                    <h1 style="padding: 30px;">123</h1>
-                </div>
-            </div>
-        </div>
 
-    </header>
+	<div class="container">
 
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-sm-12 col-md-12">
+		<div id="fullpage">
+			<div class="section active">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<header style=" height: 516.4px; border: 2px solid black;">
+							<h1 style=" font-size: 50px !important; text-align: center;">
+								DIÁRIO OFICIAL
+								<span style="display: block; font-size: 20px; font-weight: 100;">Estado do Maranhão</span>
+							</h1>
+							<div style="text-align: center;">
+								<img width="250" src="/img/jornal-bg.png" alt="">
 
-                    <div class="form-container">
-                        <form action="#">
-                            <div class="row">
-                                <div class="input-group">
-                                    <label style="display: block;" for="pesquisar">Pesquisar jornal</label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+							</div>
+						</header>
+					</div>
 
-        </div>
 
-        <div class="row clearfix">
-            <div class="col-sm-12 col-md-12">
-                <div class="col-sm-3 col-md-3">
-                    <div class="box-card">
-                        <div class="box-icon">
-                            <img src="/img/icons/sistema.svg" alt="">
-                        </div>
-                        <div class="box-text">
-                            <h6>Sistema</h6>
-                            <p>Acesse o sistema E-DOEMA
-                                clicanto neste link aqui agora rapaz
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3">
-                    <div class="box-card">
-                        <div class="box-icon">
-                            <img src="/img/icons/sistema.svg" alt="">
-                        </div>
-                        <div class="box-text"></div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3">
-                    <div class="box-card">
-                        <div class="box-icon">
-                            <img src="/img/icons/sistema.svg" alt="">
-                        </div>
-                        <div class="box-text"></div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3">
-                    <div class="box-card">
-                        <div class="box-icon">
-                            <img src="/img/icons/sistema.svg" alt="">
-                        </div>
-                        <div class="box-text"></div>
-                    </div>
-                </div>
-            </div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<form class="user" method="POST" action="/public/jornal/listar"
+									enctype="multipart/form-data">
 
-        </div>
-    </div>
+							<div class="row clearfix">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="card">
+										<div class="header">
+											Detalhes da pesquisa
+										</div>
+										<div class="body">
+											<div class="row clearfix">
+												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<div class="input-group input-group">
+														<span class="input-group-addon">
+															<i class="material-icons">person</i>
+														</span>
+														<div class="form-line">
+															<h6>TERMO DE CONSULTA: </h6>
+															<input
+																		 placeholder="Lei nº 341, Decreto nº 2332"
+																		 type="text"
+																		 class="form-control"
+																		 id="termoDiario"
+																		 name="termoDiario">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row clearfix">
+												<div class="col-sm-12 col-md-6">
+													<div class=" input-group">
+														<span class="input-group-addon">
+															<span class="material-icons">book</span>
+														</span>
+														<h6>JORNAL: </h6>
+														<select class="form-control show-tick">
+															<option value="">SELECIONE O JORNAL </option>
+															<option value="EXECUTIVO">EXECUTIVO</option>
+															<option value="TERCEIROS">TERCEIROS</option>
+															<option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO</option>
+															<option value="SUPLEMENTO_TERCEIROS">SUPLEMENTO TERCEIROS</option>
+															<option value="NULL">NÃO ESPECIFICAR</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row clearfix">
+												<div class="col-md-6">
+													<div class=" input-group">
+														<span class="input-group-addon">
+															<span class="material-icons">book</span>
+														</span>
 
-    <!-- Jquery Core Js -->
-    <script src="/js/plugins/jquery/jquery.min.js"></script>
+														<h6>ITERVALO: </h6>
+														<div class="form-line">
+															<input type="date" class="form-control" id="dataInicial" name="dataInicial">
+														</div>
 
-    <!-- Bootstrap Core Js -->
-    <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class=" input-group">
+														<span class="input-group-addon">
+															<span class="material-icons">book</span>
+														</span>
 
-    <!-- Select Plugin Js -->
-    <script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+														<h6>ITERVALO: </h6>
+														<div class="form-line">
+															<input type="date" class="form-control" id="dataFinal" name="dataFinal">
+														</div>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+													</div>
+												</div>
+											</div>
+										</div>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="/js/plugins/node-waves/waves.js"></script>
+									</div>
+									<!-- FIM DO CARD -->
+									<div class="row clearfix">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<button style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
+															style="width: 100%;"
+															type="submit" class="btn btn-biblioteca waves-effect">
+												<i class="material-icons">search</i>
+												<span>PESQUISAR</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
 
-    <!-- Morris Plugin Js -->
-    <script src="/js/plugins/raphael/raphael.min.js"></script>
-    <script src="/js/plugins/morrisjs/morris.js"></script>
+		</div>
+	</div>
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
 
-    <!-- ChartJs -->
-    <script src="/js/plugins/chartjs/Chart.bundle.js"></script>
+	<!-- FULL Page -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"
+					integrity="sha512-HqbDsHIJoZ36Csd7NMupWFxC7e7aX2qm213sX+hirN+yEx/eUNlZrTWPs1dUQDEW4fMVkerv1PfMohR1WdFFJQ=="
+					crossorigin="anonymous"></script>
 
-    <!-- Flot Charts Plugin Js -->
-    <script src="/js/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="/js/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="/js/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="/js/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="/js/plugins/flot-charts/jquery.flot.time.js"></script>
+	<script>
+		console.log('oi')
+		var myFullpage = new fullpage('#fullpage', {
+			//Navigation
+			menu: '#menu',
+			lockAnchors: false,
+			anchors: ['firstPage', 'secondPage'],
+			navigation: false,
+			navigationPosition: 'right',
+			navigationTooltips: ['firstSlide', 'secondSlide'],
+			showActiveTooltip: false,
+			slidesNavigation: false,
+			slidesNavPosition: 'bottom',
 
-    <!-- Momment JS for date-picker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+			//Scrolling
+			css3: true,
+			scrollingSpeed: 700,
+			autoScrolling: true,
+			fitToSection: true,
+			fitToSectionDelay: 1000,
+			scrollBar: false,
+			easing: 'easeInOutCubic',
+			easingcss3: 'ease',
+			loopBottom: false,
+			loopTop: false,
+			loopHorizontal: true,
+			continuousVertical: false,
+			continuousHorizontal: false,
+			scrollHorizontally: false,
+			interlockedSlides: false,
+			dragAndMove: false,
+			offsetSections: false,
+			resetSliders: false,
+			fadingEffect: false,
+			normalScrollElements: '#element1, .element2',
+			scrollOverflow: false,
+			scrollOverflowReset: false,
+			scrollOverflowOptions: null,
+			touchSensitivity: 15,
+			bigSectionsDestination: null,
 
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="/js/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+			//Accessibility
+			keyboardScrolling: true,
+			animateAnchor: true,
+			recordHistory: true,
 
-    <!-- Custom Js -->
-    <script src="/js/js/admin.js"></script>
-    <script src="/js/js/pages/index.js"></script>
-    <script src="/js/js/pages/ui/modals.js"></script>
+			//Design
+			controlArrows: true,
+			verticalCentered: true,
+			paddingTop: '3em',
+			paddingBottom: '10px',
+			fixedElements: '#header, .footer',
+			responsiveWidth: 0,
+			responsiveHeight: 0,
+			responsiveSlides: false,
+			parallax: false,
+			parallaxOptions: {
+				type: 'reveal',
+				percentage: 62,
+				property: 'translate'
+			},
+			dropEffect: false,
+			dropEffectOptions: {
+				speed: 2300,
+				color: '#F82F4D',
+				zIndex: 9999
+			},
+			cards: false,
+			cardsOptions: {
+				perspective: 100,
+				fadeContent: true,
+				fadeBackground: true
+			},
 
-    <!-- Demo Js -->
-    <script src="js/demo.js"></script>
-    <script src="js/jquery.mask.js"></script>
+			//Custom selectors
+			sectionSelector: '.section',
+			slideSelector: '.slide',
+
+			lazyLoading: true,
+
+			//events
+			onLeave: function (origin, destination, direction) {},
+			afterLoad: function (origin, destination, direction) {},
+			afterRender: function () {},
+			afterResize: function (width, height) {},
+			afterReBuild: function () {},
+			afterResponsive: function (isResponsive) {},
+			afterSlideLoad: function (section, origin, destination, direction) {},
+			onSlideLeave: function (section, origin, destination, direction) {}
+		});
+
+
+
+
+		window.onscroll(() => {
+			teste.style.display = 'block';
+		});
+
+		document.querySelectorAll('*').forEach(function (elem) {
+			elem.addEventListener('scroll', function () {
+				console.log(this);
+			});
+		});
+	</script>
+
+
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Select Plugin Js -->
+	<script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
+
+	<!-- Jquery CountTo Plugin Js -->
+	<script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+
+	<!-- Morris Plugin Js -->
+	<script src="/js/plugins/raphael/raphael.min.js"></script>
+	<script src="/js/plugins/morrisjs/morris.js"></script>
+
+	<!-- ChartJs -->
+	<script src="/js/plugins/chartjs/Chart.bundle.js"></script>
+
+	<!-- Flot Charts Plugin Js -->
+	<script src="/js/plugins/flot-charts/jquery.flot.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.resize.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.pie.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.categories.js"></script>
+	<script src="/js/plugins/flot-charts/jquery.flot.time.js"></script>
+
+	<!-- Momment JS for date-picker -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+	<!-- Sparkline Chart Plugin Js -->
+	<script src="/js/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+
+
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
+	<script src="/js/js/pages/index.js"></script>
+	<script src="/js/js/pages/ui/modals.js"></script>
+
+	<!-- Demo Js -->
+	<script src="js/demo.js"></script>
+	<script src="js/jquery.mask.js"></script>
 
 </body>
 

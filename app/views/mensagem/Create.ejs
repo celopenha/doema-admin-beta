@@ -14,7 +14,7 @@
 	</title>
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
-		type="text/css">
+				type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
 	<!-- Bootstrap Core Css -->
@@ -31,7 +31,7 @@
 
 	<!-- Bootstrap Material Datetime Picker Css -->
 	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-		rel="stylesheet" />
+				rel="stylesheet" />
 
 	<!-- Bootstrap DatePicker Css -->
 	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
@@ -51,200 +51,201 @@
 <body class="theme-teal">
 
 	<%- include ../template/topo.ejs %>
-		<%- include ../template/menu.ejs %>
-			<!-- Page Wrapper -->
-			<section class="content">
-				<div class="content-fluid">
-					<%- messages() %>
-						<div class="block-header">
-							<h2>Cadastrar Mensagem</h2>
-						</div>
-						<form class="user" id="frmFileUpload2" method="POST" action="/app/<%= page %>/create/submit" enctype="multipart/form-data">
-							<div class="row clearfix">
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="card">
-										<div class="header">
-											<h2>Informações da Mensagem</h2>
-										</div>
-										<div class="body">
-											<div class="row clearfix">
-												<div class="col-sm-4">
-													<div class="input-group">
-														<div class="form-line">
-															Título: *
-															<input type="text" class="form-control" id="titulo"
-																name="titulo" treatment="capitalize" required>
-														</div>
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<div class="input-group">
-														<div class="form-line">
-															Data de Expiração: *
-															<input type="date" class="form-control" id="dataExpiracao"
-																name="dataExpiracao">
-														</div>
-													</div>
-												</div>
+	<%- include ../template/menu.ejs %>
+	<!-- Page Wrapper -->
+	<section class="content">
+		<div class="content-fluid">
+			<%- messages() %>
+			<div class="block-header">
+				<h2>Cadastrar Mensagem</h2>
+			</div>
+			<form class="user" id="frmFileUpload2" method="POST" action="/app/<%= page %>/create/submit"
+						enctype="multipart/form-data">
+				<div class="row clearfix">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="card">
+							<div class="header">
+								<h2>Informações da Mensagem</h2>
+							</div>
+							<div class="body">
+								<div class="row clearfix">
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												Título: *
+												<input type="text" class="form-control" id="titulo"
+															 name="titulo" treatment="capitalize" required>
 											</div>
-											<div class="row clearfix">
-												<div class="col-sm-12">
-													<div class="input-group">
-														<div class="form-line">
-															Mensagem: *
-															<div class="dropzone"
-																style="background-color: #eee !important; padding: 10px;">
-																<div class="dz-message">
-																	<div class="drag-icon-cph">
-																		<i class="material-icons">touch_app</i>
-																	</div>
-																	<h3>Solte a imagem aqui ou clique para fazer o
-																		upload.</h3>
-																</div>
-																<div class="fallback">
-																	<input type="file" id="photo" name="photo"
-																		required />
-																</div>
-																<div class="previewImage">
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="footer-card">
-											<input type="submit" value="Salvar"
-												class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
-											<a href="/app/<%= page %>/list"
-												class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
 										</div>
 									</div>
-								</div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												Data de Expiração: *
+												<input type="date" class="form-control" id="dataExpiracao"
+															 name="dataExpiracao">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-12">
+										<div class="input-group">
+											<div class="form-line">
+												Mensagem: *
+												<div class="dropzone"
+														 style="background-color: #eee !important; padding: 10px;">
+													<div class="dz-message">
+														<div class="drag-icon-cph">
+															<i class="material-icons">touch_app</i>
+														</div>
+														<h3>Solte a imagem aqui ou clique para fazer o
+															upload.</h3>
+													</div>
+													<div class="fallback">
+														<input type="file" id="photo" name="photo"
+																	 required />
+													</div>
+													<div class="previewImage">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-						</form>
+							<div class="footer-card">
+								<input type="submit" value="Salvar"
+											 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
+								<a href="/app/<%= page %>/list"
+									 class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+							</div>
+						</div>
+					</div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				</div>
-			</section>
-			<!-- End of Page Wrapper -->
+			</form>
+		</div>
+	</section>
+	<!-- End of Page Wrapper -->
 
-			<!-- Logout Modal-->
-			<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">Select "Logout" below if you are ready to end your current session.
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-							<a class="btn btn-primary" href="login.html">Logout</a>
-						</div>
-					</div>
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			 aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current session.
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="login.html">Logout</a>
 				</div>
 			</div>
+		</div>
+	</div>
 
-			<!-- Jquery Core Js -->
-			<script src="/js/plugins/jquery/jquery.min.js"></script>
+	<!-- Jquery Core Js -->
+	<script src="/js/plugins/jquery/jquery.min.js"></script>
 
-			<!-- Bootstrap Core Js -->
-			<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+	<!-- Bootstrap Core Js -->
+	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
 
-			<!-- Select Plugin Js -->
-			<script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+	<!-- Select Plugin Js -->
+	<script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
-			<!-- Slimscroll Plugin Js -->
-			<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+	<!-- Slimscroll Plugin Js -->
+	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-			<!-- Waves Effect Plugin Js -->
-			<script src="/js/plugins/node-waves/waves.js"></script>
+	<!-- Waves Effect Plugin Js -->
+	<script src="/js/plugins/node-waves/waves.js"></script>
 
-			<!-- Autosize Plugin Js -->
-			<script src="/js/plugins/autosize/autosize.js"></script>
+	<!-- Autosize Plugin Js -->
+	<script src="/js/plugins/autosize/autosize.js"></script>
 
-			<!-- Moment Plugin Js -->
-			<script src="/js/plugins/momentjs/moment.js"></script>
+	<!-- Moment Plugin Js -->
+	<script src="/js/plugins/momentjs/moment.js"></script>
 
-			<!-- Dropzone Js -->
-			<script src="/js/plugins/dropzone/dropzone.js"></script>
+	<!-- Dropzone Js -->
+	<script src="/js/plugins/dropzone/dropzone.js"></script>
 
-			<!-- Bootstrap Material Datetime Picker Plugin Js -->
-			<script
-				src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+	<!-- Bootstrap Material Datetime Picker Plugin Js -->
+	<script
+					src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
-			<!-- Bootstrap Datepicker Plugin Js -->
-			<script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<!-- Bootstrap Datepicker Plugin Js -->
+	<script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
-			<!-- Custom Js -->
-			<script src="/js/js/admin.js"></script>
-			
-			<!-- Script Dropzone -->
-			<script>
-				Dropzone.autoDiscover = false;
-				$("#frmFileUpload2").dropzone({
-					url: '/app/<%= page %>/create/submit',
-					paramName: "photo",
-					autoProcessQueue: false,
-					uploadMultiple: false,
-					maxFiles: "1",
-					createImageThumbnails: true,
-					addRemoveLinks: true,
-					acceptedMimeTypes: "image/*",
-					previewsContainer: ".previewImage",
-					dictCancelUpload: "Cancelar Upload",
-					dictRemoveFile: "Remover Imagem",
-					accept: function (file, done) {
-						done(file.nome)
-					},
-					maxfilesexceeded: function (file) {
-						this.removeAllFiles();
-						this.addFile(file);
-					},
-					init: function () {
-						controle = false;
-						this.on("addedfile", function (file) {
-							$(".dz-message").hide();
-							controle = true;
-						})
+	<!-- Custom Js -->
+	<script src="/js/js/admin.js"></script>
 
-						this.on("removedfile", function (file) {
-							$(".dz-message").show();
-							controle = false;
-						})
-						var submitButton = $("#frmFileUpload2");
-						var wrapperThis = this;
+	<!-- Script Dropzone -->
+	<script>
+		Dropzone.autoDiscover = false;
+		$("#frmFileUpload2").dropzone({
+			url: '/app/<%= page %>/create/submit',
+			paramName: "photo",
+			autoProcessQueue: false,
+			uploadMultiple: false,
+			maxFiles: "1",
+			createImageThumbnails: true,
+			addRemoveLinks: true,
+			acceptedMimeTypes: "image/*",
+			previewsContainer: ".previewImage",
+			dictCancelUpload: "Cancelar Upload",
+			dictRemoveFile: "Remover Imagem",
+			accept: function (file, done) {
+				done(file.nome)
+			},
+			maxfilesexceeded: function (file) {
+				this.removeAllFiles();
+				this.addFile(file);
+			},
+			init: function () {
+				controle = false;
+				this.on("addedfile", function (file) {
+					$(".dz-message").hide();
+					controle = true;
+				})
 
-						submitButton.submit(function (e) {
-							if (controle == true) {
-								e.preventDefault();
-								e.stopPropagation();
-								wrapperThis.processQueue();
-							} else {
-								e.preventDefault();
-								e.stopPropagation();
-								alert("O campo imagem é obrigatório.");
-								$("#submit-all").attr('disabled', false);
-							}
-						});
+				this.on("removedfile", function (file) {
+					$(".dz-message").show();
+					controle = false;
+				})
+				var submitButton = $("#frmFileUpload2");
+				var wrapperThis = this;
 
-						//send all the form data along with the files:
-						this.on("sendingmultiple", function (data, xhr, formData) {
-							formData.append("titulo", $("#titulo").val());
-							formData.append("dataExpiração", $("#dataExpiracao").val());
-						});
-					},
-					success: function (file, response) {
-						window.location.replace('/app/mensagem/list');
-					},
-					error: function (file, response) {
-						window.location.replace('/app/mensagem/list');
+				submitButton.submit(function (e) {
+					if (controle == true) {
+						e.preventDefault();
+						e.stopPropagation();
+						wrapperThis.processQueue();
+					} else {
+						e.preventDefault();
+						e.stopPropagation();
+						alert("O campo imagem é obrigatório.");
+						$("#submit-all").attr('disabled', false);
 					}
 				});
-			</script>
+
+				//send all the form data along with the files:
+				this.on("sendingmultiple", function (data, xhr, formData) {
+					formData.append("titulo", $("#titulo").val());
+					formData.append("dataExpiração", $("#dataExpiracao").val());
+				});
+			},
+			success: function (file, response) {
+				window.location.replace('/app/mensagem/list');
+			},
+			error: function (file, response) {
+				window.location.replace('/app/mensagem/list');
+			}
+		});
+	</script>
 
 </body>
 

@@ -94,31 +94,98 @@
         <div id="preloader">
             <div class="inner">
                 <div class="front">
-                    <img src="/img/sdc-color.svg" w/>
+                    <img src="/img/sdc-color.svg" w />
                     <!-- HTML DA ANIMAÇÃO MUITO LOUCA DO SEU PRELOADER! -->
                     <div class="bolas">
-                       <div></div>
-                       <div></div>
-                       <div></div>                    
-                    </div>
-                </div> 
-            </div>
-        </div>
-        <!-- fim do preloader --> 
-
-        <div class="container-fluid">    
-            <div class="rowclearfix">
-                <div class="">
-                    <div class="card" style="padding: 15px;">
-                        <div class="header">
-                            <i class="material-icons" style="color: red;">today</i> <span style="font-weight: bold; font-size: 24px;">Feriados</span>
-                        </div>
-                        <div class="body">
-                            <div id="calendar"></div>
-                        </div>
-                        
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <!-- fim do preloader -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="">
+                        <div class="card" style="padding: 15px;">
+                            <div class="header">
+                                <i class="material-icons" style="color: red;">today</i> <span
+                                    style="font-weight: bold; font-size: 24px;">Feriados</span>
+                            </div>
+                            <div class="body">
+                                <div id="calendar"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="card">
+                        <!-- Page Heading -->
+                        <div class="header">
+                            <h2>Listagem de Mensagem</h2>
+                            <a href="/app/<%= page %>/create"
+                                style="float: right; margin-top: -20px; margin-right: 10px;" data-toggle-alt="tooltip"
+                                data-placement="bottom" title="Adicionar Feriado"
+                                data-original-title="Adicionar Feriado">
+                                <i class="material-icons" style="color: green;">add_circle</i>
+                            </a>
+                        </div>
+
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable"
+                                    id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Título</th>
+                                            <th>Data</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Título</th>
+                                            <th>Data</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="table_body">
+                                        <% for (var i = 0; i < itens.length; i++) { %>
+                                        <tr>
+                                            <td><%= itens[i].titulo %></td>
+                                            <td><%= itens[i].dia %></td>
+
+                                            <td>
+                                                <a href="/app/feriados/edit/<%= itens[i].id %>"
+                                                    data-toggle-alt="tooltip" data-placement="bottom"
+                                                    title="Editar Feriado" data-original-title="Editar Feriado">
+                                                    <i class="material-icons" style="color: orange;">edit</i>
+                                                </a>
+
+                                                <a href="#" data-toggle="modal" data-target="#logoutModal2"
+                                                    onclick="setaDadosModal('<%= itens[i].id %>')"
+                                                    data-toggle-alt="tooltip" data-placement="bottom"
+                                                    title="Deletar Feriado" data-original-title="Deletar Feriado">
+                                                    <i class="material-icons" style="color: red;">delete</i>
+                                                </a>
+                                            </td>
+
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -149,13 +216,42 @@
                     <div class="modal-footer">
                         <% if (informacoes.NivelUser == 'ADMIN') {%>
                         <div>
-                            <a href="/app/feriados/list" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style=" padding: 8px 25px; margin: 0 7px;">Lista de Feriados</a>                               
-                            <a id="edit" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style=" padding: 8px 25px; margin: 0 7px;">Editar</a>
+                            <a href="/app/feriados/list"
+                                class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
+                                style=" padding: 8px 25px; margin: 0 7px;">Lista de Feriados</a>
+                            <a id="edit" href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                style=" padding: 8px 25px; margin: 0 7px;">Editar</a>
                         </div>
                         <% } else { %>
-                            <input type="submit" value="Agendar" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" />
+                        <input type="submit" value="Agendar"
+                            class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" />
                         <% } %>
-                        <button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button" data-dismiss="modal">Cancelar</button>
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button"
+                            data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Atenção!</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="modalExemplo" method="post" action="/app/feriados/delete/">
+                    <input type="hidden" name="id" id="campo">
+                    <div class="modal-body">Você realmente deseja apagar este item?</div>
+                    <div class="modal-footer">
+                        <button class="d-none d-sm-inline-block btn btn-sm shadow-sm" type="button" data-dismiss="modal"
+                            style="background-color: #8A7D51; color: #fff;">Cancelar</button>
+                        <input type="submit" value="Excluir"
+                            class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" />
                     </div>
                 </form>
             </div>
@@ -227,7 +323,7 @@
                     $(this).draggable({
                         zIndex: 1070,
                         revert: true, // will cause the event to go back to its
-                        revertDuration: 0  //  original position after the drag
+                        revertDuration: 0 //  original position after the drag
                     })
                 })
             }
@@ -251,12 +347,12 @@
             //Inicializa o Calendario	
             $(document).ready(function () {
                 if ($(window).width() < 765) {
-                    for (var i = 0; i < eventosList.length; i++) { 
+                    for (var i = 0; i < eventosList.length; i++) {
                         eventosList[i].title = (eventosList[i].title);
                     }
                 }
                 $('#calendar').fullCalendar({
-                    defaultView: $(window).width() < 765 ? 'agendaDay':'month',
+                    defaultView: $(window).width() < 765 ? 'agendaDay' : 'month',
                     header: {
                         left: 'title',
                         center: '',
@@ -287,7 +383,7 @@
                             alert('Invalid');
                         }
                     },
-                    
+
                     // Mostrar eventos                                
                     events: eventosList,
 
@@ -300,10 +396,13 @@
                             feriadoId = event.id;
                             nomeFeriado = event.title2;
                             if (niveis == 'ADMIN') {
-                                $('#modalExemplo').attr('action', '/app/feriados/list/' + feriadoId)
-                                $('#edit').attr('href', '/app/feriados/edit/' + feriadoId)
+                                $('#modalExemplo').attr('action',
+                                    '/app/feriados/list/' + feriadoId)
+                                $('#edit').attr('href', '/app/feriados/edit/' +
+                                    feriadoId)
                             } else {
-                                $('#modalExemplo').attr('action', '/app/feriados/create/' + feriadoId)
+                                $('#modalExemplo').attr('action',
+                                    '/app/feriados/create/' + feriadoId)
                             }
                             $('#modalExemplo #title2').html(event.title2);
                             $('#modalExemplo #start').html(event.startModal);
@@ -316,8 +415,10 @@
                             type: "POST",
                             url: "/app/feriados/calendar/" + mes,
                             success: function (data) {
-                                $('#calendar').fullCalendar('removeEventSources');
-                                $('#calendar').fullCalendar('addEventSource', data.eventos );
+                                $('#calendar').fullCalendar(
+                                    'removeEventSources');
+                                $('#calendar').fullCalendar('addEventSource',
+                                    data.eventos);
                             }
                         })
                     }
@@ -325,6 +426,7 @@
                 })
             })
         })
+
         function montaMes(titulo) {
             if (titulo.includes('janeiro')) {
                 return '01';

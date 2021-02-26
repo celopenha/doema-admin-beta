@@ -15,13 +15,13 @@
 	<!-- Custom fonts for this template-->
 	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link
-		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-		rel="stylesheet">
+				href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+				rel="stylesheet">
 
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
-		type="text/css">
+				type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
 	<!-- Bootstrap Core Css -->
@@ -69,8 +69,10 @@
 						<div class="card">
 							<!-- Page Heading -->
 							<div class="header">
-								<h2>Listagem de Mensagem</h2>
-								<a href="/app/<%= page %>/create" style="float: right; margin-top: -20px; margin-right: 10px;" data-toggle-alt="tooltip" data-placement="bottom" title="Adicionar usuário" data-original-title="Adicionar mensagem">
+								<h1>Mensagens</h1>
+								<a href="/app/<%= page %>/create" style="float: right; margin-top: -20px; margin-right: 10px;"
+									 data-toggle-alt="tooltip" data-placement="bottom" title="Adicionar usuário"
+									 data-original-title="Adicionar mensagem">
 									<i class="material-icons" style="color: green;">add_circle</i>
 								</a>
 							</div>
@@ -78,8 +80,8 @@
 							<div class="body">
 								<div class="table-responsive">
 									<table
-										class="table table-bordered table-striped table-hover js-basic-example dataTable"
-										id="dataTable" width="100%" cellspacing="0">
+												 class="table table-bordered table-striped table-hover js-basic-example dataTable"
+												 id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
 												<th>Título</th>
@@ -99,26 +101,30 @@
 											<tr>
 												<td><%= itens[i].titulo %></td>
 												<td><%= itens[i].dataExpiracao %></td>
-	
+
 												<td>
-													<a href="/app/<%= page %>/view/<%=itens[i].id %>" data-toggle="modal" data-toggle-alt="tooltip"
-													data-placement="bottom" title="Visualizar Mensagem" data-original-title="Visualizar Mensagem">
+													<a href="/app/<%= page %>/view/<%=itens[i].id %>" data-toggle="modal"
+														 data-toggle-alt="tooltip"
+														 data-placement="bottom" title="Visualizar Mensagem"
+														 data-original-title="Visualizar Mensagem">
 														<i class="material-icons" style="color: rgb(25, 41, 133);">remove_red_eye</i>
 													</a>
-													<a href="/app/<%= page %>/edit/<%= itens[i].id %>" 
-														data-toggle-alt="tooltip" data-placement="bottom" title="Editar usuário" data-original-title="Editar usuário">
+													<a href="/app/<%= page %>/edit/<%= itens[i].id %>"
+														 data-toggle-alt="tooltip" data-placement="bottom" title="Editar usuário"
+														 data-original-title="Editar usuário">
 														<i class="material-icons" style="color: orange;">edit</i>
 													</a>
-	
+
 													<a href="#" data-toggle="modal" data-target="#logoutModal"
-														onclick="setaDadosModal('<%= itens[i].id %>')" data-toggle-alt="tooltip" data-placement="bottom" title="Deletar usuário" data-original-title="Deletar usuário">
+														 onclick="setaDadosModal('<%= itens[i].id %>')" data-toggle-alt="tooltip"
+														 data-placement="bottom" title="Deletar usuário" data-original-title="Deletar usuário">
 														<i class="material-icons" style="color: red;">delete</i>
-													</a>													
+													</a>
 												</td>
-	
+
 											</tr>
 											<% } %>
-										</tbody>	
+										</tbody>
 									</table>
 								</div>
 							</div>
@@ -137,7 +143,7 @@
 		</section>
 		<!-- End of Main Content -->
 
-		
+
 
 	</div>
 	<!-- End of Page Wrapper -->
@@ -149,7 +155,7 @@
 
 	<!-- Logout Modal-->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
+			 aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -163,9 +169,9 @@
 					<div class="modal-body">Você realmente deseja apagar este item?</div>
 					<div class="modal-footer">
 						<button class="d-none d-sm-inline-block btn btn-sm shadow-sm" type="button" data-dismiss="modal"
-							style="background-color: #8A7D51; color: #fff;">Cancelar</button>
+										style="background-color: #8A7D51; color: #fff;">Cancelar</button>
 						<input type="submit" value="Excluir"
-							class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" />
+									 class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" />
 					</div>
 				</form>
 			</div>
