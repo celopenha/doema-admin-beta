@@ -15,4 +15,21 @@ module.exports = async (app) => {
 
 		res.render('public/JornalList');
 	});
+
+
+	app.post('/public/biblioteca/listar', (req, res) => {
+
+		console.log(req.body);
+
+		res.format({
+			html: function () {
+				res.render(rota + '/Create', {
+					page: rota,
+					informacoes: req.session.json
+				});
+			}
+		});
+	});
+
+
 }

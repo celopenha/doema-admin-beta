@@ -20,55 +20,41 @@
 	<link href="/vendor/fontawesome-free/css/all.min.css"
 				rel="stylesheet"
 				type="text/css">
-	<link
-				href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 				rel="stylesheet">
 
 	<!-- Google Fonts -->
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext"
-				rel="stylesheet"
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
 				type="text/css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-				rel="stylesheet"
-				type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
 	<!-- Bootstrap Core Css -->
-	<link href="/js/plugins/bootstrap/css/bootstrap.css"
-				rel="stylesheet">
+	<link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 	<!-- Waves Effect Css -->
-	<link href="/js/plugins/node-waves/waves.css"
-				rel="stylesheet" />
+	<link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
 
 	<!-- Animation Css -->
-	<link href="/js/plugins/animate-css/animate.css"
-				rel="stylesheet" />
+	<link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
 
 	<!-- Dropzone Css -->
-	<link href="/js/plugins/dropzone/dropzone.css"
-				rel="stylesheet">
+	<link href="/js/plugins/dropzone/dropzone.css" rel="stylesheet">
 
 
 	<!-- Bootstrap DatePicker Css -->
-	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css"
-				rel="stylesheet" />
+	<link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
 
 	<!-- Wait Me Css -->
-	<link href="/js/plugins/waitme/waitMe.css"
-				rel="stylesheet" />
+	<link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
 
 	<!-- Bootstrap Select Css -->
-	<link href="/js/plugins/bootstrap-select/css/bootstrap-select.css"
-				rel="stylesheet" />
+	<link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
 	<!-- Custom Css -->
-	<link href="/css/css/style.css"
-				rel="stylesheet">
-	<link rel="stylesheet"
-				href="/css/css/style2.css">
-	<link href="/css/css/themes/all-themes.css"
-				rel="stylesheet" />
+	<link href="/css/css/style.css" rel="stylesheet">
+
+	<link href="/css/css/themes/all-themes.css" rel="stylesheet" />
 
 	<!-- Bootstrap Material Datetime Picker Css -->
 	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
@@ -104,126 +90,116 @@
 <%- include ../template/topo-public.ejs %>
 
 <body>
-
-
-
 	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<header style=" height: 516.4px; border: 2px solid black;">
+					<h1 style=" font-size: 50px !important; text-align: center;">
+						DIÁRIO OFICIAL
+						<span style="display: block; font-size: 20px; font-weight: 100;">Estado do Maranhão</span>
+					</h1>
+					<div style="text-align: center;">
+						<img width="250" src="/img/jornal-bg.png" alt="">
 
-		<div id="fullpage">
-			<div class="section active">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<header style=" height: 516.4px; border: 2px solid black;">
-							<h1 style=" font-size: 50px !important; text-align: center;">
-								DIÁRIO OFICIAL
-								<span style="display: block; font-size: 20px; font-weight: 100;">Estado do Maranhão</span>
-							</h1>
-							<div style="text-align: center;">
-								<img width="250" src="/img/jornal-bg.png" alt="">
-
-							</div>
-						</header>
 					</div>
-
-
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<form class="user" method="POST" action="/public/jornal/listar"
-									enctype="multipart/form-data">
-
-							<div class="row clearfix">
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="card">
-										<div class="header">
-											Detalhes da pesquisa
-										</div>
-										<div class="body">
-											<div class="row clearfix">
-												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-													<div class="input-group input-group">
-														<span class="input-group-addon">
-															<i class="material-icons">person</i>
-														</span>
-														<div class="form-line">
-															<h6>TERMO DE CONSULTA: </h6>
-															<input
-																		 placeholder="Lei nº 341, Decreto nº 2332"
-																		 type="text"
-																		 class="form-control"
-																		 id="termoDiario"
-																		 name="termoDiario">
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="row clearfix">
-												<div class="col-sm-12 col-md-6">
-													<div class=" input-group">
-														<span class="input-group-addon">
-															<span class="material-icons">book</span>
-														</span>
-														<h6>JORNAL: </h6>
-														<select class="form-control show-tick">
-															<option value="">SELECIONE O JORNAL </option>
-															<option value="EXECUTIVO">EXECUTIVO</option>
-															<option value="TERCEIROS">TERCEIROS</option>
-															<option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO</option>
-															<option value="SUPLEMENTO_TERCEIROS">SUPLEMENTO TERCEIROS</option>
-															<option value="NULL">NÃO ESPECIFICAR</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<div class="row clearfix">
-												<div class="col-md-6">
-													<div class=" input-group">
-														<span class="input-group-addon">
-															<span class="material-icons">book</span>
-														</span>
-
-														<h6>ITERVALO: </h6>
-														<div class="form-line">
-															<input type="date" class="form-control" id="dataInicial" name="dataInicial">
-														</div>
-
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class=" input-group">
-														<span class="input-group-addon">
-															<span class="material-icons">book</span>
-														</span>
-
-														<h6>ITERVALO: </h6>
-														<div class="form-line">
-															<input type="date" class="form-control" id="dataFinal" name="dataFinal">
-														</div>
-
-													</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-									<!-- FIM DO CARD -->
+				</header>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<form class="user" method="POST" action="/public/jornal/listar"
+							enctype="multipart/form-data">
+					<div class="row clearfix">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="card">
+								<div class="header">
+									Detalhes da pesquisa
+								</div>
+								<div class="body">
 									<div class="row clearfix">
 										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-											<button style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
-															style="width: 100%;"
-															type="submit" class="btn btn-biblioteca waves-effect">
-												<i class="material-icons">search</i>
-												<span>PESQUISAR</span>
-											</button>
+											<div class="input-group input-group">
+												<span class="input-group-addon">
+													<i class="material-icons">person</i>
+												</span>
+												<div class="form-line">
+													<h6>TERMO DE CONSULTA: </h6>
+													<input
+																 placeholder="Lei nº 341, Decreto nº 2332"
+																 type="text"
+																 class="form-control"
+																 id="termoDiario"
+																 name="termoDiario">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-sm-12 col-md-6">
+											<div class=" input-group">
+												<span class="input-group-addon">
+													<span class="material-icons">book</span>
+												</span>
+												<h6>JORNAL: </h6>
+												<select class="form-control show-tick">
+													<option value="">SELECIONE O JORNAL </option>
+													<option value="EXECUTIVO">EXECUTIVO</option>
+													<option value="TERCEIROS">TERCEIROS</option>
+													<option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO</option>
+													<option value="SUPLEMENTO_TERCEIROS">SUPLEMENTO TERCEIROS</option>
+													<option value="NULL">NÃO ESPECIFICAR</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-6">
+											<div class=" input-group">
+												<span class="input-group-addon">
+													<span class="material-icons">book</span>
+												</span>
+
+												<h6>ITERVALO: </h6>
+												<div class="form-line">
+													<input type="date" class="form-control" id="dataInicial" name="dataInicial">
+												</div>
+
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class=" input-group">
+												<span class="input-group-addon">
+													<span class="material-icons">book</span>
+												</span>
+
+												<h6>ITERVALO: </h6>
+												<div class="form-line">
+													<input type="date" class="form-control" id="dataFinal" name="dataFinal">
+												</div>
+
+											</div>
 										</div>
 									</div>
 								</div>
+
 							</div>
-						</form>
+							<!-- FIM DO CARD -->
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<button style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
+													style="width: 100%;"
+													type="submit" class="btn btn-biblioteca waves-effect">
+										<i class="material-icons">search</i>
+										<span>PESQUISAR</span>
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
-
-
 		</div>
+
+
+
 	</div>
 	<!-- Jquery Core Js -->
 	<script src="/js/plugins/jquery/jquery.min.js"></script>
@@ -322,19 +298,6 @@
 			afterResponsive: function (isResponsive) {},
 			afterSlideLoad: function (section, origin, destination, direction) {},
 			onSlideLeave: function (section, origin, destination, direction) {}
-		});
-
-
-
-
-		window.onscroll(() => {
-			teste.style.display = 'block';
-		});
-
-		document.querySelectorAll('*').forEach(function (elem) {
-			elem.addEventListener('scroll', function () {
-				console.log(this);
-			});
 		});
 	</script>
 
