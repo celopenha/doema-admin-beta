@@ -1,32 +1,41 @@
+<style>
+	.user-info {
+		background-image: linear-gradient(to right, #4465f5, #f45c431c), url(/img/palacio-bg.png) no-repeat no-repeat !important;
+	}
+
+	.material-icons {
+		color: #4465f5;
+	}
+</style>
+
 <section>
 	<!-- Left Sidebar -->
 	<aside id="leftsidebar" class="sidebar">
 		<!-- User Info -->
-		<div class="user-info" style="background: url('/img/palacio-bg.png') no-repeat no-repeat;">			
+		<div class="user-info">			
 			<div class="info-container">
 				<div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= informacoes.NomeUser%></div>
 			    <div class="email"><%= informacoes.EmailUser %></div>
-				TESTE
 				<div class="btn-group user-helper-dropdown">
 					<i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
 					<ul class="dropdown-menu pull-right">
 						<li>
 							<a href="/app/usuario/Perfil">
-								<i class="material-icons" style="color: red;">assignment_ind</i>
+								<i class="material-icons" style="color: #4465f5;">assignment_ind</i>
 								Perfil
 							</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
 							<a href="/app/usuario/Alterar-Senha">
-								<i class="material-icons" style="color: red;">vpn_key</i>
+								<i class="material-icons" style="color: #4465f5;">vpn_key</i>
 								Alterar Senha
 							</a>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
 							<a href="/app/sair">
-								<i class="material-icons" style="color: red;">input</i>
+								<i class="material-icons" style="color: #4465f5;">input</i>
 								Sair
 							</a>
 						</li>
@@ -42,13 +51,13 @@
 				
 				<li>
 					<a href="#">
-						<i class="material-icons" style="color: red;">book</i>
+						<i class="material-icons" style="color: #4465f5;">book</i>
 						<span>Diários</span>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<i class="material-icons" style="color: red;">history</i>
+						<i class="material-icons" style="color: #4465f5;">history</i>
 						<span>Logs</span>
 					</a>
 				</li>
@@ -66,9 +75,6 @@
 					<div class="version">
 						<b>Versão: </b> 1.0.0
 					</div>
-				</div>
-				<div class="col-sm-7">
-					<img src="/img/maranhao.png" width="120">
 				</div>
 			</div>
 		</div>
