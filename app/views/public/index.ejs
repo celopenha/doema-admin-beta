@@ -3,30 +3,22 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible"
-				content="IE=edge">
-	<meta name="viewport"
-				content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description"
-				content="">
-	<meta name="author"
-				content="">
-	<link rel="icon"
-				href="/img/sdc-color.svg"
-				type="image/x-icon">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
 	<title><%- process.env.TITLE %></title>
 
 	<!-- Custom fonts for this template-->
-	<link href="/vendor/fontawesome-free/css/all.min.css"
-				rel="stylesheet"
-				type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-				rel="stylesheet">
-
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
 	<!-- Google Fonts -->
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
-				type="text/css">
+		type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
 	<!-- Bootstrap Core Css -->
@@ -58,32 +50,16 @@
 
 	<!-- Bootstrap Material Datetime Picker Css -->
 	<link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-				rel="stylesheet" />
+		rel="stylesheet" />
 
 	<style>
 		* {
 
 			box-sizing: border-box;
+
 		}
 
-		header h1 spanc {
-			font-size: 72px;
-			background: -webkit-linear-gradient(#4345f4, #43abf4);
-
-			font-weight: 900;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-		}
-
-		section .main {
-			height: 100vh;
-			background-color: aquamarine !important;
-		}
-
-		section .main--2 {
-			height: 100vh;
-			background-color: rgb(21, 29, 26) !important;
-		}
+		body {}
 	</style>
 </head>
 
@@ -91,56 +67,58 @@
 
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<header style=" height: 516.4px; border: 2px solid black;">
-					<h1 style=" font-size: 50px !important; text-align: center;">
-						DIÁRIO OFICIAL
-						<span style="display: block; font-size: 20px; font-weight: 100;">Estado do Maranhão</span>
-					</h1>
-					<div style="text-align: center;">
-						<img width="250" src="/img/jornal-bg.png" alt="">
-
-					</div>
-				</header>
+		<% if (locals.mensagem) { %>
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">COMUNICADO</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<form class="user" method="POST" action="/public/jornal/listar"
-							enctype="multipart/form-data">
+			<div class="modal-body">
+				<div class="row">
+					<!-- <img width="600" height="600" src="data:image/png;base64,  " /> -->
+					<img width="600" height="600" src="data:image/png;base64;svg;jpg;jpeg, <%= mensagem.base64Img%>" />
+
+				</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm" type="button"
+					data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+		<% } %>
+
+
+		<div class="row">
+
+			<div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+				<div style="text-align: center;">
+					<img width="250" src="/img/jornal-bg.png" alt="">
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+				<form class="user" method="POST" action="/public/jornal/listar" enctype="multipart/form-data">
 					<div class="row clearfix">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="card">
-								<div class="header">
-									Detalhes da pesquisa
+							<div style="padding: 0px;" class="card">
+								<div class="body">
+									<h4>Consulte no DOEMA</h4>
 								</div>
+							</div>
+							<div class="card">
 								<div class="body">
 									<div class="row clearfix">
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-											<div class="input-group input-group">
-												<span class="input-group-addon">
-													<i class="material-icons">person</i>
-												</span>
-												<div class="form-line">
-													<h6>TERMO DE CONSULTA: </h6>
-													<input
-																 placeholder="Lei nº 341, Decreto nº 2332"
-																 type="text"
-																 class="form-control"
-																 id="termoDiario"
-																 name="termoDiario">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="row clearfix">
-										<div class="col-sm-12 col-md-6">
+										<div class="col-sm-12 col-md-12">
+											<div class="card-inside-title">Tipo de Jornal </div>
 											<div class=" input-group">
 												<span class="input-group-addon">
 													<span class="material-icons">book</span>
 												</span>
-												<h6>JORNAL: </h6>
 												<select class="form-control show-tick">
-													<option value="">SELECIONE O JORNAL </option>
+													<option value="">SELECIONE O JORNAL &rarr; </option>
 													<option value="EXECUTIVO">EXECUTIVO</option>
 													<option value="TERCEIROS">TERCEIROS</option>
 													<option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO</option>
@@ -151,26 +129,42 @@
 										</div>
 									</div>
 									<div class="row clearfix">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<div class="card-inside-title">Termo de Pesquisa</div>
+											<div class="input-group">
+												<span class="input-group-addon">
+													<i class="material-icons">manage_search
+													</i>
+												</span>
+												<div class="form-line">
+													<input type="text" class="form-control date" name="termoPesquisa"
+														placeholder="Lei nº 321, Nome, Secretaria, órgão">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row clearfix">
+										<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+											<div class="card-inside-title">Período da Publicação</div>
+										</div>
 										<div class="col-md-6">
+											<div class="card-inside-title">Data Inicial</div>
 											<div class=" input-group">
 												<span class="input-group-addon">
 													<span class="material-icons">book</span>
 												</span>
-
-												<h6>ITERVALO: </h6>
 												<div class="form-line">
 													<input type="date" class="form-control" id="dataInicial" name="dataInicial">
 												</div>
-
 											</div>
 										</div>
 										<div class="col-md-6">
+											<div class="card-inside-title">Data Final</div>
 											<div class=" input-group">
 												<span class="input-group-addon">
 													<span class="material-icons">book</span>
 												</span>
-
-												<h6>ITERVALO: </h6>
 												<div class="form-line">
 													<input type="date" class="form-control" id="dataFinal" name="dataFinal">
 												</div>
@@ -184,9 +178,9 @@
 							<!-- FIM DO CARD -->
 							<div class="row clearfix">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<button style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
-													style="width: 100%;"
-													type="submit" class="btn btn-biblioteca waves-effect">
+									<button
+										style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
+										style="width: 100%;" type="submit" class="btn btn-biblioteca waves-effect">
 										<i class="material-icons">search</i>
 										<span>PESQUISAR</span>
 									</button>
@@ -198,108 +192,68 @@
 			</div>
 		</div>
 
+		<div style="margin-bottom: 120px;margin-top: 30px;" id="demaisServicos" class="card shadow-sm">
+			<div class="card-body">
+
+				<!--Outros serviços-->
+				<div class="row">
+					<a class="col-sm-12 col-md-4" href="http://www.jucesponline.sp.gov.br/" target="_blank">
+
+						<h5><i class="fa fa-file-contract fa-2x float-left pr-2"></i>&nbsp;Junta Comercial</h5>
+						<br>
+						<p>Consulta de empresas registradas na Jucesp</p>
+					</a>
+					<br>
+					<a class="col-sm-12 col-md-4" href="ENegocios/BoletimNPAssinatura_15_1.aspx">
+
+						<h5><i class="fa fa-gavel fa-2x float-left pr-2"></i>&nbsp;e-negocios.informa</h5>
+						<p>Recebimento antecipado das licitações</p>
+					</a>
+					<br>
+					<a class="col-sm-12 col-md-4" href="DO/BoletimDOAssinatura_16_1.aspx">
+
+						<h5><i class="fa fa-newspaper fa-2x float-left pr-2"></i>&nbsp;DO.informa</h5>
+						<br>
+						<p>Recebimento antecipado das publicações</p>
+					</a>
+					<br>
+				</div>
+				<br>
+				<div class="row">
+					<a class="col-sm-12 col-md-4" href="/downloads/pdf/cci.pdf" target="_blank">
+
+
+
+						<h5><i class="fa fa-book fa-2x float-left pr-2"></i>&nbsp;Código de conduta e integridade</h5>
+						<br>
+						<p>Orientação dos negócios e relacionamentos</p>
+
+					</a>
+					<br>
+					<a href="https://pubnet.imprensaoficial.com.br/" target="_blank" class="col-sm-12 col-md-4">
+
+						<h5><i class="fa fa-upload fa-2x float-left pr-2"></i>&nbsp;Pubnet</h5>
+						<br>
+						<p>Publicação de matérias e licitações</p>
+					</a>
+					<br>
+					<a href="/DO/DetalhesDO_2_5.aspx" class="col-sm-12 col-md-4">
+
+						<h5><i class="fa fa-balance-scale fa-2x float-left pr-2"></i>&nbsp;Publicidade legal</h5>
+						<br>
+						<p>Quem e como deve publicar</p>
+					</a>
+					<br>
+				</div>
+
+			</div>
+		</div>
 
 
 	</div>
 	<!-- Jquery Core Js -->
 	<script src="/js/plugins/jquery/jquery.min.js"></script>
 
-	<!-- FULL Page -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"
-					integrity="sha512-HqbDsHIJoZ36Csd7NMupWFxC7e7aX2qm213sX+hirN+yEx/eUNlZrTWPs1dUQDEW4fMVkerv1PfMohR1WdFFJQ=="
-					crossorigin="anonymous"></script>
-
-	<script>
-		console.log('oi')
-		var myFullpage = new fullpage('#fullpage', {
-			//Navigation
-			menu: '#menu',
-			lockAnchors: false,
-			anchors: ['firstPage', 'secondPage'],
-			navigation: false,
-			navigationPosition: 'right',
-			navigationTooltips: ['firstSlide', 'secondSlide'],
-			showActiveTooltip: false,
-			slidesNavigation: false,
-			slidesNavPosition: 'bottom',
-
-			//Scrolling
-			css3: true,
-			scrollingSpeed: 700,
-			autoScrolling: true,
-			fitToSection: true,
-			fitToSectionDelay: 1000,
-			scrollBar: false,
-			easing: 'easeInOutCubic',
-			easingcss3: 'ease',
-			loopBottom: false,
-			loopTop: false,
-			loopHorizontal: true,
-			continuousVertical: false,
-			continuousHorizontal: false,
-			scrollHorizontally: false,
-			interlockedSlides: false,
-			dragAndMove: false,
-			offsetSections: false,
-			resetSliders: false,
-			fadingEffect: false,
-			normalScrollElements: '#element1, .element2',
-			scrollOverflow: false,
-			scrollOverflowReset: false,
-			scrollOverflowOptions: null,
-			touchSensitivity: 15,
-			bigSectionsDestination: null,
-
-			//Accessibility
-			keyboardScrolling: true,
-			animateAnchor: true,
-			recordHistory: true,
-
-			//Design
-			controlArrows: true,
-			verticalCentered: true,
-			paddingTop: '3em',
-			paddingBottom: '10px',
-			fixedElements: '#header, .footer',
-			responsiveWidth: 0,
-			responsiveHeight: 0,
-			responsiveSlides: false,
-			parallax: false,
-			parallaxOptions: {
-				type: 'reveal',
-				percentage: 62,
-				property: 'translate'
-			},
-			dropEffect: false,
-			dropEffectOptions: {
-				speed: 2300,
-				color: '#F82F4D',
-				zIndex: 9999
-			},
-			cards: false,
-			cardsOptions: {
-				perspective: 100,
-				fadeContent: true,
-				fadeBackground: true
-			},
-
-			//Custom selectors
-			sectionSelector: '.section',
-			slideSelector: '.slide',
-
-			lazyLoading: true,
-
-			//events
-			onLeave: function (origin, destination, direction) {},
-			afterLoad: function (origin, destination, direction) {},
-			afterRender: function () {},
-			afterResize: function (width, height) {},
-			afterReBuild: function () {},
-			afterResponsive: function (isResponsive) {},
-			afterSlideLoad: function (section, origin, destination, direction) {},
-			onSlideLeave: function (section, origin, destination, direction) {}
-		});
-	</script>
 
 
 	<!-- Bootstrap Core Js -->
@@ -347,7 +301,7 @@
 	<script src="/js/js/pages/ui/modals.js"></script>
 
 	<!-- Demo Js -->
-	<script src="js/demo.js"></script>
+	<script src="js/js/demo.js"></script>
 	<script src="js/jquery.mask.js"></script>
 
 </body>
