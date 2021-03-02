@@ -7,6 +7,7 @@ const rota = require('path').basename(__filename, '.js');
 const fs = require('fs');
 var multer = require('multer');
 var upload = multer();
+var S = require('string');
 var moment = require('moment');
 let nivel;
 let lista = [];
@@ -15,10 +16,13 @@ let imagem;
 let finallista = {};
 let json = {};
 let teste;
-//const Array = require('array');
-//export const list2 = "teste";
+
 
 module.exports = async function (app) {
+
+    let dataAtual = new Date();
+    dataAtual = moment(dataAtual).toDate();
+    dataAtual = moment(dataAtual).format("DD/MM/YYYY");
 
     app.use(cookieParser());
     app.use(session({ secret: "2C44-4D44-WppQ38S" }));
@@ -39,14 +43,20 @@ module.exports = async function (app) {
                     "Authorization": req.session.token
                 },
             }, function (error, response, body) {
+
+                function convertCase(str) {
+                    str = S(str).replaceAll('_', ' ');
+                    return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+                }
+
                 lista = [];
                 for (var i = 0; i < Object.keys(body.data).length; i++) {
                     const finallista = {
                         id: body.data[i].id,
-                        caderno: body.data[i].caderno,
+                        caderno: convertCase(body.data[i].caderno),
                         data: body.data[i].data,
                         nome: body.data[i].nome,
-                        pesquisa: body.data[i].pesquisa
+                        pesquisa: convertCase(body.data[i].pesquisa)
                     };
                     lista.push(finallista);
                 }
@@ -68,7 +78,6 @@ module.exports = async function (app) {
 
     // Rota para exibição da View Criar
     app.get('/app/' + rota + '/create/', function (req, res) {
-
         res.format({
             html: function () {
                 res.render(rota + '/Create', { page: rota, informacoes: req.session.json, dataAtual: dataAtual });
@@ -79,22 +88,6 @@ module.exports = async function (app) {
 
     // Rota para receber parametros via post criar item
     app.post('/app/' + rota + '/create/submit', upload.single('photo'), function (req, res) {
-
-        let dataAtual = new Date();
-        dataAtual = moment(dataAtual).toDate();
-        dataAtual = moment(dataAtual).format("DD/MM/YYYY");
-
-        json = {
-            "caderno": req.body.caderno,
-            "cpf": req.body.cpf,
-            "data": req.body.dataAtual,
-            "email": req.body.email,
-            "nome": req.body.nome,
-            "pesquisa": req.body.pesquisa,
-            "termo": req.body.termo
-        }
-
-        console.log(json)
 
         request({
             url: process.env.API_HOST + rota,
@@ -107,7 +100,7 @@ module.exports = async function (app) {
             json: {
                 "caderno": req.body.caderno,
                 "cpf": req.body.cpf,
-                "data": req.body.dataAtual,
+                "data": dataAtual,
                 "email": req.body.email,
                 "nome": req.body.nome,
                 "pesquisa": req.body.pesquisa,
@@ -116,11 +109,11 @@ module.exports = async function (app) {
         }, function (error, response, body) {
 
             if (response.statusCode != 200) {
-                //req.flash("danger", "Não foi possível criar usuário. " + body.errors);
+                req.flash("danger", "Não foi possível realizar o requerimento. " + body.errors);
             } else {
-                //req.flash("success", "Mensagem cadastrada com sucesso.");
+                req.flash("success", "Cadastro feito com sucesso.");
             }
-        
+
             res.redirect('/app/' + rota + '/list');
             return true;
         });
