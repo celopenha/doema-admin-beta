@@ -1,8 +1,9 @@
 <!-- Sidebar -->
-<% if (informacoes.NivelUser != "ADMIN") { %>
+<% if (informacoes.NivelUser == "COORDENADOR") { %>
 <%- include menu-coordenador.ejs %>
-<% }  if(informacoes.NivelUser == "ADMIN") { %>
-
+<% }if (informacoes.NivelUser == "BIBLIOTECA") { %>
+<%- include menu-biblioteca.ejs %>
+<% }if(informacoes.NivelUser == "ADMIN") { %>
 <style>
 	.user-info {
 		background-image: linear-gradient(to right, #4465f5, #f45c431c), url(/img/palacio-bg.png) no-repeat no-repeat !important;
@@ -78,7 +79,7 @@
 
 				<li>
 					<a href="/app/biblioteca/list">
-						<i class="material-icons">bookmarks</i>
+						<i class="material-icons">menu_book</i>
 						<span>Biblioteca</span>
 					</a>
 				</li>

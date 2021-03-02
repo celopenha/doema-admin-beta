@@ -57,9 +57,8 @@
 
 	<section class="content">
 		<div class="content-fluid">
-			<%- messages() %>
 			<div class="block-header">
-				<h2>Editar usuário</h2>
+				<h2>Informações do Requerimento</h2>
 			</div>
 			<form class="user" id="frmFileUpload2" method="POST" action="/app/<%= page %>/edit/submit"
 				enctype="multipart/form-data">
@@ -74,58 +73,114 @@
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Título: *
-												<input type="text" class="form-control" id="titulo" name="titulo"
-													treatment="capitalize" value="<%= titulo %>">
+												NOME:
+												<input type="text" class="form-control" id="nome" name="nome"
+													treatment="capitalize" value="<%= nome %>">
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Data de Expiração: *
-												<input type="date" class="form-control" id="dataExpiracao"
-													name="dataExpiracao" value="<%= dataExpiracao %>">
+												CPF:
+												<input type="text" class="form-control" id="cpf"
+												name="cpf" value="<%= cpf %>" disabled>
+												<input type="hidden" class="form-control" id="cpf"
+												name="cpf" value="<%= cpf %>">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="input-group">
+											<div class="form-line">
+												E-MAIL:
+												<input type="email" class="form-control" id="email"
+												name="email" value="<%= email %>">
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="row clearfix">
-									<div class="col-sm-12">
+									<div class="col-sm-4">
+										<div class="input-group">
+											JORNAL:
+											<select class="form-control show-tick" name="caderno" id="caderno" disabled>
+												<option value="" disabled selected hidden>Selecione uma
+													opção
+												</option>
+												<option value="EXECUTIVO" <%= caderno =='EXECUTIVO'
+													? 'selected' : '' %>>Executivo</option>
+												<option value="TERCEIROS" <%= caderno =='TERCEIROS'
+													? 'selected' : '' %>>Terceiros
+												</option>
+												<option value="SUPLEMENTO_TERCEIROS" <%= caderno =='SUPLEMENTO_TERCEIROSS'
+													? 'selected' : '' %>>Suplemento Terceiros
+												</option>
+												<option value="SUPLEMENTO_EXECUTIVO" <%= caderno =='SUPLEMENTO_EXECUTIVO'
+													? 'selected' : '' %>>Suplemento Executivo
+												</option>
+											</select>
+										</div>
+										<input type="hidden" id="caderno" name="caderno" value="<%= caderno %>">
+									</div>
+
+									<div class="col-sm-4">
+										<div class="input-group">
+											TIPO DE PESQUISA:
+											<select class="form-control show-tick" name="pesquisa" id="pesquisa" disabled>
+												<option value="" disabled selected hidden>Selecione uma
+													opção
+												</option>
+												<option value="NOMEACAO" <%= pesquisa =='NOMEACAO'
+													? 'selected' : '' %>>Nomeação</option>
+												<option value="EXONERACAO" <%= pesquisa =='EXONERACAO'
+													? 'selected' : '' %>>Exoneração
+												</option>
+												<option value="APOSENTADORIA" <%= pesquisa =='APOSENTADORIA'
+													? 'selected' : '' %>>Aposentadoria
+												</option>
+												<option value="REFORMA" <%= pesquisa =='REFORMA'
+													? 'selected' : '' %>>Reforma
+												</option>
+												<option value="EXCLUSAO" <%= pesquisa =='EXCLUSAO'
+													? 'selected' : '' %>>Exclusão
+												</option>
+												<option value="LEI" <%= pesquisa =='LEI'
+													? 'selected' : '' %>>Lei
+												</option>
+												<option value="DECRETO" <%= pesquisa =='DECRETO'
+													? 'selected' : '' %>>Decreto
+												</option>
+												<option value="PORTARIA" <%= pesquisa =='PORTARIA'
+													? 'selected' : '' %>>Portaria
+												</option>
+											</select>
+										</div>
+										<input type="hidden" id="pesquisa" name="pesquisa" value="<%= pesquisa %>">
+									</div>
+									<div class="col-sm-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                TERMOS DE BUSCA:
+                                                <textarea rows="1" class="form-control no-resize" maxlength="1000" placeholder="Informe mais detalhes para tornar a busca mais rápida..." id="termo" name="termo" disabled><%= termo %></textarea>
+                                            </div>
+											<input type="hidden" class="form-control" id="termo" name="termo" value="<%= termo %>">
+                                        </div>
+                                    </div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-4">
 										<div class="input-group">
 											<div class="form-line">
-												Mensagem: *
-												<div class="dropzone"
-													style="background-color: #eee !important; padding: 10px;">
-													<div class="imageSelected"
-														style="position: absolute; margin-top: 7px;">
-														<div class="dz-preview dz-image-preview">
-															<div class="dz-image"
-																style="width: auto; max-width: 225px;">
-																<img data-dz-thumbnail="" alt="IMG_6251.PNG"
-																	src="data:image/png;base64, <%= mensagem %>"
-																	style="height: 100%;">
-															</div>
-														</div>
-													</div>
-													<div class="dz-message">
-														<div class="drag-icon-cph">
-															<i class="material-icons">touch_app</i>
-														</div>
-														<h3>Solte a imagem aqui ou clique para fazer o
-															upload.</h3>
-													</div>
-													<div class="fallback">
-														<input type="file" id="photo" name="photo" />
-													</div>
-													<div class="previewImage">
-													</div>
-												</div>
+												DATA DO PEDIDO: *
+												<input type="text" class="form-control" id="data"
+												name="data" value="<%= data %>" disabled>
+												<input type="hidden" class="form-control" id="data"
+												name="data" value="<%= data %>">
 											</div>
 										</div>
 									</div>
 								</div>
-
 								<input type="hidden" id="id" name="id" value="<%= id %>">
 
 							</div>

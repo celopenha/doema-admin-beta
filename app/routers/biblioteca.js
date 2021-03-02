@@ -18,11 +18,6 @@ let teste;
 //const Array = require('array');
 //export const list2 = "teste";
 
-let dataAtual = new Date();
-dataAtual = moment(dataAtual).toDate();
-dataAtual = moment(dataAtual).format("DD/MM/YYYY");
-
-
 module.exports = async function (app) {
 
     app.use(cookieParser());
@@ -85,10 +80,14 @@ module.exports = async function (app) {
     // Rota para receber parametros via post criar item
     app.post('/app/' + rota + '/create/submit', upload.single('photo'), function (req, res) {
 
+        let dataAtual = new Date();
+        dataAtual = moment(dataAtual).toDate();
+        dataAtual = moment(dataAtual).format("DD/MM/YYYY");
+
         json = {
             "caderno": req.body.caderno,
             "cpf": req.body.cpf,
-            "data": dataAtual,
+            "data": req.body.dataAtual,
             "email": req.body.email,
             "nome": req.body.nome,
             "pesquisa": req.body.pesquisa,
@@ -108,7 +107,7 @@ module.exports = async function (app) {
             json: {
                 "caderno": req.body.caderno,
                 "cpf": req.body.cpf,
-                "data": dataAtual,
+                "data": req.body.dataAtual,
                 "email": req.body.email,
                 "nome": req.body.nome,
                 "pesquisa": req.body.pesquisa,
@@ -148,9 +147,13 @@ module.exports = async function (app) {
                     html: function () {
                         res.render(rota + '/Edit', {
                             id: body.data.id,
-                            titulo: body.data.titulo,
-                            dia: body.data.dia,
-                            descricao: body.data.descricao,
+                            caderno: body.data.caderno,
+                            cpf: body.data.cpf,
+                            data: body.data.data,
+                            email: body.data.email,
+                            nome: body.data.nome,
+                            pesquisa: body.data.pesquisa,
+                            termo: body.data.termo,
                             page: rota,
                             number: body.data.number,
                             informacoes: req.session.json
@@ -175,16 +178,20 @@ module.exports = async function (app) {
             },
             json: {
                 "id": req.body.id,
-                "titulo": req.body.titulo,
-                "dia": req.body.dia,
-                "descricao": req.body.descricao
+                "caderno": req.body.caderno,
+                "cpf": req.body.cpf,
+                "data": req.body.data,
+                "email": req.body.email,
+                "nome": req.body.nome,
+                "pesquisa": req.body.pesquisa,
+                "termo": req.body.termo
             },
         }, function (error, response, body) {
 
             if (response.statusCode != 200) {
-                req.flash("danger", "Não foi possível alterar o item. " + body.errors);
+                //req.flash("danger", "Não foi possível alterar o item. " + body.errors);
             } else {
-                req.flash("success", "Item alterado com sucesso.");
+                //req.flash("success", "Item alterado com sucesso.");
             }
 
             res.redirect('/app/' + rota + '/list');
