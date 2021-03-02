@@ -89,6 +89,10 @@ module.exports = async function (app) {
     // Rota para receber parametros via post criar item
     app.post('/app/' + rota + '/create/submit', upload.single('photo'), function (req, res) {
 
+        let cpfTratado = S(req.body.cpf).replaceAll('.', '').s;
+        cpfTratado = S(cpfTratado).replaceAll('-', '').s;
+        req.body.cpf = S(cpfTratado).replaceAll('/', '').s;
+
         request({
             url: process.env.API_HOST + rota,
             method: "POST",
@@ -99,7 +103,7 @@ module.exports = async function (app) {
             },
             json: {
                 "caderno": req.body.caderno,
-                "cpf": req.body.cpf,
+                "cpf": cpfTratado,
                 "data": dataAtual,
                 "email": req.body.email,
                 "nome": req.body.nome,
@@ -160,6 +164,9 @@ module.exports = async function (app) {
 
     // Rota para receber parametros via post editar item
     app.post('/app/' + rota + '/edit/submit', upload.single('photo'), function (req, res) {
+
+        let cpfTratado = S(req.body.cpf).replaceAll('.', '').s;
+        cpfTratado = S(cpfTratado).replaceAll('-', '').s;
 
         request({
             url: process.env.API_HOST + rota,
