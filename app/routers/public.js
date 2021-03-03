@@ -15,6 +15,8 @@ module.exports = async (app) => {
 			// MOMENT IRÁ FORÇAR ESTE FORMATO
 			// SPLIT IRÁ CRIAR UM VETOR CONTENTO OS FRAGMENTOS DA DATA
 			const dateFragment = moment(date).format("DD/MM/YYYY").split("/");
+			console.log(date);
+			console.log(dateFragment, "oi")
 			// DATA DE EXPIRAÇÃO NO FORMATO JS DATE
 			const dataExpiracao = new Date(dateFragment[2], dateFragment[1] - 1, dateFragment[0]);
 			// DATA ATUAL NO FORMATO JS DATE
@@ -30,9 +32,12 @@ module.exports = async (app) => {
 			base64Img: response.data.mensagem,
 			dataExpiracao: moment(response.data.dataExpiracao).format("DD/MM/YYYY"),
 		}
-		isMessageExpired(mensagem.dataExpiracao)
-			? res.render("public/index", { mensagem })
-			: res.render("public/index",)
+
+		if (isMessageExpired(mensagem.dataExpiracao)) {
+			return res.render("public/index", { mensagem })
+		} else {
+			return res.render("public/index")
+		}
 	});
 
 
