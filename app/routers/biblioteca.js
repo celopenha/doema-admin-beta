@@ -108,7 +108,10 @@ module.exports = async function (app) {
                 "email": req.body.email,
                 "nome": req.body.nome,
                 "pesquisa": req.body.pesquisa,
-                "termo": req.body.termo
+                "termo": req.body.termo,
+                "retornoBiblioteca":{
+                    "id": req.body.id
+                }
             },
         }, function (error, response, body) {
 
@@ -149,6 +152,9 @@ module.exports = async function (app) {
                             data: body.data.data,
                             email: body.data.email,
                             nome: body.data.nome,
+                            retornoBiblioteca: {
+                                id: body.data.retornoBiblioteca.id
+                            },
                             pesquisa: body.data.pesquisa,
                             termo: body.data.termo,
                             page: rota,
@@ -157,7 +163,6 @@ module.exports = async function (app) {
                         });
                     }
                 });
-
             });
         }
     });
@@ -184,7 +189,12 @@ module.exports = async function (app) {
                 "email": req.body.email,
                 "nome": req.body.nome,
                 "pesquisa": req.body.pesquisa,
-                "termo": req.body.termo
+                "termo": req.body.termo,
+                "retornoBiblioteca":{
+                    "id": req.body.id,
+                    "resposta": req.body.resposta,
+                    "anexo": req.body.anexo
+                }
             },
         }, function (error, response, body) {
 
