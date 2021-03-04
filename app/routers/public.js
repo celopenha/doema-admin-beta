@@ -24,7 +24,7 @@ module.exports = async (app) => {
       console.log(hoje)
       console.log(dataExpiracao)
       // COMPARAÇÃO ENTRE DATAS
-      return dataExpiracao > hoje;
+      return hoje > dataExpiracao;
     }
     const mensagem = {
       id: response.data.id,
@@ -36,7 +36,7 @@ module.exports = async (app) => {
     if (isMessageExpired(mensagem.dataExpiracao)) {
       return res.render("public/index", { mensagem })
     } else {
-      return res.render("public/index",)
+      return res.render("public/index")
     }
   });
 
