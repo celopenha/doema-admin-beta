@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include ./template/head.ejs %>
+
+
+<body class="fp-page">
+    <div class="fp-box">
+        <div class="card">
+            <div class="body">
+                <form method="POST" action="/app/redefinir-senha/submit">
+                    <div class="logo">
+                        <img src="/img/shopping_crianca400.png" alt="logo" height="90" style="margin-left: 10px;">
+                    </div>
+                    <div class="msg">
+                        Defina uma nova senha para acessar ao sistema.
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">https</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" name="novaSenha" id="novaSenha" class="form-control" pattern=".{6,}" onchange="verificaSenha()" title="Mínimo de 6 caracteres" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">https</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" name="passwordrepetido" id="passwordrepetido" class="form-control" pattern=".{6,}" onchange="verificaSenha()" required>
+                        </div>
+                    </div>
+
+
+                    <input type="hidden" class="form-control" id="cnpj" name="cnpj" value="<%= cnpj %>">
+                    <input type="hidden" class="form-control" id="senhaAtual" name="senhaAtual" value="<%= password %>">
+
+                    <button id="btnEnviar" class="btn btn-block btn-lg bg-pink waves-effect" type="submit"
+                        disabled>ENVIAR SENHA</button>
+
+                    <div class="row m-t-20 m-b--5 align-center">
+                        <a href="/">ENTRAR</a>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery Core Js -->
+    <script src="/js/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="/js/plugins/node-waves/waves.js"></script>
+
+    <!-- Validation Plugin Js -->
+    <script src="/js/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Custom Js -->
+    <script src="/js/js/admin.js"></script>
+    <script src="/js/js/pages/examples/forgot-password.js"></script>
+
+    <!-- Validação do formulário - [ start ]-->
+    <script>
+        controleSenha = 0
+        function verificaSenha() {
+            if (controleSenha == 0) {
+                controleSenha++;
+                return false;
+            }
+            var senha = $('#novaSenha').val();
+            var senharepetida = $('#passwordrepetido').val();
+            if (senharepetida != senha) {
+                alert('Senhas não correspondem.')
+                $('[type=submit]').prop('disabled', true);
+            } else {
+                $('[type=submit]').prop('disabled', false);
+            }
+        }
+    </script>
+    <!-- Validação do formulário - [ end ]-->
+</body>
+
+</html>

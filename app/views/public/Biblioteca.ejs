@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+  <title>
+    <%- process.env.TITLE %>
+  </title>
+
+  <!-- Custom fonts for this template-->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+    type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+  <!-- Bootstrap Core Css -->
+  <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+  <!-- Waves Effect Css -->
+  <link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+  <!-- Animation Css -->
+  <link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+  <!-- Dropzone Css -->
+  <link href="/js/plugins/dropzone/dropzone.css" rel="stylesheet">
+
+
+  <!-- Bootstrap DatePicker Css -->
+  <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+  <!-- Wait Me Css -->
+  <link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+  <!-- Bootstrap Select Css -->
+  <link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+  <!-- Custom Css -->
+  <link href="/css/css/style.css" rel="stylesheet">
+  <link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/css/style2.css">
+  <!-- Bootstrap Material Datetime Picker Css -->
+  <link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+    rel="stylesheet" />
+
+  <style>
+    .navbar-nav>li>a {
+      font-weight: 400;
+      color: white;
+    }
+
+    nav {
+
+      color: white !important;
+      background: linear-gradient(to right, #eb3349, #f45c43) !important;
+    }
+
+    .btn-biblioteca {
+      padding: 10px;
+      color: white;
+      background-color: #841616 !important
+    }
+
+    .btn-biblioteca:hover {
+      color: blanchedalmond;
+    }
+
+    .number-label {
+      margin: 5px;
+      color: #972632;
+      font-weight: 900;
+      font-size: 60px;
+      display: block;
+      padding: 10px;
+      border-left: 2px solid #972632;
+      border-top: 2px solid #972632;
+      border-bottom: 2px solid #972632;
+    }
+
+    .boxinfo-biblioteca {
+      display: flex;
+    }
+  </style>
+</head>
+
+<%- include ../template/topo-public.ejs %>
+
+  <body>
+
+
+    <div style="margin-top: 120px;" class="container">
+      <div class="row clearfix">
+        <div class="col-sm-12 col-m2-12 col-lg-12" style="text-align: center;">
+          <div class="biblioteca-cabecalho">
+            <h1 style="color: #972632;font-size: 60px;">FORMULÁRIO DE CONSULTA</h1>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin: 40px 0" class="row clearfix">
+        <div class="col-md-4">
+          <div class="boxinfo-biblioteca">
+            <span class="number-label">1º</span>
+            <p class="biblio-info">
+              Informe os seus dados pessoais (nome, CPF e e-mail)
+              para a sua identificação na nossa base de dados
+            </p>
+          </div>
+        </div>
+
+        <div class=" col-md-4">
+          <div class="boxinfo-biblioteca">
+            <span class="number-label">2º</span>
+            <p class="biblio-info">
+              Informe o tipo do JORNAL (selecione a opção 'não incluir' caso não saiba).
+              Em seguida, selecione o tipo de consulta
+              que você deseja realizar para obter melhores resultados
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="boxinfo-biblioteca">
+            <span class="number-label">3º</span>
+            <p class="biblio-info">
+              RECURSOS HUMANOS
+              BOLETIM 030/2021 O GOVERNADOR DO ESTADO DO RIO GRANDE DO SUL, no uso de suas atribuições,
+              tendo
+              em
+              vista
+              o que consta no Processo nº 21/1204-0001955-3, DISPENSA, “a pedido”, a c...
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="col-sm-12 col-md-12">
+          <form class="user" method="POST" action="/public/biblioteca/listar" enctype="multipart/form-data">
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="header">
+                    Detalhes da pesquisa
+                  </div>
+                  <div class="body">
+                    <div class="row clearfix">
+                      <div class="col-sm-12 col-md-3">
+                        <div class=" input-group">
+                          <span class="input-group-addon">
+                            <span class="material-icons">book</span>
+                          </span>
+                          <h6>JORNAL: </h6>
+                          <select class="form-control show-tick">
+                            <option value="">SELECIONE O JORNAL </option>
+                            <option value="EXECUTIVO">EXECUTIVO</option>
+                            <option value="TERCEIROS">TERCEIROS</option>
+                            <option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO
+                            </option>
+                            <option value="SUPLEMENTO_TERCEIROS">SUPLEMENTO TERCEIROS
+                            </option>
+                            <option value="NULL">NÃO ESPECIFICAR</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class=" input-group">
+                          <span class="input-group-addon">
+                            <span class="material-icons">book</span>
+                          </span>
+                          <h6>TIPO DE CONSULTA: </h6>
+                          <select class="form-control show-tick">
+                            <option value=""> SELECIONE O TIPO </option>
+                            <option value="EXECUTIVO">NOMEAÇÃO</option>
+                            <option value="TERCEIROS">ATO DE APOSENTADORIA</option>
+                            <option value="SUPLEMENTO_EXECUTIVO">REFORMA</option>
+                            <option value="SUPLEMENTO_TERCEIROS">EXCLUSÃO</option>
+                            <option value="NULL">LEI Nº</option>
+                            <option value="NULL">DECRETO Nº</option>
+                            <option value="NULL">PORTARIA Nº</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                          </span>
+                          <div class="form-line">
+                            <h6>TERMO DE CONSULTA: </h6>
+                            <input placeholder="Lei nº 341, Decreto nº 2332" type="text" class="form-control"
+                              id="termoBiblioteca" name="termoBiblioteca">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="header">
+                    Informações Pessoais e de Contato
+                  </div>
+                  <div class="body">
+                    <div class="row clearfix">
+                      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                        <div class="input-group-lg input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                          </span>
+                          <div class="form-line">
+                            <h6>NOME COMPLETO: *</h6>
+                            <input type="text" class="form-control" id="nome" name="nome" treatment="capitalize"
+                              required="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="input-group-lg input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                          </span>
+                          <div class="form-line">
+                            <h6>CPF: *</h6>
+                            <input type="text" class="form-control" id="cpf" name="cpf" required="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="input-group-lg input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                          </span>
+                          <div class="form-line">
+                            <h6>E-MAIL: *</h6>
+                            <input type="email" class="form-control" id="email" name="email" required="">
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" class="btn btn-biblioteca waves-effect">
+                  <i class="material-icons">search</i>
+                  <span>PESQUISAR</span>
+                </button>
+              </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    </div>
+    </div>
+
+    </div>
+
+    </div>
+    </div>
+
+
+    <div class="scripts">
+
+      <!-- Jquery Core Js -->
+      <script src="/js/plugins/jquery/jquery.min.js"></script>
+
+      <!-- Bootstrap Core Js -->
+      <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+      <!-- Select Plugin Js -->
+      <script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+      <!-- Slimscroll Plugin Js -->
+      <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+      <!-- Waves Effect Plugin Js -->
+      <script src="/js/plugins/node-waves/waves.js"></script>
+
+
+
+      <!-- Jquery CountTo Plugin Js -->
+      <script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+
+      <!-- Morris Plugin Js -->
+      <script src="/js/plugins/raphael/raphael.min.js"></script>
+
+      <script src="/js/plugins/morrisjs/morris.js"></script>
+
+      <!-- ChartJs -->
+      <script src="/js/plugins/chartjs/Chart.bundle.js"></script>
+
+      <!-- Flot Charts Plugin Js -->
+      <script src="/js/plugins/flot-charts/jquery.flot.js"></script>
+      <script src="/js/plugins/flot-charts/jquery.flot.resize.js"></script>
+      <script src="/js/plugins/flot-charts/jquery.flot.pie.js"></script>
+      <script src="/js/plugins/flot-charts/jquery.flot.categories.js"></script>
+      <script src="/js/plugins/flot-charts/jquery.flot.time.js"></script>
+
+      <!-- JQuery Steps -->
+
+      <script src="\js\plugins\jquery-steps\jquery.steps.min.js"></script>
+
+      <!-- Momment JS for date-picker -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+      <!-- Sparkline Chart Plugin Js -->
+      <script src="/js/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+      <!-- Custom Js -->
+      <script src="/js/js/admin.js"></script>
+      <script src="/js/js/pages/index.js"></script>
+      <script src="/js/js/pages/ui/modals.js"></script>
+
+      <script src="js/jquery.mask.js"></script>
+      <script src="js/shopping-crianca-mask.js"></script>
+
+      <!-- Demo Js -->
+      <script src="js/demo.js"></script>
+
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+      <script src="/js/shopping-crianca-mask.js"></script>
+
+      <script>
+        ('#wizard_vertical').steps("add", {
+          itle: "HTML code",
+          ontent: "This is a test"
+     )
+
+        steps("add", {
+          itle: "HTML code2",
+          ontent: "This is a test2"
+      );
+      </script>
+
+    </div>
+
+
+
+  </body>
+
+</html>

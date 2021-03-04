@@ -1,0 +1,160 @@
+<!-- Sidebar -->
+<% if (informacoes.NivelUser == "COORDENADOR") { %>
+<%- include menu-coordenador.ejs %>
+<% }if (informacoes.NivelUser == "BIBLIOTECA") { %>
+<%- include menu-biblioteca.ejs %>
+<% }if(informacoes.NivelUser == "ADMIN") { %>
+<style>
+	.user-info {
+		background-image: linear-gradient(to right, #4465f5, #f45c431c), url(/img/palacio-bg.png) no-repeat no-repeat !important;
+	}
+
+	.material-icons {
+		color: #4465f5;
+	}
+</style>
+
+<section>
+	<!-- Left Sidebar -->
+	<aside id="leftsidebar" class="sidebar">
+		<!-- User Info -->
+		<div class="user-info">
+			<div class="info-container">
+				<div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= informacoes.NomeUser%>
+				</div>
+				<div class="email"><%= informacoes.EmailUser %></div>
+				<div class="btn-group user-helper-dropdown">
+					<i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
+						 aria-expanded="true">keyboard_arrow_down</i>
+					<ul class="dropdown-menu pull-right">
+						<li>
+							<a href="/app/usuario/Perfil">
+								<i class="material-icons">assignment_ind</i>
+								Perfil
+							</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="/app/usuario/Alterar-Senha">
+								<i class="material-icons">vpn_key</i>
+								Alterar Senha
+							</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="/app/sair">
+								<i class="material-icons">input</i>
+								Sair
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- #User Info -->
+		<!-- Menu -->
+		<div class="menu">
+			<ul class="list">
+				<li class="header">NAVEGAÇÃO</li>
+				<li>
+					<a href="/app/usuario/list" class=" waves-effect waves-block">
+						<i class="material-icons">admin_panel_settings</i>
+						<span>Usuários</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="#">
+						<i class="material-icons">book</i>
+						<span>Diários</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/app/feriados/calendar">
+						<i class="material-icons">today</i>
+						<span>Feriados</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="/app/biblioteca/list">
+						<i class="material-icons">menu_book</i>
+						<span>Biblioteca</span>
+					</a>
+				</li>
+				<li>
+					<a href="/app/mensagem/list">
+						<i class="material-icons">campaign</i>
+						<span>Mensagem</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="#">
+						<i class="material-icons">history</i>
+						<span>Logs</span>
+					</a>
+				</li>
+				<!--   <li>
+                        <a href="/app/sessao/list">
+                            <i class="material-icons" style="color: rebeccapurple;">book_online</i>
+                            <span>Sessões</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="/app/sessao/calendar">
+                            <i class="material-icons" style="color: rebeccapurple;">schedule</i>
+                            <span>Horários de Sessões</span>
+                        </a>
+                    </li> -->
+
+				<!--   <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Widgets</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Cards</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="pages/widgets/cards/basic.html">Basic</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <span>Infobox</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> -->
+
+			</ul>
+		</div>
+		<!-- #Menu -->
+		<!-- Footer -->
+		<div class="legal">
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="copyright" style="margin-top: 14px;">
+						&copy; 2020 <a href="https://seati.ma.gov.br/" target="_blank">SEATI</a>.
+					</div>
+					<div class="version">
+						<b>Versão: </b> 1.0.0
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- #Footer -->
+	</aside>
+	<!-- #END# Left Sidebar -->
+	<!-- Right Sidebar -->
+	<!-- #END# Right Sidebar -->
+</section>
+
+
+<% } %>

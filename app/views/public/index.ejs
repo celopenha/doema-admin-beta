@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/img/sdc-color.svg" type="image/x-icon">
+  <title>
+    <%- process.env.TITLE %>
+  </title>
+
+  <!--FULL CALENDAR !-->
+
+  <link href="/fullcalendar/wwwroot/fullcalendar.min.css" rel="stylesheet">
+  <link href="/fullcalendar/wwwroot/fullcalendar.print.min.css" rel="stylesheet" media="print">
+  <link href='fullcalendar/wwwroot/main.css' rel="stylesheet">
+
+  <!-- Custom fonts for this template-->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+    type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+  <!-- Bootstrap Core Css -->
+  <link href="/js/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+  <!-- Waves Effect Css -->
+  <link href="/js/plugins/node-waves/waves.css" rel="stylesheet" />
+
+  <!-- Animation Css -->
+  <link href="/js/plugins/animate-css/animate.css" rel="stylesheet" />
+
+  <!-- Dropzone Css -->
+  <link href="/js/plugins/dropzone/dropzone.css" rel="stylesheet">
+
+
+  <!-- Bootstrap DatePicker Css -->
+  <link href="/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+  <!-- Wait Me Css -->
+  <link href="/js/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+  <!-- Bootstrap Select Css -->
+  <link href="/js/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+  <!-- Custom Css -->
+  <link href="/css/css/style.css" rel="stylesheet">
+
+  <link href="/css/css/themes/all-themes.css" rel="stylesheet" />
+
+  <!-- Bootstrap Material Datetime Picker Css -->
+  <link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+    rel="stylesheet" />
+
+  <style>
+    .fc-right .fc-prev-button,
+    .fc-right .fc-next-button {
+      background-color: #4355f4 !important;
+      background-image: none;
+    }
+
+    .fc-left .fc-prev-button,
+    .fc-left .fc-next-button {
+      background-color: #4355f4 !important;
+      background-image: none;
+    }
+
+
+
+    .modal-content {
+      position: absolute;
+      z-index: 999999999;
+      left: 50%;
+      width: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      height: 77%;
+    }
+
+    .banner {
+      box-shadow: 0 0 10px 4px #41414152;
+      z-index: 9999;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+
+      transform: translate(-50%, -50%);
+
+    }
+
+    .banner:hover {
+      background-color: red;
+      cursor: pointer;
+
+    }
+
+    .grupo-input {
+      width: 80%;
+      border-radius: 5px;
+      border: 1px solid #4399f4cc;
+      position: relative;
+      display: flex;
+      margin: 30px auto;
+
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .grupo-input input {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .grupo-input-addon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-color: white;
+      border-radius: 0 5px 5px 0;
+      position: absolute;
+      right: 2px;
+
+    }
+
+    .grupo-input-addon span {
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<%- include ../template/topo-public.ejs %>
+
+  <body>
+    <% if (locals.mensagem) { %>
+      <img class="banner" src="data:image/png;base64;svg;jpg;jpeg, <%= mensagem.base64Img%>" />
+      <% } %>
+        <div class="container">
+
+          <div style="margin-top: 90px;" class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div style="background-color: white; border-radius: 5px; padding: 10px;" class="calendario">
+                <div id="calendar"></div>
+              </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div style="text-align: center;">
+                <img width="250" src="/img/jornal-bg.png" alt="">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <form class="user" method="POST" action="/public/jornal/listar" enctype="multipart/form-data">
+                <div class="row clearfix">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                      <div class="body">
+                        <div class="row clearfix">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="card-inside-title">Termo de Pesquisa</div>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <i class="material-icons">manage_search
+                                </i>
+                              </span>
+                              <div class="form-line">
+                                <input type="text" class="form-control date" name="termoPesquisa"
+                                  placeholder="Lei nº 321, Nome, Secretaria, órgão">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row clearfix">
+                          <div class="col-sm-12 col-md-12">
+                            <div class=" input-group">
+                              <span class="input-group-addon">
+                                <span class="material-icons">book</span>
+                              </span>
+                              <select class="form-control show-tick">
+                                <option value="">SELECIONE O JORNAL &rarr; </option>
+                                <option value="EXECUTIVO">EXECUTIVO</option>
+                                <option value="TERCEIROS">TERCEIROS</option>
+                                <option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO</option>
+                                <option value="SUPLEMENTO_TERCEIROS">SUPLEMENTO TERCEIROS</option>
+                                <option value="NULL">NÃO ESPECIFICAR</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="row clearfix">
+                          <div class="col-md-6">
+                            <div class="card-inside-title">Data Inicial</div>
+                            <div class=" input-group">
+                              <span class="input-group-addon">
+                                <span class="material-icons">book</span>
+                              </span>
+                              <div class="form-line">
+                                <input type="date" class="form-control" id="dataInicial" name="dataInicial">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="card-inside-title">Data Final</div>
+                            <div class=" input-group">
+                              <span class="input-group-addon">
+                                <span class="material-icons">book</span>
+                              </span>
+                              <div class="form-line">
+                                <input type="date" class="form-control" id="dataFinal" name="dataFinal">
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row clearfix">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <button
+                              style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
+                              style="width: 100%;" type="submit" class="btn btn-biblioteca waves-effect">
+                              <i class="material-icons">search</i>
+                              <span>PESQUISAR</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- FIM DO CARD -->
+
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <div style="text-align: center;" class="center">
+                <h2>Pesquisar no DOEMA</h2>
+                <div class="grupo-input">
+                  <input placeholder="Informe o termo que deseja pesquisar nas Edições do Diário Oficial" type="text">
+                  <div class="grupo-input-addon">
+                    <i style="font-size: 25px; margin-right: 20px; display: block;" class="material-icons">search</i>
+                    <span style="display: inline-block; margin-right: 10px" class="pesquisa-avancada">| Pesquisa
+                      avançada </span>
+                    <i style="font-size: 20px; margin-right: 20px; display: block;"
+                      class="material-icons">format_indent_increase</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom: 120px;margin-top: 30px;" id="demaisServicos" class="card shadow-sm">
+            <div class="card-body">
+
+              <!--Outros serviços-->
+              <div class="row">
+                <a class="col-sm-12 col-md-4" href="http://www.jucesponline.sp.gov.br/" target="_blank">
+
+                  <h5><i class="fa fa-file-contract fa-2x float-left pr-2"></i>&nbsp;Junta Comercial</h5>
+                  <br>
+                  <p>Consulta de empresas registradas na Jucesp</p>
+                </a>
+                <br>
+                <a class="col-sm-12 col-md-4" href="ENegocios/BoletimNPAssinatura_15_1.aspx">
+
+                  <h5><i class="fa fa-gavel fa-2x float-left pr-2"></i>&nbsp;e-negocios.informa</h5>
+                  <p>Recebimento antecipado das licitações</p>
+                </a>
+                <br>
+                <a class="col-sm-12 col-md-4" href="DO/BoletimDOAssinatura_16_1.aspx">
+
+                  <h5><i class="fa fa-newspaper fa-2x float-left pr-2"></i>&nbsp;DO.informa</h5>
+                  <br>
+                  <p>Recebimento antecipado das publicações</p>
+                </a>
+                <br>
+              </div>
+              <br>
+              <div class="row">
+                <a class="col-sm-12 col-md-4" href="/downloads/pdf/cci.pdf" target="_blank">
+
+
+
+                  <h5><i class="fa fa-book fa-2x float-left pr-2"></i>&nbsp;Código de conduta e integridade</h5>
+                  <br>
+                  <p>Orientação dos negócios e relacionamentos</p>
+
+                </a>
+                <br>
+                <a href="https://pubnet.imprensaoficial.com.br/" target="_blank" class="col-sm-12 col-md-4">
+
+                  <h5><i class="fa fa-upload fa-2x float-left pr-2"></i>&nbsp;Pubnet</h5>
+                  <br>
+                  <p>Publicação de matérias e licitações</p>
+                </a>
+                <br>
+                <a href="/DO/DetalhesDO_2_5.aspx" class="col-sm-12 col-md-4">
+
+                  <h5><i class="fa fa-balance-scale fa-2x float-left pr-2"></i>&nbsp;Publicidade legal</h5>
+                  <br>
+                  <p>Quem e como deve publicar</p>
+                </a>
+                <br>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Atenção!</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <form id="modalExemplo" method="post" action="/app/feriados/delete/">
+                <input type="hidden" name="id" id="campo">
+                <div class="modal-body">Você realmente deseja apagar este item?</div>
+                <div class="modal-footer">
+                  <button class="d-none d-sm-inline-block btn btn-sm shadow-sm" type="button" data-dismiss="modal"
+                    style="background-color: #8A7D51; color: #fff;">Cancelar</button>
+                  <input type="submit" value="Excluir"
+                    class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="scripts">
+          <!-- Jquery Core Js -->
+          <script src="/js/plugins/jquery/jquery.min.js"></script>
+
+
+
+          <!-- Bootstrap Core Js -->
+          <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+
+          <!-- Select Plugin Js -->
+          <script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+          <!-- Slimscroll Plugin Js -->
+          <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+          <!-- Waves Effect Plugin Js -->
+          <script src="/js/plugins/node-waves/waves.js"></script>
+
+          <!-- Jquery CountTo Plugin Js -->
+          <script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+
+          <!-- Morris Plugin Js -->
+          <script src="/js/plugins/raphael/raphael.min.js"></script>
+          <script src="/js/plugins/morrisjs/morris.js"></script>
+
+          <!-- ChartJs -->
+          <script src="/js/plugins/chartjs/Chart.bundle.js"></script>
+
+          <!-- Flot Charts Plugin Js -->
+          <script src="/js/plugins/flot-charts/jquery.flot.js"></script>
+          <script src="/js/plugins/flot-charts/jquery.flot.resize.js"></script>
+          <script src="/js/plugins/flot-charts/jquery.flot.pie.js"></script>
+          <script src="/js/plugins/flot-charts/jquery.flot.categories.js"></script>
+          <script src="/js/plugins/flot-charts/jquery.flot.time.js"></script>
+
+          <!-- Momment JS for date-picker -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+          <!-- Sparkline Chart Plugin Js -->
+          <script src="/js/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+          <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+
+
+          <!-- Custom Js -->
+          <script src="/js/js/admin.js"></script>
+          <script src="/js/js/pages/index.js"></script>
+          <script src="/js/js/pages/ui/modals.js"></script>
+
+          <!-- Demo Js -->
+          <script src="js/js/demo.js"></script>
+          <script src="js/jquery.mask.js"></script>
+
+          <script>
+            document.querySelector(".banner").addEventListener("click", () => {
+              $(".banner").remove();
+              console.log(this)
+            })
+            console.log($(".banner"));
+          </script>
+          <script src='/fullcalendar/wwwroot/lib/jquery.min.js'></script>
+          <script src="/fullcalendar/wwwroot/lib/moment.min.js"></script>
+          <script src='/fullcalendar/wwwroot/fullcalendar.min.js'></script>
+          <script src="/fullcalendar/wwwroot/locale/pt-br.js"></script>
+
+        </div>
+
+        <script>
+          //
+          // CONFIGURACAO DO FULLCALENDAR
+          //
+
+          $(function () {
+            /* initialize the external events
+            -----------------------------------------------------------------*/
+            function init_events(ele) {
+              ele.each(function () {
+                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                // it doesn't need to have a start or end
+                var eventObject = {
+                  title: $.trim($(this).text()) // use the element's text as the event title
+                }
+
+                // store the Event Object in the DOM element so we can get to it later
+                $(this).data('eventObject', eventObject)
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                  zIndex: 1070,
+                  revert: true, // will cause the event to go back to its
+                  revertDuration: 0 //  original position after the drag
+                })
+              })
+            }
+
+            init_events($('#external-events div.external-event'))
+
+            /* initialize the calendar
+            -----------------------------------------------------------------*/
+            //Date for the calendar events (dummy data)
+            var date = new Date()
+            var d = date.getDate(),
+              m = date.getMonth(),
+              y = date.getFullYear(),
+              h = date.getHours(),
+              min = date.getMinutes(),
+              s = date.getSeconds();
+
+            //Inicializa o Calendario	
+            $(document).ready(function () {
+
+              $('#calendar').fullCalendar({
+                defaultView: $(window).width() < 765 ? 'agendaDay' : 'month',
+                header: {
+                  left: 'prev',
+                  center: 'title',
+                  right: 'next'
+                },
+                buttonText: {
+                  today: 'Hoje',
+                  month: 'Mês',
+                  week: 'Semana',
+                  day: 'Dia'
+                },
+                themeSystem: 'standard',
+                height: '100%',
+                width: '100%',
+                aspectRatio: 1.3,
+                defaultDate: Date(),
+                navLinks: false, // can click day/week names to navigate views
+                editable: false,
+                eventLimit: true, // allow "more" link when too many events
+                selectHelper: true,
+                selectable: true,
+                droppable: true, // this allows things to be dropped onto the calendar !!!
+              })
+            })
+          })
+
+          function montaMes(titulo) {
+            if (titulo.includes('janeiro')) {
+              return '01';
+            } else if (titulo.includes('fevereiro')) {
+              return '02';
+            } else if (titulo.includes('março')) {
+              return '03';
+            } else if (titulo.includes('abril')) {
+              return '04';
+            } else if (titulo.includes('maio')) {
+              return '05';
+            } else if (titulo.includes('junho')) {
+              return '06';
+            } else if (titulo.includes('julho')) {
+              return '07';
+            } else if (titulo.includes('agosto')) {
+              return '08';
+            } else if (titulo.includes('setembro')) {
+              return '09';
+            } else if (titulo.includes('outubro')) {
+              return '10';
+            } else if (titulo.includes('novembro')) {
+              return '11';
+            } else if (titulo.includes('dezembro')) {
+              return '12';
+            }
+          }
+        </script>
+
+  </body>
+
+</html>
