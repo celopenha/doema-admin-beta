@@ -1,6 +1,9 @@
 ﻿/* Navbar ====================================== */
 @import url(materialize.css);
 
+*{
+  list-style-type: none;
+}
 
 #messages .success {
 	background: rgb(23, 124, 23);
@@ -164,7 +167,7 @@
 }
 
 .navbar-nav .dropdown-menu {
-	margin-top: -40px !important;
+	margin-top: -40px ;
 }
 
 .label-count {
@@ -9380,10 +9383,6 @@ fieldset[disabled] .form-control {
 	padding: 7px 7px 2px 7px;
 	margin-top: 17px;
 	margin-left: 5px;
-}
-
-.navbar-nav .dropdown-menu {
-	margin-top: -40px !important;
 }
 
 .label-count {
