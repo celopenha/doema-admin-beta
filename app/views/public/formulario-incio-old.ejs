@@ -1,0 +1,85 @@
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <form class="user" method="POST" action="/public/jornal/listar" enctype="multipart/form-data">
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="row clearfix">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card-inside-title">Termo de Pesquisa</div>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">manage_search
+                    </i>
+                  </span>
+                  <div class="form-line">
+                    <input type="text" class="form-control date" name="termoPesquisa"
+                      placeholder="Lei nº 321, Nome, Secretaria, órgão">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-sm-12 col-md-12">
+                <div class=" input-group">
+                  <span class="input-group-addon">
+                    <span class="material-icons">book</span>
+                  </span>
+                  <select class="form-control show-tick">
+                    <option value="">SELECIONE O JORNAL &rarr; </option>
+                    <option value="EXECUTIVO">EXECUTIVO</option>
+                    <option value="TERCEIROS">TERCEIROS</option>
+                    <option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO</option>
+                    <option value="SUPLEMENTO_TERCEIROS">SUPLEMENTO TERCEIROS</option>
+                    <option value="NULL">NÃO ESPECIFICAR</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row clearfix">
+              <div class="col-md-6">
+                <div class="card-inside-title">Data Inicial</div>
+                <div class=" input-group">
+                  <span class="input-group-addon">
+                    <span class="material-icons">book</span>
+                  </span>
+                  <div class="form-line">
+                    <input type="date" class="form-control" id="dataInicial" name="dataInicial">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card-inside-title">Data Final</div>
+                <div class=" input-group">
+                  <span class="input-group-addon">
+                    <span class="material-icons">book</span>
+                  </span>
+                  <div class="form-line">
+                    <input type="date" class="form-control" id="dataFinal" name="dataFinal">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row clearfix">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button
+                  style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
+                  style="width: 100%;" type="submit" class="btn btn-biblioteca waves-effect">
+                  <i class="material-icons">search</i>
+                  <span>PESQUISAR</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- FIM DO CARD -->
+
+      </div>
+    </div>
+  </form>
+</div>
