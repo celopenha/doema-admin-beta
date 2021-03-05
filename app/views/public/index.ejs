@@ -23,6 +23,8 @@
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400, 600, 700, 800, 900|Work+Sans:300"
+    rel="stylesheet">
   <!-- Google Fonts -->
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
@@ -60,7 +62,19 @@
   <link href="/js/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
     rel="stylesheet" />
 
+
+
   <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+
     .fc-right .fc-prev-button,
     .fc-right .fc-next-button {
       background-color: #4355f4 !important;
@@ -138,18 +152,59 @@
     .grupo-input-addon span {
       font-size: 16px;
     }
+
+    .card-anchor:hover,
+    .card-anchor:focus {
+      text-decoration: none;
+      cursor: pointer;
+      color: red;
+
+    }
+
+    .card-anchor i {
+      background: linear-gradient(to right, #4345f4, #43abf4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card-opcoes {
+      height: 250px;
+      border-radius: 10px;
+    }
+
+    .opcoes-titulo {
+      margin-top: 40px;
+    }
+
+    .opcoes-p {}
+
+    .header-primario {
+      background-color: red;
+      height: 120px;
+      width: 100vw;
+      clip-path: polygon(0% 0%, 100% 100%, 0 100%, 0% 100%);
+
+    }
+
+    .header-primario h1 {
+      font-weight: 900;
+      color: white;
+    }
+
+    .header-primario h1 span {}
   </style>
 </head>
 
-<%- include ../template/topo-public.ejs %>
 
-  <body>
+<body>
+  <%- include ../template/topo-public.ejs %>
+
     <% if (locals.mensagem) { %>
       <img class="banner" src="data:image/png;base64;svg;jpg;jpeg, <%= mensagem.base64Img%>" />
       <% } %>
         <div class="container">
 
-          <div style="margin-top: 90px;" class="row">
+          <div class="row" style="margin-top: 90px;">
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div style="background-color: white; border-radius: 5px; padding: 10px;" class="calendario">
                 <div id="calendar"></div>
@@ -161,93 +216,7 @@
                 <img width="250" src="/img/jornal-bg.png" alt="">
               </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <form class="user" method="POST" action="/public/jornal/listar" enctype="multipart/form-data">
-                <div class="row clearfix">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                      <div class="body">
-                        <div class="row clearfix">
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="card-inside-title">Termo de Pesquisa</div>
-                            <div class="input-group">
-                              <span class="input-group-addon">
-                                <i class="material-icons">manage_search
-                                </i>
-                              </span>
-                              <div class="form-line">
-                                <input type="text" class="form-control date" name="termoPesquisa"
-                                  placeholder="Lei nº 321, Nome, Secretaria, órgão">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row clearfix">
-                          <div class="col-sm-12 col-md-12">
-                            <div class=" input-group">
-                              <span class="input-group-addon">
-                                <span class="material-icons">book</span>
-                              </span>
-                              <select class="form-control show-tick">
-                                <option value="">SELECIONE O JORNAL &rarr; </option>
-                                <option value="EXECUTIVO">EXECUTIVO</option>
-                                <option value="TERCEIROS">TERCEIROS</option>
-                                <option value="SUPLEMENTO_EXECUTIVO">SUPLEMENTO EXECUTIVO</option>
-                                <option value="SUPLEMENTO_TERCEIROS">SUPLEMENTO TERCEIROS</option>
-                                <option value="NULL">NÃO ESPECIFICAR</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-
-
-                        <div class="row clearfix">
-                          <div class="col-md-6">
-                            <div class="card-inside-title">Data Inicial</div>
-                            <div class=" input-group">
-                              <span class="input-group-addon">
-                                <span class="material-icons">book</span>
-                              </span>
-                              <div class="form-line">
-                                <input type="date" class="form-control" id="dataInicial" name="dataInicial">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="card-inside-title">Data Final</div>
-                            <div class=" input-group">
-                              <span class="input-group-addon">
-                                <span class="material-icons">book</span>
-                              </span>
-                              <div class="form-line">
-                                <input type="date" class="form-control" id="dataFinal" name="dataFinal">
-                              </div>
-
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row clearfix">
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <button
-                              style=" padding: 8px; font-size: 17px; color: white; height: 100%; width:100%; background: linear-gradient(to right, #4345f4, #43abf4); "
-                              style="width: 100%;" type="submit" class="btn btn-biblioteca waves-effect">
-                              <i class="material-icons">search</i>
-                              <span>PESQUISAR</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                    <!-- FIM DO CARD -->
-
-                  </div>
-                </div>
-              </form>
-            </div>
           </div>
-
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
               <div style="text-align: center;" class="center">
@@ -265,27 +234,87 @@
               </div>
             </div>
           </div>
-          <div style="margin-bottom: 120px;margin-top: 30px;" id="demaisServicos" class="card shadow-sm">
-            <div class="card-body">
 
-              <!--Outros serviços-->
+
+          <div class="row">
+            <div style="text-align: center;" class="col-sm-3 col-md-3">
+              <a class="card-anchor" href="#">
+                <div class="card card-opcoes">
+                  <div class="body">
+                    <h5><i class="fa fa-book fa-4x"></i></h5>
+                    <h4 class="opcoes-titulo">EDIÇÕES</h4>
+                    <p class="opcoes-p">
+                      Veja todas as edições publicadas até o momento
+                      no Diário Oficial do Estado do Maranhão
+
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div style="text-align: center;" class="col-sm-3 col-md-3">
+              <a class="card-anchor" href="#">
+                <div class="card card-opcoes">
+                  <div class="body">
+                    <h5><i class="fa fa-id-card fa-4x"></i></h5>
+                    <h4 class="opcoes-titulo">CREDENCIAMENTO</h4>
+                    <p class="opcoes-p">
+                      Caso você esteja buscando uma informação anterior
+                      ao ano de 2004, clique aqui e solicite uma consulta em nosso acervo físico
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div style="text-align: center;" class="col-sm-3 col-md-3">
+              <a class="card-anchor" href="#">
+                <div class="card card-opcoes">
+                  <div class="body">
+                    <h5><i class="fa fa-book-open fa-4x"></i></h5>
+                    <h4 class="opcoes-titulo">BIBLIOTECA</h4>
+                    <p class="opcoes-p">
+                      Caso você esteja buscando uma informação anterior
+                      ao ano de 2004, clique aqui e solicite a busca ao nosso acervo físico
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div style="text-align: center;" class="col-sm-3 col-md-3">
+              <a class="card-anchor" href="#">
+                <div class="card card-opcoes">
+                  <div class="body">
+                    <h5><i class="fa fa-book fa-4x"></i></h5>
+                    <h4 class="opcoes-titulo">BIBLIOTECA</h4>
+                    <p class="opcoes-p">
+                      Caso você esteja buscando uma informação anterior
+                      ao ano de 2004, clique aqui e solicite a busca ao nosso acervo físico
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!--               
               <div class="row">
                 <a class="col-sm-12 col-md-4" href="http://www.jucesponline.sp.gov.br/" target="_blank">
 
-                  <h5><i class="fa fa-file-contract fa-2x float-left pr-2"></i>&nbsp;Junta Comercial</h5>
+                  <h5><i class="fa fa-file-contract fa-2x"></i>&nbsp;Junta Comercial</h5>
                   <br>
                   <p>Consulta de empresas registradas na Jucesp</p>
                 </a>
                 <br>
                 <a class="col-sm-12 col-md-4" href="ENegocios/BoletimNPAssinatura_15_1.aspx">
 
-                  <h5><i class="fa fa-gavel fa-2x float-left pr-2"></i>&nbsp;e-negocios.informa</h5>
+                  <h5><i class="fa fa-gavel fa-2x"></i>&nbsp;e-negocios.informa</h5>
                   <p>Recebimento antecipado das licitações</p>
                 </a>
                 <br>
                 <a class="col-sm-12 col-md-4" href="DO/BoletimDOAssinatura_16_1.aspx">
 
-                  <h5><i class="fa fa-newspaper fa-2x float-left pr-2"></i>&nbsp;DO.informa</h5>
+                  <h5><i class="fa fa-newspaper fa-2x"></i>&nbsp;DO.informa</h5>
                   <br>
                   <p>Recebimento antecipado das publicações</p>
                 </a>
@@ -293,35 +322,22 @@
               </div>
               <br>
               <div class="row">
-                <a class="col-sm-12 col-md-4" href="/downloads/pdf/cci.pdf" target="_blank">
-
-
-
-                  <h5><i class="fa fa-book fa-2x float-left pr-2"></i>&nbsp;Código de conduta e integridade</h5>
-                  <br>
-                  <p>Orientação dos negócios e relacionamentos</p>
-
-                </a>
                 <br>
                 <a href="https://pubnet.imprensaoficial.com.br/" target="_blank" class="col-sm-12 col-md-4">
 
-                  <h5><i class="fa fa-upload fa-2x float-left pr-2"></i>&nbsp;Pubnet</h5>
+                  <h5><i class="fa fa-upload fa-2x"></i>&nbsp;Pubnet</h5>
                   <br>
                   <p>Publicação de matérias e licitações</p>
                 </a>
                 <br>
                 <a href="/DO/DetalhesDO_2_5.aspx" class="col-sm-12 col-md-4">
 
-                  <h5><i class="fa fa-balance-scale fa-2x float-left pr-2"></i>&nbsp;Publicidade legal</h5>
+                  <h5><i class="fa fa-balance-scale fa-2x"></i>&nbsp;Publicidade legal</h5>
                   <br>
                   <p>Quem e como deve publicar</p>
                 </a>
                 <br>
-              </div>
-
-            </div>
-          </div>
-        </div>
+              </div> -->
 
 
 
@@ -521,6 +537,6 @@
           }
         </script>
 
-  </body>
+</body>
 
 </html>
