@@ -192,6 +192,20 @@
     }
 
     .header-primario h1 span {}
+
+
+    .pesquisa-anchor:hover,
+    .pesquisa-anchor:active,
+    .pesquisa-anchor:visited,
+    .pesquisa-anchor:target {
+      text-decoration: none;
+    }
+
+    .jornal-bg {
+      border: 2px solid #4355f440;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    }
   </style>
 </head>
 
@@ -203,9 +217,30 @@
       <img class="banner" src="data:image/png;base64;svg;jpg;jpeg, <%= mensagem.base64Img%>" />
       <% } %>
         <div class="container">
+          <div class="row" style="margin-top: 180px;">
+            <div class=" col-xs-12 col-sm-12 col-md-12">
+              <div style="text-align: center;" class="center">
+                <h2>Pesquisar no DOEMA</h2>
+                <form action="#">
+                  <div class="grupo-input">
+                    <input placeholder="Informe o termo que deseja pesquisar nas Edições do Diário Oficial" type="text">
+                    <div class="grupo-input-addon">
+                      <a class="pesquisa-anchor" href=""><i style="font-size: 25px; margin-right: 20px; display: block;"
+                          class="material-icons">search</i></a>
 
-          <div class="row" style="margin-top: 90px;">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                      <span style="display: inline-block; margin-right: 10px" class="pesquisa-avancada">| Pesquisa
+                        vançada </span>
+                      <i style="font-size: 20px; margin-right: 20px; display: block;"
+                        class="material-icons">format_indent_increase</i>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 180px;">
+            <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div style="background-color: white; border-radius: 5px; padding: 10px;" class="calendario">
                 <div id="calendar"></div>
               </div>
@@ -213,29 +248,10 @@
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div style="text-align: center;">
-                <img width="250" src="/img/jornal-bg.png" alt="">
+                <img class="jornal-bg" width="250" src="/img/jornal-bg.png" alt="">
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-              <div style="text-align: center;" class="center">
-                <h2>Pesquisar no DOEMA</h2>
-                <div class="grupo-input">
-                  <input placeholder="Informe o termo que deseja pesquisar nas Edições do Diário Oficial" type="text">
-                  <div class="grupo-input-addon">
-                    <i style="font-size: 25px; margin-right: 20px; display: block;" class="material-icons">search</i>
-                    <span style="display: inline-block; margin-right: 10px" class="pesquisa-avancada">| Pesquisa
-                      avançada </span>
-                    <i style="font-size: 20px; margin-right: 20px; display: block;"
-                      class="material-icons">format_indent_increase</i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
           <div class="row">
             <div style="text-align: center;" class="col-sm-3 col-md-3">
               <a class="card-anchor" href="#">
@@ -285,7 +301,7 @@
                 <div class="card card-opcoes">
                   <div class="body">
                     <h5><i class="fa fa-book fa-4x"></i></h5>
-                    <h4 class="opcoes-titulo">BIBLIOTECA</h4>
+                    <h4 class="opcoes-titulo">DÚVIDAS</h4>
                     <p class="opcoes-p">
                       Caso você esteja buscando uma informação anterior
                       ao ano de 2004, clique aqui e solicite a busca ao nosso acervo físico

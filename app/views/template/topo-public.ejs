@@ -1,108 +1,30 @@
-<style>
-  .bg-gradient-blue ul li a {
-    color: white !important;
-    font-weight: 100;
-  }
-
-  .bg-gradient-blue {
-    background: linear-gradient(to right, #4345f4, #43abf4) !important;
-    color: white !important;
-  }
-
-  .navbar-brand {
-    padding: 0;
-    margin-left: 20px;
-    width: 200px;
-    margin-top: 8px;
-  }
-
-  /* ESTILIZANDO DROPDOWN DA NAVBAR */
-  .dropdown-menu {
-    color: black;
-    margin-top: 0 !important;
-    left: 5px !important;
-    border-radius: 0 5px 10px 10px !important;
-  }
-
-  .navbar-nav>li>a {
-    margin-top: 17px;
-  }
-
-  .btn-edoema {
-    border: 2px solid white;
-    border-radius: 6px;
-    padding: 8px 12px !important;
-  }
-
-  .navbar-nav>li>a:hover {
-    background: transparent;
-    transition: all .1s;
-    color: #dde001 !important;
-    font-weight: bold;
-  }
-
-  .nav .open>a,
-  .nav .open>a:hover,
-  .nav .open>a:focus,
-  .nav .open>a:active {
-    background-color: white;
-    color: rgb(31, 57, 202) !important;
-    border-radius: 20px 5px 0px 0px;
-    font-weight: bold;
-  }
-
-  .dropdown-menu {
-    border-right: 1px solid #8992e8f0;
-    border-bottom: 1px solid #8992e8f0;
-  }
-
-
-  .dropdown-menu ul {
-    margin-top: 0 !important;
-  }
-
-  .dropdown-menu .body {
-    min-width: 230px;
-  }
-
-  .slimScrollDiv {
-    position: relative !important;
-  }
-
-  .slimScrollDiv ul .menu {
-    overflow: hidden !important;
-    width: auto !important;
-  }
-</style>
-
+<!-- IMPOTANDO CSS CUSTOMIZADO NA NAVBAR  -->
+<link href="/css/template-styles/public-nav.css" rel=" stylesheet">
 
 <nav class="navbar bg-gradient-blue">
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
         data-target="#navbar-collapse" aria-expanded="false"></a>
-      <a style="padding: 0; margin-left: 20px;" class="navbar-brand" href="#">
+      <a class="navbar-brand" href="#">
         <img width="200" src="/img/doema-logo-white.svg" alt="">
       </a>
     </div>
 
-
-
     <div class="navbar-collapse collapse" id="navbar-collapse" aria-expanded="false">
-      <ul style="margin-top: 4px;" class="nav navbar-nav navbar-left">
+      <ul class="nav navbar-nav navbar-left">
         <!-- Call Search -->
         <li><a href="/inicio" class="js-search" data-close="true">Início</a></li>
         <!-- #END# Call Search -->
         <!-- Notifications -->
         <li class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-            <span class="drop-informativo">Informativo</span><i style="font-size: 16px;"
-              class="material-icons">arrow_drop_down</i>
+            <span class="dropdown-label">Informativo</span><i class="material-icons">arrow_drop_down</i>
           </a>
-          <ul style="margin-top: 0  !important; " class="dropdown-menu">
+          <ul class="dropdown-menu">
             <li class="body">
-              <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;">
-                <ul class="menu" style="overflow: hidden; width: auto;">
+              <div class="slimScrollDiv">
+                <ul class="menu">
                   <li>
                     <a href="/informativo/historia" class=" waves-effect waves-block">
                       <div class="icon-circle bg-light-green">
@@ -129,13 +51,10 @@
                       </div>
                     </a>
                   </li>
-
                 </ul>
-                <div class="slimScrollBar"
-                  style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px;">
+                <div class="slimScrollBar">
                 </div>
-                <div class="slimScrollRail"
-                  style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+                <div class="slimScrollRail">
                 </div>
               </div>
             </li>
@@ -144,8 +63,7 @@
 
         <li class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-            <span class="drop-informativo">Publicações</span><i style="font-size: 16px;"
-              class="material-icons">arrow_drop_down</i>
+            <span class="dropdown-label">Publicações</span><i class="material-icons">arrow_drop_down</i>
           </a>
           <ul class="dropdown-menu">
             <li class="body">
@@ -191,11 +109,9 @@
                     </a>
                   </li>
                 </ul>
-                <div class="slimScrollBar"
-                  style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px;">
+                <div class="slimScrollBar">
                 </div>
-                <div class="slimScrollRail"
-                  style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+                <div class="slimScrollRail">
                 </div>
               </div>
             </li>
@@ -205,8 +121,7 @@
 
         <li class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-            <span class="drop-informativo">Biblioteca </span><i style="font-size: 16px;"
-              class="material-icons">arrow_drop_down</i>
+            <span class="dropdown-label">Biblioteca </span><i class="material-icons">arrow_drop_down</i>
           </a>
           <ul class="dropdown-menu">
             <li class="body">
@@ -219,9 +134,7 @@
                       </div>
                       <div class="menu-info">
                         <h4>Acervo Local</b></h4>
-                        <p>
-                          <i class="material-icons">access_time</i> Veja como publicar
-                        </p>
+                        <p><i class="material-icons">access_time</i> Veja como publicar</p>
                       </div>
                     </a>
                   </li>
