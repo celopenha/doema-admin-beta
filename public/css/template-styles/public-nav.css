@@ -1,4 +1,6 @@
 
+
+/* BREAK POINT NAVBAR  */
 @media screen and (max-width: 600px) {
 
   .navbar-header{
@@ -29,9 +31,10 @@
     margin: 0 auto !important;
     padding: 10px 0;
   }
-  .dropdown{
+  .dropdown .nav-link{
     text-align: center;
     width: 90% !important;
+
   }
   .navbar .nav > li{
 
@@ -53,15 +56,11 @@
   }
   
 }
-
-
-
 .bg-gradient-blue ul li a {
   width: 100%;
   color: white !important;
   font-weight: 100;
 }
-
 .bg-gradient-blue {
   background: linear-gradient(to right, #4345f4, #43abf4) !important;
   color: white !important;
