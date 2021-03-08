@@ -1,0 +1,151 @@
+
+@media screen and (max-width: 600px) {
+
+  .navbar-header{
+  }
+  .navbar-brand {
+    /* margin-left: 20px !important; */
+    display: inline-block;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+  .navbar-brand img{
+    margin: 0 auto;
+  }
+  .navbar-toggle {
+    position: absolute !important;
+    right: 0;
+  }
+  .navbar-left {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  a .dropdown-toggle{
+    margin: 0 auto !important;
+  }
+  .navbar-nav > li > a{
+    margin: 0 auto !important;
+    padding: 10px 0;
+  }
+  .dropdown{
+    text-align: center;
+    width: 90% !important;
+  }
+  .navbar .nav > li{
+
+  }
+  .dropdown-menu{
+    transition: all 2s;
+    border-radius: 0 0 10px 10px !important;
+  }
+  .navbar .dropdown-menu{
+    margin: 0 !important;
+  }
+  .nav .open > a{
+    border-radius: 10px 10px 0 0 !important;
+  }
+  .navbar .navbar-nav .open .dropdown-menu{
+    display: block !important;
+    position: unset !important;
+    width: 100%;
+  }
+  
+}
+
+
+
+.bg-gradient-blue ul li a {
+  width: 100%;
+  color: white !important;
+  font-weight: 100;
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(to right, #4345f4, #43abf4) !important;
+  color: white !important;
+}
+
+.navbar-brand {
+  padding: 0;
+  margin-left: 20px;
+}
+
+/* ESTILIZANDO DROPDOWN DA NAVBAR */
+
+.btn-edoema {
+  border: 2px solid white;
+  border-radius: 6px;
+  padding: 8px 12px !important;
+}
+
+.navbar-nav>li>a:hover {
+  background: none;
+  color: #ecee78 !important;
+}
+
+.nav .open>a,
+.nav .open>a:hover,
+.nav .open>a:focus,
+.nav .open>a:active {
+  background-color: white;
+  color: rgb(31, 57, 202) !important;
+  border-radius: 20px 5px 0px 0px;
+  font-weight: bold;
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+  background: transparent;
+}
+
+.dropdown-menu {
+  color: black;
+  margin-top: 0 !important;
+  left: 5px !important;
+  border-radius: 0 5px 10px 10px;
+
+  border-right: 1px solid #8992e8f0;
+  border-bottom: 1px solid #8992e8f0;
+}
+
+.dropdown-menu .body {
+  min-width: 270px;
+}
+
+.slimScrollDiv {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+}
+
+.slimScrollDiv ul .menu {
+  overflow: hidden !important;
+  width: auto !important;
+}
+
+.slimScrollBar {
+  background: rgba(0, 0, 0, 0.5);
+  width: 4px;
+  position: absolute;
+  top: 0px;
+  opacity: 0.4;
+  display: block;
+  border-radius: 0px;
+  z-index: 99;
+  right: 1px;
+}
+
+.slimScrollRail {
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  display: none;
+  border-radius: 0px;
+  background: rgb(51, 51, 51);
+  opacity: 0.2;
+  z-index: 90;
+  right: 1px;
+}
