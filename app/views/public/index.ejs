@@ -72,7 +72,6 @@
     h5,
     h6 {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
     }
 
     .fc-right .fc-prev-button,
@@ -209,15 +208,30 @@
   </style>
 </head>
 
+<style>
+  @font-face {
+    font-family: Corpid-Black;
+    src: url('/fonts/Corpid-Black.otf');
+  }
+
+  .jornal-principal {
+    background: linear-gradient(to right blue, red);
+    display: block;
+    padding: 5px;
+    margin: 20px 0;
+    border: 2px solid black;
+  }
+</style>
 
 <body>
   <%- include ../template/topo-public.ejs %>
 
-    <% if (locals.mensagem) { %>
-      <img class="banner" src="data:image/png;base64;svg;jpg;jpeg, <%= mensagem.base64Img%>" />
+    <% if (locals.mensagem) { %><img class="banner"
+        src="data:image/png;base64;svg;jpg;jpeg, <%= mensagem.base64Img%>" />
       <% } %>
+
         <div class="container">
-          <div class="row" style="margin-top: 180px;">
+          <div class="row" style="margin-top: 100px;">
             <div class=" col-xs-12 col-sm-12 col-md-12">
               <div style="text-align: center;" class="center">
                 <h2>Pesquisar no DOEMA</h2>
@@ -239,20 +253,35 @@
               </div>
             </div>
           </div>
-          <div class="row" style="margin-bottom: 180px;">
-            <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div style="background-color: white; border-radius: 5px; padding: 10px;" class="calendario">
-                <div id="calendar"></div>
-              </div>
+          <div class="row">
 
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <ul class="jornais-principal">
+                <li><a class=" jornal-principal anchor-terceiros" href="#">TERCEIROS</a></li>
+                <li><a class=" jornal-principal anchor-executivo" href="">EXECUTIVO</a></li>
+                <li><a class=" jornal-principal anchor-suplementos" href="">SUPLEMENTOS</a></li>
+              </ul>
             </div>
+
+
+
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <div style="text-align: center;">
                 <img class="jornal-bg" width="250" src="/img/jornal-bg.png" alt="">
               </div>
             </div>
+
+            <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div style="background-color: white; border-radius: 5px; padding: 10px;" class="calendario">
+                <div id="calendar"></div>
+              </div>
+            </div>
+
           </div>
-          <div class="row">
+
+
+
+          <div class="row" style="margin-top: 40px">
             <div style="text-align: center;" class="col-sm-3 col-md-3">
               <a class="card-anchor" href="#">
                 <div class="card card-opcoes">
@@ -552,7 +581,16 @@
             }
           }
         </script>
-
+        <div vw class="enabled">
+          <div vw-access-button class="active"></div>
+          <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+          </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+          new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
 </body>
 
 </html>
