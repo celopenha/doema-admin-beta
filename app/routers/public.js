@@ -8,30 +8,33 @@ module.exports = async (app) => {
     const msgUrl = `${process.env.API_HOST}mensagem/ultima-mensagem`;
     // REQUISIÇÃO À API
     const response = (await axios.get(msgUrl)).data;
-    //***** FUNÇÃO QUE COMPARA DATA ATUAL COM DATA DE EXPIRAÇÃO (RETORNA TRUE OU FALSE) ******/
-    const isMessageExpired = (date) => {
-      // FUNÇÃO IRÁ CONVERTAR PARA OBJETO DATE() NATIVO DO JS
-      // A ENTRADA DEVERÁ ESTAR NO FORMATO "DD/MM/YYYY"
-      // MOMENT IRÁ FORÇAR ESTE FORMATO
-      // SPLIT IRÁ CRIAR UM VETOR CONTENTO OS FRAGMENTOS DA DATA
-      const dateFragment = moment(date).format("DD/MM/YYYY").split("/");
-      console.log(date);
-      console.log(dateFragment, "oi")
-      // DATA DE EXPIRAÇÃO NO FORMATO JS DATE
-      const dataExpiracao = new Date(dateFragment[2], dateFragment[1] - 1, dateFragment[0]);
-      // DATA ATUAL NO FORMATO JS DATE
-      const hoje = new Date();
-      console.log(hoje)
-      console.log(dataExpiracao)
-      // COMPARAÇÃO ENTRE DATAS
-      return hoje > dataExpiracao;
-    }
+
+
     const mensagem = {
       id: response.data.id,
       titulo: response.data.titulo,
       base64Img: response.data.mensagem,
-      dataExpiracao: moment(response.data.dataExpiracao).format("DD/MM/YYYY"),
+      dataExpiracao: response.data.dataExpiracao
     }
+
+    //***** FUNÇÃO QUE COMPARA DATA ATUAL COM DATA DE EXPIRAÇÃO (RETORNA TRUE OU FALSE) ******/
+    const isMessageExpired = (expirationDate) => {
+      const actualDate = new Date();
+      const actualDateInSeconds = Date.parse(actualDate);
+
+      const expirationDateInSeconds = Date.parse(expirationDate);
+
+      console.log(actualDateInSeconds);
+      console.log(expirationDateInSeconds);
+
+      if (expirationDateInSeconds > actualDateInSeconds) {
+        return true;
+      } else {
+        return false
+      }
+    }
+
+
 
     if (isMessageExpired(mensagem.dataExpiracao)) {
       return res.render("public/index", { mensagem })
