@@ -1,14 +1,23 @@
  /* DEVICE */
 @media screen and (max-width: 600px) {
+  body{
+    background-color: #FFF;
+
+  }
 .grupo-input{
   width: 100% !important;
 }
+
+#calendar{
+  border: 2px solid black !important;
 }
 
 
+}
 
-
-
+body{
+  background-color: #FFF;
+}
 h1,
 h2,
 h3,

@@ -66,6 +66,14 @@
     align-items: center;
     margin-bottom: 5px;
   }
+  .dropdown-toggle i{
+    font-size: 11px !important;
+  }
+
+
+  .dropdown-icons{
+    font-size: 11px !important;
+  }
   
 }
 

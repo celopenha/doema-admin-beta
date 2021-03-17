@@ -1194,7 +1194,6 @@ header .balloon-a {
   cursor: default;
 }
 .some-toolbar-active .cke_toolbar {
-  zoom: 1;
   filter: alpha(opacity=50);
   -webkit-opacity: 0.5;
   -moz-opacity: 0.5;
@@ -1202,7 +1201,6 @@ header .balloon-a {
 }
 .cke_toolbar.active {
   position: relative;
-  zoom: 1;
   filter: alpha(opacity=100);
   -webkit-opacity: 1;
   -moz-opacity: 1;
@@ -1301,7 +1299,6 @@ div.toolbarModifier .empty {
 }
 div.toolbarModifier.empty-visible .empty {
   display: table-row;
-  zoom: 1;
   filter: alpha(opacity=60);
   -webkit-opacity: 0.6;
   -moz-opacity: 0.6;
@@ -1408,7 +1405,6 @@ div.toolbarModifier > ul > li p span button:not(.disabled):focus {
 }
 div.toolbarModifier > ul > li p span button.move.disabled {
   cursor: default;
-  zoom: 1;
   filter: alpha(opacity=20);
   -webkit-opacity: 0.2;
   -moz-opacity: 0.2;

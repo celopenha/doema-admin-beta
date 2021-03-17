@@ -373,18 +373,7 @@ button.btnControl
 	width:100%;
 }
 button
-{
-	width:230px;
-	min-height:38px;
-	padding:0 3px 0 3px;
-	background:#bc0808;
-	border:#bc0808 1px solid;
-	color:#FFF;
-	border:none;
-	margin-bottom:13px;
-	font-weight:bold;
-	cursor:pointer;
-}
+
 button.ativo
 {
 	background: #bc0808;
@@ -435,9 +424,7 @@ ul.linha li
 
 li{position:relative}
 
-a {text-decoration:none; font-weight:bold}
-a:hover{color:#F00;}
-a:visited{color:#F00;}
+
 
 /*FORMULÁRIO - ESTILO END ----------------------------------------------------------------------------*/
 
