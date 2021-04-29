@@ -1,62 +1,410 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <%- include ../../template/head.ejs %>
 
-<body>
-	<%- include ../../template/topo-public.ejs %>
+  <body>
 
-</body>
+    <style>
+      * {
+        hyphens: auto;
 
-<div class="container">
-	<div class="row">
-		<h1>NORMAS DE PUBLICAÇÃO</h1>
-	</div>
-</div>
+      }
+
+      .capitulo {}
+
+      .secao {}
+
+      .paragrafo {
+        font-size: 1.2em;
+      }
+
+      .artigo {}
+
+      .section {
+        margin: 0 20px;
+      }
+    </style>
+
+    <%- include ../../template/topo-public.ejs %>
+
+  </body>
+  <div style="margin-top: 120px;  " class="container">
+    <div class="row">
+      <h1 style="text-align: center; font-weight: 900;">NORMAS PARA PUBLICAÇÃO</h1>
+      <h4>Normas para a publicação no DOE-MA baseadas na portaria XXXX-xxx de 20 de abril de 2015</h4>
+    </div>
+    <section id="capitulo-1" class="capitulo-1">
+      <h1 class="capitulo">CAPÍTULO 1</h1>
+      <section class="section 1-publicacao">
+        <div class="row">
+          <div class="">
+            <h2 class="secao">I. Da Publicação</h2>
+            <h4 class="artigo">Art. 2º Serão publicados no Diário Oficial do Estado do
+              Maranhão:</h4>
+            <p class="paragrafo">
+              I - Atas, Certidões e Demonstrações Financeiras de Associações, Sociedades, Firmas, Condomínios e Órgãos
+              de Representação Profissional;
+            </p>
+            <p class="paragrafo">II - Avisos, Editais e Termos de Associações, Sociedades, Firmas, Entidades Esportivas,
+              Condomínios e Órgãosde Representação Profissional;</p>
+            <p class="paragrafo"> III - Leilões Extrajudiciais;</p>
+            <p class="paragrafo">IV - Listas de concluintes de curso de escolas particulares; </p>
+            <p class="paragrafo"> V - Licitações.</p>
+            </p>
+          </div>
+      </section>
+      <section class="section 2-transcricao-">
+        <div class="row">
+          <div class="">
+            <h2>II. Da Transcrição de Matérias</h2>
+            <h4>
+              Art. 3º É de responsabilidade do órgão ou entidade particular
+              emitente a transcrição de matéria para meio eletrônico dentro dos
+              padrões aceitos pelo Diário Oficial do Estado do Maranhão, quando
+              necessário.
+            </h4>
+          </div>
+        </div>
+      </section>
+      <section class="section 3-vedacao">
+        <div class="row">
+          <div class="">
+            <h2>III. Da Vedação</h2>
+            <h4>
+              Art. 4º Tem vedada a sua publicação no Diário Oficial do
+              Estado do Maranhão:
+            </h4>
+            <p class="paragrafo">I - matérias de interesse particular, não amparadas por legislaçãoespecífica;</p>
+            <p class="paragrafo">II - textos com abreviações de títulos e palavras, exceto datas; </p>
+            <p class="paragrafo">III - abreviações que venham a descaracterizar o texto, exceto as abreviações
+              reconhecidamente utilizadas no país. Exemplo: S/A,
+              Susep, IR, BB, ANS, Bacen, CVM, etc;</p>
+            <p class="paragrafo">IV - tabelas em forma de texto (por extenso);</p>
+            <p class="paragrafo">V - títulos de colunas (na vertical);</p>
+            <p class="paragrafo">VI - arquivos com senhas ou bloqueadores.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="capitulo-2">
+      <h1>CAPÍTULO II</h1>
+
+      <section class="section 1-cancelamento">
+        <h2 class="secao">I. CANCELAMENTO</h2>
+        <p class="artigo"> <strong> Art. 5º</strong> O pedido de cancelamento de matéria deve ser encaminhado pelo órgão
+          de origem à
+          Divisão de Atendimento do Diário Oficial
+          do Estado do Maranhão - por meio de ofício, correio eletrônico,
+          contendo:</p>
+        <p class="paragrafo">I - nome da empresa, cliente ou órgão emissor;</p>
+        <p class="paragrafo">II - número do ofício de transmissão eletrônica;</p>
+        <p class="paragrafo">III - identificação da matéria a ser cancelada;</p>
+        <p class="paragrafo">IV - nome, assinatura e identificação do responsável pelo cancelamento;</p>
+        <p class="paragrafo">V - data de disponibilização da matéria;</p>
+        <p class="paragrafo">VI - motivo do cancelamento.</p>
+
+        <p class="artigo">
+          <strong>Art. 6º</strong> Somente serão acolhidos os pedidos de cancelamento
+          formulados até as 24 horas do dia anterior à data prevista para publicação.
+        </p>
+
+        <p class="artigo">
+          <strong>Art. 7º</strong> O Diário Oficial do Estado do Maranhão não possui
+          autonomia para cancelar, anular, ou tornar sem efeito quaisquer matérias publicadas indevidamente,
+          prerrogativa que, por medida de segurança, é reservada exclusivamente ao órgão ou entidade emitente, exceto
+          em caso de determinação superior.
+        </p>
+      </section>
+      <section class="section 2-alteracao">
+        <h2 class="secao">II. ALTERAÇÃO E REVOGAÇÃO</h2>
+        <p class="artigo"><strong>Art. 8º</strong> A alteração ou a revogação de matéria oficial já publicada
+          deverá ser feita por ato da mesma natureza ou superior, contendo
+          referência às disposições emendadas ou invalidadas, com expressa
+          menção da data da edição, parte e da página da primeira publicação.</p>
+      </section>
+
+      <section class="section 3-retificacao">
+        <h2 class="secao">III. RETIFICAÇÃO</h2>
+        <p class="artigo"><strong>Art. 9º</strong> Na retificação de matéria serão publicados apenas os
+          tópicos alterados, emendados ou omitidos, com menção aos elementos
+          essenciais à sua identificação, não sendo necessário o uso de signatário.</p>
+        <p class="artigo"> <strong>§ 1º</strong> Em casos de retificação ocasionada por falha do Diário
+          Oficial do Estado do Maranhão, caberá à mesma a responsabilidade de
+          efetivar a retificação do ato, que deverá conter nota explicativa de
+          rodapé. Neste caso, o órgão emissor deverá formalizar pedido por
+          intermédio de ofício ou correio eletrônico, contendo:</p>
+
+        <p class="paragrafo">I - nome do órgão emissor;</p>
+        <p class="paragrafo">II - número do ofício de transmissão eletrônica;</p>
+        <p class="paragrafo">III - identificação do jornal;</p>
+        <p class="paragrafo">IV - data da edição;</p>
+        <p class="paragrafo">V - página e ato a ser retificado;</p>
+        <p class="paragrafo">VI - nome, assinatura e identificação do responsável pela retificação;</p>
+        <p class="paragrafo">VII - motivo da retificação.</p>
+
+        <div class="artigo">
+          <strong>§ 2º</strong> Em casos de retificação ocasionada por falhas na origem, o
+          cliente se responsabilizará pela retificação dos atos, inclusive pelas
+          custas porventura originadas.
+        </div>
+      </section>
+      <section class="section 4-republicacao">
+        <h2 class="secao">IV. REPUBLICAÇÃO</h2>
+        <p class="artigo"><strong>Art. 10.</strong> O ato somente poderá ser objeto de republicação quando a incorreção
+          comprometer sua
+          essência ou, por sua importância e
+          complexidade, deva ser reinserido na íntegra.</p>
+        <p class="artigo">
+          <strong>§ 1º</strong> Em casos de erros de publicação ocasionados pelo Diário
+          Oficial do Estado do Maranhão, caberá ao mesmo a responsabilidade
+          de republicação dos atos, que conterão justificativas do Diário Oficial
+          do Estado do Maranhão em notas de rodapé.
+        </p>
+        <p class="artigo">
+          <strong>§ 2º</strong> Em casos de erros de publicação ocasionados na origem, o
+          cliente se responsabilizará pela republicação dos atos, inclusive pelas
+          custas porventura originadas.
+        </p>
+      </section>
+      <section class="section 5-credito-cancelamento">
+        <h2 class="secao">V. CRÉDITO POR CANCELAMENTO</h2>
+        <p class="artigo">
+          <strong>Art. 11.</strong> Em caso de cancelamento de matérias até o horário
+          limite, o cliente solicitará formalmente ao Diário Oficial do Estado do
+          Maranhão o ressarcimento do valor efetivamente pago que terá descontado a título de custo de administração,
+          10% do valor total da publicação considerando-se como valor mínimo a ser descontado o
+          valor correspondente a 1 cm (um centímetro) de coluna, sendo que,
+          este crédito será disposto para futuras publicações.
+        </p>
+      </section>
+    </section>
+
+    <section class="capitulo-3">
+      <h1> </h1>
+    </section>
+    <button class="btn btn-lg btn-succes">
+      <a href="#capitulo-1">CLICA PAI</a>
+    </button>
 
 
 
-<div class="scripts">
-	<!-- Jquery Core Js -->
-	<script src="/js/plugins/jquery/jquery.min.js"></script>
 
-	<!-- Bootstrap Core Js -->
-	<script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
 
-	<!-- Slimscroll Plugin Js -->
-	<script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-	<!-- Waves Effect Plugin Js -->
-	<script src="/js/plugins/node-waves/waves.js"></script>
+    <div class="row">
+      Seção II
+      Da Transcrição de Matérias
+      Art. 3º É de responsabilidade do órgão ou entidade particular
+      emitente a transcrição de matéria para meio eletrônico dentro dos
+      padrões aceitos pelo Diário Oficial do Estado do Maranhão, quando
+      necessário.
+      Seção III
+      Da Vedação
+      Art. 4º Tem vedada a sua publicação no Diário Oficial do
+      Estado do Maranhão:
+      I - matérias de interesse particular, não amparadas por legislação
+      específica;
+      II - textos com abreviações de títulos e palavras, exceto datas;
+      III - abreviações que venham a descaracterizar o texto, exceto
+      as abreviações reconhecidamente utilizadas no país. Exemplo: S/A,
+      Susep, IR, BB, ANS, Bacen, CVM, etc;
+      IV - tabelas em forma de texto (por extenso);
+      V - títulos de colunas (na vertical);
+      VI - arquivos com senhas ou bloqueadores.
+    </div>
 
-	<!-- Jquery CountTo Plugin Js -->
-	<script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+    <div class="row">
+      CAPÍTULO II
+      DO CANCELAMENTO, ALTERAÇÃO, REVOGAÇÃO,
+      RETIFICAÇÃO E REPUBLICAÇÃO DE MATÉRIAS
+      Seção I
+      Do Cancelamento
+      Art. 5º O pedido de cancelamento de matéria deve ser encaminhado pelo órgão de origem à Divisão de Atendimento do
+      Diário Oficial
+      do Estado do Maranhão - por meio de ofício, correio eletrônico,
+      contendo:
+      I - nome da empresa, cliente ou órgão emissor;
+      II - número do ofício de transmissão eletrônica;
+      III - identificação da matéria a ser cancelada;
+      IV - nome, assinatura e identificação do responsável pelo
+      cancelamento;
+      V - data de disponibilização da matéria;
+      VI - motivo do cancelamento.
+      Art. 6º Somente serão acolhidos os pedidos de cancelamento
+      formulados até as 24 horas do dia anterior à data prevista para publicação.
+      Art. 7º O Diário Oficial do Estado do Maranhão não possui
+      autonomia para cancelar, anular, ou tornar sem efeito quaisquer matérias publicadas indevidamente, prerrogativa
+      que, por medida de segurança, é reservada exclusivamente ao órgão ou entidade emitente, exceto
+      em caso de determinação superior.
+      Seção II
+      Da Alteração ou Revogação
+      Art. 8º A alteração ou a revogação de matéria oficial já publicada
+      deverá ser feita por ato da mesma natureza ou superior, contendo
+      referência às disposições emendadas ou invalidadas, com expressa
+      menção da data da edição, parte e da página da primeira publicação.
+      Seção III
+      Da Retificação
+      Art. 9º Na retificação de matéria serão publicados apenas os
+      tópicos alterados, emendados ou omitidos, com menção aos elementos
+      essenciais à sua identificação, não sendo necessário o uso de signatário.
+      § 1º Em casos de retificação ocasionada por falha do Diário
+      Oficial do Estado do Maranhão, caberá à mesma a responsabilidade de
+      efetivar a retificação do ato, que deverá conter nota explicativa de
+      rodapé. Neste caso, o órgão emissor deverá formalizar pedido por
+      intermédio de ofício ou correio eletrônico, contendo:
+      I - nome do órgão emissor;
+      II - número do ofício de transmissão eletrônica;
+      III - identificação do jornal;
 
-	<!-- Morris Plugin Js -->
-	<script src="/js/plugins/raphael/raphael.min.js"></script>
-	<script src="/js/plugins/morrisjs/morris.js"></script>
+      IV - data da edição;
+      V - página e ato a ser retificado;
+      VI - nome, assinatura e identificação do responsável pela
+      retificação;
+      VII - motivo da retificação.
+      § 2º Em casos de retificação ocasionada por falhas na origem, o
+      cliente se responsabilizará pela retificação dos atos, inclusive pelas
+      custas porventura originadas.
+      Seção IV
+      Da Republicação
+      Art. 10. O ato somente poderá ser objeto de republicação quando a incorreção comprometer sua essência ou, por sua
+      importância e
+      complexidade, deva ser reinserido na íntegra.
+      § 1º Em casos de erros de publicação ocasionados pelo Diário
+      Oficial do Estado do Maranhão, caberá ao mesmo a responsabilidade
+      de republicação dos atos, que conterão justificativas do Diário Oficial
+      do Estado do Maranhão em notas de rodapé.
+      § 2º Em casos de erros de publicação ocasionados na origem, o
+      cliente se responsabilizará pela republicação dos atos, inclusive pelas
+      custas porventura originadas.
+      Seção V
+      Do Crédito por Cancelamento
+      Art. 11. Em caso de cancelamento de matérias até o horário
+      limite, o cliente solicitará formalmente ao Diário Oficial do Estado do
+      Maranhão o ressarcimento do valor efetivamente pago que terá descontado a título de custo de administração, 10% do
+      valor total da
+      publicação considerando-se como valor mínimo a ser descontado o
+      valor correspondente a 1 cm (um centímetro) de coluna, sendo que,
+      este crédito será disposto para futuras publicações.
+      CAPÍTULO III
+      DO RECEBIMENTO DAS MATÉRIAS
+      Seção I
+      Da Transmissão Eletrônica por Mídia Magnética
+      Art. 12. As matérias deverão ser encaminhadas por meio de
+      mídia magnética ao Diário Oficial do Estado do Maranhão.
+      Seção II
+      Dos Clientes não Cadastrados
+      Art. 13. As empresas, clientes, órgãos ou entidades jurídicas
+      não cadastradas que publicarem no Diário Oficial do Estado do
+      Maranhão - Publicações a Pedido, encaminharão suas matérias armazenadas em mídia magnética, dentro das formatações
+      descritas no
+      Capítulo VI, Seção I, desta Portaria.
+      § 1º É imprescindível que a mídia magnética esteja acompanhada
+      por ofício assinado, discriminando as matérias a serem publicadas.
+      § 2º As matérias de interesse de terceiros e expedidas por órgão
+      público deverão vir acompanhadas por ofício com anuência do órgão
+      que a autorizou.
 
-	<!-- Light Gallery Plugin Js -->
-	<script src="/js/plugins/light-gallery/js/lightgallery-all.js"></script>
+      § 3º As matérias de listas de concludentes de curso deverão
+      ser encaminhadas em mídia magnética ao Diário Oficial do Estado do
+      Maranhão, que emitirá uma guia para pagamento e imprimirá em
+      documento próprio e em três vias a referida lista que deverá ser
+      autorizada pelo órgão controlador e posteriormente encaminhada ao
+      Diário Oficial do Estado do Maranhão.
+      § 4º Somente serão permitidas intermediações por pessoas
+      jurídicas ou profissionais liberais, para efeito de transmissão de atos
+      pelo sistema de recebimento, mediante instrumento de procuração
+      pública do órgão/entidade emitente.
+      Seção IV
+      Do Horário de Recebimento
+      Art. 14. As matérias a serem publicadas no Diário Oficial do
+      Estado do Maranhão deverão ser transmitidas eletronicamente ou, em
+      caso de falha técnica, entregues por meio de mídia magnética na Sede do
+      Diário Oficial do Estado do Maranhão em até 48 (quarenta e oito)
+      horas antes ao previsto para sua efetiva publicação.
+      Parágrafo único. As matérias enviadas após os horários estabelecidos serão publicadas em dia posterior ao
+      anteriormente definido.
+      Art. 15. A confirmação da publicação, somente será efetivada
+      após a aprovação financeira pelo setor responsável.
+      Seção V
+      Da Devolução de Matéria
+      Art. 16. As matérias em desconformidade com os termos desta
+      Portaria não serão publicadas e será comunicado ao seu emitente, via email definido por ocasião do cadastramento,
+      gerando um crédito relativo
+      à colunagem, a ser creditado ao emitente na ocasião de nova publicação,
+      não cabendo ressarcimento em caso de matérias pagas.
+      CAPÍTULO IV
+      DO DIREITO DE IMAGEM
+      Art. 17. As informações publicadas no Diário Oficial do
+      Estado do Maranhão e em seu site são públicas, mas fica vedada a
+      cópia e reprodução da imagem, mesmo que parcial, para fins comerciais, em qualquer meio, sem autorização prévia do
+      Diário Oficial do
+      Estado do Maranhão.
+      Art. 18. É de propriedade intelectual e industrial do Diário
+      Oficial do Estado do Maranhão, a imagem do Diário Oficial do
+      Estado do Maranhão gerada no sistema digital, Internet ou papel,
+      bem como as marcas DOEMA, Diário Oficial do Estado do
+      Maranhão, amparados pela legislação de direito autoral, de informática
+      e de Propriedade Industrial.
+      Art. 19. O desrespeito do direito de imagem e de propriedade
+      industrial do Diário Oficial do Estado do Maranhão será passível das
+      sanções legais previstas na legislação brasileira.
+      CAPÍTULO V
+      DO SISTEMA DE RECEBIMENTO DE DOCUMENTOS
+      OFICIAIS
+      Seção I
+      Da Finalidade
+      Art. 20. O sistema de recebimento de documentos oficiais tem
+      por finalidade garantir o sigilo dos atos oficiais por intermédio de rotinas, recebimento e transferência de
+      matérias para publicação no Diário
+      Oficial do Estado do Maranhão.
+    </div>
+  </div>
 
-	<!-- Custom Js -->
-	<script src="/js/js/pages/medias/image-gallery.js"></script>
 
-	<!-- Custom Js -->
-	<script src="/js/js/admin.js"></script>
-	<script src="/js/js/pages/index.js"></script>
 
-	<!-- Page level plugins -->
-	<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-	<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <div class="scripts">
+    <!-- Jquery Core Js -->
+    <script src="/js/plugins/jquery/jquery.min.js"></script>
 
-	<!-- Page level custom scripts -->
-	<script src="/js/demo/datatables-demo.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
 
-	<!-- Jquery Mask Js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-	<!-- Inclusão de Máscaras Js-->
-	<script src="/js/shopping-crianca-mask.js"></script>
-</div>
+    <!-- Waves Effect Plugin Js -->
+    <script src="/js/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="/js/plugins/raphael/raphael.min.js"></script>
+    <script src="/js/plugins/morrisjs/morris.js"></script>
+
+    <!-- Light Gallery Plugin Js -->
+    <script src="/js/plugins/light-gallery/js/lightgallery-all.js"></script>
+
+    <!-- Custom Js -->
+    <script src="/js/js/pages/medias/image-gallery.js"></script>
+
+    <!-- Custom Js -->
+    <script src="/js/js/admin.js"></script>
+    <script src="/js/js/pages/index.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/datatables-demo.js"></script>
+
+    <!-- Jquery Mask Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <!-- Inclusão de Máscaras Js-->
+    <script src="/js/shopping-crianca-mask.js"></script>
+  </div>
 
 </html>
