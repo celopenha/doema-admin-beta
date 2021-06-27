@@ -4,9 +4,6 @@
     background-color: #FFF;
 
   }
-.grupo-input{
-  width: 100% !important;
-}
 
 #calendar{
   border: 2px solid black !important;
@@ -15,42 +12,10 @@
 
 }
 
-body{
-  background-color: #FFF;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Montserrat', sans-serif;
-}
-
-
-/* BOTÕES CALENDÁRIO */
-.fc-right .fc-prev-button,
-.fc-right .fc-next-button {
-  background-color: #4355f4 !important;
-  background-image: none;
-}
-.fc-left .fc-prev-button,
-.fc-left .fc-next-button {
-  background-color: #4355f4 !important;
-  background-image: none;
-}
 
 
 
-.modal-content {
-  position: absolute;
-  z-index: 999999999;
-  left: 50%;
-  width: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  height: 77%;
-}
+
 
 .banner {
   box-shadow: 0 0 10px 4px #41414152;
@@ -71,41 +36,9 @@ h6 {
 
 }
 
-.grupo-input {
-  width: 80%;
-  border-radius: 5px;
-  border: 1px solid #4399f4cc;
-  position: relative;
-  display: flex;
-  margin: 30px auto;
-
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
 
 
-.grupo-input input {
 
-  width: 100%;
-  padding: 20px;
-}
-
-.grupo-input-addon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  background-color: white;
-  border-radius: 0 5px 5px 0;
-  position: absolute;
-  right: 2px;
-
-}
-
-.grupo-input-addon span {
-  font-size: 16px;
-}
 
 .card-anchor:hover,
 .card-anchor:focus {
