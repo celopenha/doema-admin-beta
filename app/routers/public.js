@@ -5,7 +5,6 @@ var moment = require('moment');
 
 module.exports = async (app) => {
   app.get('/inicio', async (req, res) => {
-
     // URL'S PARA BUSCAR DADOS (MENSAGEM E FERIADOS) NA API
     const msgUrl = `${process.env.API_HOST}mensagem/ultima-mensagem`;
     const feriadosUrl = `${process.env.API_HOST}feriados/`;
@@ -52,32 +51,10 @@ module.exports = async (app) => {
 
     } catch (e) {
       console.log(e);
+      res.render("public/index")
     }
   });
 
-
-  app.get('/public/biblioteca', (req, res) => {
-    res.render('public/Biblioteca');
-  });
-
-  app.post('/public/jornal/listar', (req, res) => {
-
-    res.render('public/JornalList');
-  });
-
-
-  app.post('/public/biblioteca/listar', function (req, res) {
-
-
-    res.format({
-      html: function () {
-        res.render(rota + '/Create', {
-          page: rota,
-          informacoes: req.session.json
-        });
-      }
-    });
-  });
 
 
   app.get("/informativo/historia", function (req, res) {
@@ -96,4 +73,9 @@ module.exports = async (app) => {
     res.render("public/informativo/prazo-publicacao");
   });
 
+  app.get("/testando", (req, res) => {
+    res.render("index2")
+  })
+
 }
+
