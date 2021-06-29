@@ -47,6 +47,45 @@
   <link href="/css/css/themes/all-themes.css" rel="stylesheet" />
 
 </head>
+<style>
+  .previewImage {}
+
+  .dropzone {
+    cursor: pointer;
+    background-color: white !important;
+    border-radius: 5px !important;
+    border: 5px double black !important;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.16);
+  }
+
+  .dropzone:hover {
+    transition: .2s all;
+    transform: translate(2deg, 2deg);
+    transform: scale(1.01);
+  }
+
+  .dropzone .dz-message .drag-icon-cph .material-icons {
+    font-size: 120px;
+    padding: 0;
+    color: blue;
+  }
+
+  .btn-jornal-upload {
+    border-radius: 6px !important;
+    width: 100%;
+    font-size: 50px !important;
+  }
+
+  .btn-jornal-upload {
+    border-radius: 6px !important;
+    width: 100%;
+    font-size: 50px !important;
+  }
+
+  .upload-icon {
+    font-size: 120px !important;
+  }
+</style>
 
 <body class="theme-teal">
 
@@ -54,62 +93,66 @@
     <%- include ../template/menu.ejs %>
       <!-- Page Wrapper -->
       <section class="content">
-        <div class="content-fluid">
-          <%- messages() %>
+        <%- messages() %>
+
+          <!-- <div class="content-fluid">
             <div class="block-header">
-              <h2>Cadastrar Feriado</h2>
+              <h2>Cadastrar Mensagem</h2>
             </div>
-            <form class="user" id="frmFileUpload2" method="POST" action="/app/<%= page %>/create/submit"
+
+            <form enctype="multipart/form-data" method="POST" action="http://localhost:8080/api/jornal">
+              <input accept="application/pdf" type="file" name="jornal" id="jornal">
+              <input type="submit" value="Enviar">
+            </form>
+
+          </div> -->
+
+          <div class="content-fluid">
+            <form class="user" id="frmFileUpload2" method="POST" action="http://localhost:8080/api/jornal"
               enctype="multipart/form-data">
               <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="card">
-                    <div class="header">
-                      <h2>Informações do Feriado</h2>
-                    </div>
                     <div class="body">
                       <div class="row clearfix">
-                        <div class="col-sm-4">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
                           <div class="input-group">
                             <div class="form-line">
-                              Título: *
-                              <input type="text" class="form-control" id="titulo" name="titulo" treatment="capitalize"
-                                required>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="input-group">
-                            <div class="form-line">
-                              Dia: *
-                              <input type="date" class="form-control" id="dia" name="dia" value="<%= dia %>" required>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="input-group">
-                            <div class="form-line">
-                              Descrição:
-                              <textarea rows="1" class="form-control no-resize" maxlength="1000"
-                                placeholder="Informe uma possivel descrição para o feriado..." id="descricao"
-                                name="descricao"></textarea>
+                              <div class="dropzone">
+                                <div class="dz-message">
+                                  <div class="drag-icon-cph">
+                                    <i class=" upload-icon material-icons">upload_file</i>
+                                  </div>
+                                  <h3>Clique aqui para publicar o Jornal</h3>
+                                </div>
+                                <div class="fallback">
+                                  <input type="file" id="photo" name="photo" required />
+                                </div>
+                                <div class="previewImage">
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="footer-card">
-                      <input type="submit" value="Salvar"
-                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" />
-                      <a href="/app/<%= page %>/list"
-                        class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Cancelar</a>
+                      <button type="submit"
+                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm btn-jornal-upload">PUBLICAR</button>
                     </div>
                   </div>
-                </div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              </div>
+                </div>
             </form>
-        </div>
+
+          </div>
+
+
       </section>
+
+
+
+
+
       <!-- End of Page Wrapper -->
 
       <!-- Logout Modal-->
@@ -132,6 +175,9 @@
           </div>
         </div>
       </div>
+
+
+
 
       <!-- Jquery Core Js -->
       <script src="/js/plugins/jquery/jquery.min.js"></script>
@@ -165,6 +211,75 @@
 
       <!-- Custom Js -->
       <script src="/js/js/admin.js"></script>
+      <script>
+        Dropzone.autoDiscover = false;
+        $("#frmFileUpload2").dropzone({
+          url: 'http://localhost:8080/api/jornal',
+          paramName: "jornal",
+          autoProcessQueue: false,
+          uploadMultiple: false,
+          maxFiles: "1",
+          createImageThumbnails: true,
+          addRemoveLinks: true,
+          acceptedFiles: ".pdf",
+          previewsContainer: ".previewImage",
+          dictCancelUpload: "Cancelar Upload",
+          dictRemoveFile: "Remover Documento",
+          accept: function (file, done) {
+            done(file.nome)
+          },
+          maxfilesexceeded: function (file) {
+            this.removeAllFiles();
+            this.addFile(file);
+          },
+          init: function () {
+            controle = false;
+            this.on("addedfile", function (file) {
+              $(".dz-message").hide();
+              controle = true;
+            })
+
+            this.on("removedfile", function (file) {
+              $(".dz-message").show();
+              controle = false;
+            })
+            var submitButton = $("#frmFileUpload2");
+            var wrapperThis = this;
+
+            submitButton.submit(function (e) {
+              if (controle == true) {
+                e.preventDefault();
+                e.stopPropagation();
+                wrapperThis.processQueue();
+              } else {
+                e.preventDefault();
+                e.stopPropagation();
+                alert("O campo imagem é obrigatório.");
+                $("#submit-all").attr('disabled', false);
+              }
+            });
+
+            //send all the form data along with the files:
+            this.on("sendingmultiple", function (data, xhr, formData) {
+              formData.append("titulo", $("#titulo").val());
+              formData.append("dataExpiração", $("#dataExpiracao").val());
+            });
+            this.on("sending", (param1, param2) => {
+              console.log(param1)
+              console.log(param2)
+            })
+          },
+          success: function (file, response) {
+            console.log(file)
+            // window.location.replace('/app/mensagem/list');
+          },
+          error: function (file, response) {
+            // window.location.replace('/app/mensagem/list');
+            console.log(response)
+          }
+        });
+      </script>
+
 
 </body>
 
