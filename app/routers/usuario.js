@@ -98,20 +98,8 @@ module.exports = async function(app) {
         }
     });
 
-    // Rota para receber parametros via post criar item
     app.post('/app/' + rota + '/create/submit', upload.single('photo'), function(req, res) {
-       /* if (req.file.size > 220220) {
-            req.flash("danger", "Item não salvo. Sua imagem deve ter até 200kb.");
-            res.redirect('/app/' + rota + '/list');
-        } else {
-            const file = req.file;
-            let foto;
-            if (file) {
-                const buf = Buffer.from(req.file.buffer);
-                foto = buf.toString('base64');
-            } else {
-            foto = process.env.PROFILE_IMG
-            }*/
+        console.log(process.env.API_HOST + rota)
             request({
                 url: process.env.API_HOST + rota,
                 method: "POST",
