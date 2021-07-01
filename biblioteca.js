@@ -39,7 +39,7 @@ module.exports = async function (app) {
         },
       }, function (error, response, body) {
 
-        console.log(body.data);
+        //console.log(body.data);
 
         lista = [];
         for (var i = 0; i < Object.keys(body.data).length; i++) {
