@@ -22,8 +22,6 @@ module.exports = async function (app) {
     });
 
     app.post('/app/authentication/', function (req, res) {
-
-      console.log(req.body)
         DadosUser = request({
             url: process.env.API_HOST_LOGIN,
             method: "POST",
@@ -36,8 +34,6 @@ module.exports = async function (app) {
                 "password": req.body.password,
             },
         }, function (error, response, body) {
-
-          console.log(response.statusCode);
             if (response.statusCode != 201) {
                 req.flash("danger", body.errors);
                 res.redirect('/');
