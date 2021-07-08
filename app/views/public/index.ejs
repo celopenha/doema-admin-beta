@@ -1,216 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-  <!-- MDB -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
-  <title>Document</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Intro settings -->
-    <style>
-      /* Default height for small devices */
-      #intro-example {
-        height: 800px;
-      }
-  
-      /* Height for devices larger than 992px */
-      @media (min-width: 992px) {
-        #intro-example {
-          height: 600px;
-        }
-      }
-  
-      @font-face {
-        font-family: "Corpid";
-        src: url("./vendors/fonts/corpid-black.otf");
-      }
-  
-      .doema-titulo-h1 {
-        font-family: "Corpid";
-        font-size: 3.5em;
-      }
-    </style>
-    <!-- Intro settings -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <title>Hello, world!</title>
+
+  <style>
+    .principal {
+      background-image: linear-gradient(0deg, #ff00002e, #00000054, #1000ff2e), url(/img/palacio-bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: calc(100vh - 59px);
+    }
+  </style>
 </head>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Navbar brand -->
-      <a class="navbar-brand me-2" href="https://mdbgo.com/">
-        <img src="img/doema-logo-white.svg" height="38" alt="" loading="lazy" style="margin-top: -1px;" />
-      </a>
-      <!-- Toggle button -->
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar-doema"
-        aria-controls="navbar-doema" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbar-doema">
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link text-light" href="#">Início</a>
-          </li>
-          <!-- Dropdown informativo -->
-          <li class="nav-item dropdown">
-            <a class="nav-link text-light dropdown-toggle" href="#" id="navInformativo" role="button"
-              data-mdb-toggle="dropdown" aria-expanded="false">
-              Informativo
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navInformativo">
-              <li>
-                <a class="dropdown-item" href="#">História</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Legislação do Diário Oficial</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
-          </li>
-          <!-- Dropdown publicacao -->
-          <li class="nav-item dropdown">
-            <a class="nav-link text-light dropdown-toggle" href="#" id="navPublicacoes" role="button"
-              data-mdb-toggle="dropdown" aria-expanded="false">
-              Publicações
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navPublicacoes">
-              <li>
-                <a class="dropdown-item" href="#">Modelo de Publicação</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Normas de Publicação</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Prazo de Publicação</a>
-              </li>
-            </ul>
-          </li>
-          <!-- Dropdown biblioteca -->
-          <li class="nav-item dropdown">
-            <a class="nav-link text-light dropdown-toggle" href="#" id="navBiblioteca" role="button"
-              data-mdb-toggle="dropdown" aria-expanded="false">
-              Biblioteca
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navBiblioteca">
-              <li>
-                <a class="dropdown-item" href="#">Acervo Local</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Pesquisar Documentos Antigos</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <div class="d-flex align-items-center">
-          <button type="button" class="btn btn-light me-3">
-            Publique no diário Oficial
-          </button>
-          <a class="btn btn-dark px-3" href="https://github.com/mdbootstrap/mdb-ui-kit" role="button">
-            CREDENCIAMENTO
-          </a>
-        </div>
-      </div>
-      <!-- Collapsible wrapper -->
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="/img/doema-logo-white.svg" width="150" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- ITEM INÍCIO -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Início</a>
+        </li>
+        <!-- PUBLICAÇÕES DROPDOWN -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="drop-publicacoes" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Publicações
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="drop-publicacoes">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <!-- INFORMATIVO DROPDOWN -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="drop-informativo" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Informativo
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="drop-informativo">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <!-- BIBLIOTECA DROPDOWN -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="drop-biblioteca" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Biblioteca
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="drop-biblioteca">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
 <body>
-  <section class="section principal">
-    <div id="intro-example" class="p-5 text-center bg-image"
-    style=" height: calc(100vh - 63.5px); background-image: url('/img/palacio-bg.jpg');">
-    <div class="mask" style="    background: linear-gradient(90deg, #e8585857, #000000ab, #1000ff21);">
-      <div style="flex-direction: column;" class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-          <h1 class="doema-titulo-h1 animate__animated animate__bounce mb-3">DIÁRIO OFICIAL</h1>
-          <h5 class="mb-4">do estado do maranhão</h5>
 
-        </div>
-
-        <div class="row">
-          <div class="card text-center">
-            <div class="card-body">
-              <h5 class="card-title">Fazer Busca Simples</h5>
-
-              <form class="row row-cols-lg-auto g-3 align-items-center" method="POST" action="/app/jornal/pesquisar/submit">
-                <div class="col-12">
-                  
-                  <div class="input-group">
-                    <div class="form-outline">
-                      <input name="termo" type="search" id="form1" class="form-control" />
-                      <label class="form-label" for="form1">Termo de Pesquisa</label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-
+  <section class="principal d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-md-center ">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+          <div class="card  shadow-lg  rounded">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                    type="button" role="tab" aria-controls="home" aria-selected="true">Executivo</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">Terceiros</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages"
+                    type="button" role="tab" aria-controls="messages" aria-selected="false">Busca Avançada</button>
+                </li>
+              </ul>
             </div>
+            <form action="/app/jornal/pesquisar/submit" method="POST">
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <!-- SECRETARIA SELECT -->
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                        <div class="input-group mb-3">
+                          <label class="input-group-text" for="Ativar">
+                            <input value="secretaria" class="form-check-input mt-0" type="checkbox"
+                              id="secretariaCheckbox" aria-label="Checkbox for following text input">
+                          </label>
+                          <label class="input-group-text" for="Ativar"><i class="far fa-file-alt"></i></label>
+                          <select class="form-select form-control" id="secretariaSelect" disabled>
+                            <option value="">POR SECRETARIA</option>
+                            <option value="SECRETARIA DE SEGURANÇA PÚBLICA">SECRETARIA DE SEGURANÇA PÚBLICA</option>
+                            <option value="SECRETARIA DA MULHER">SECRETARIA DA MULHER</option>
+                            <option value="SECRETARIA DO ESPORTE E LAZER">SECRETARIA DO ESPORTE E LAZER</option>
+                            <option value="SECRETARIA DO MEIO AMBEIENTE">SECRETARIA DO MEIO AMBEIENTE</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
 
+                    <div class="row">
+                      <!-- TIPO DE PESQUISA SELECT -->
+                      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                        <div class="input-group mb-3">
+                          <label class="input-group-text" for="inputGroupSelect01">
+                            <input class="form-check-input mt-0" type="checkbox" id="tipoCheckbox"
+                              aria-label="Checkbox for following text input">
+                          </label>
+                          <label class="input-group-text" for="inputGroupSelect01"><i
+                              class="far fa-file-alt"></i></label>
+                          <select name="tipo" class="form-select form-control" id="tipoSelect" disabled>
+                            <option value="LEI Nº">LEI Nº</option>
+                            <option value="DECRETO Nº">DECRETO Nº</option>
+                            <option value="PORTARIA Nº">PORTARIA Nº</option>
+                            <option value="MENSAGENS">MENSAGENS </option>
+                          </select>
+                          <input name="numeroTipo" id="tipoInput" placeholder="Ex: Lei 3.200/2021" type="text"
+                            aria-label="Last name" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <!-- INTERVALO DE DATA SELECT -->
+                      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                        <div class="input-group mb-3 ">
+                          <input type="text" class="form-control" placeholder="Data Inicial" aria-label="Data Inicial">
+                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                          <input type="text" class="form-control" placeholder="Data Final" aria-label="Data Final">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- TERMO DE PESQUISA  -->
+                      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                        <div class="input-group mb-3">
+                          <input name="termo" type="text" class="form-control" placeholder="Termo de pesquisa"
+                            aria-label="Termo de pesquisa" aria-describedby="button-addon2">
+                          <button class="btn btn-primary" type="submit" id="button-addon2"><i
+                              class="fas fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
+
       </div>
-
     </div>
-
-  </div>
   </section>
 
-  <div class="container">
-    <div class="row">
-      <div class="form-outline datepicker-translated">
-        <input
-          type="text"
-          class="form-control"
-          id="exampleDatepicker3"
-        />
-        <label for="exampleDatepicker3" class="form-label">Select a date</label>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- MDB -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
-
   <script>
-    const datepickerTranslated = document.querySelector('.datepicker-translated');
-new mdb.Datepicker(datepickerTranslated, {
-  title: 'Datum auswählen',
-  monthsFull: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-  monthsShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov','Dez'],
-  weekdaysFull: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-  weekdaysShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
-  weekdaysNarrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
-  okBtnText: 'Ok',
-  clearBtnText: 'Klar',
-  cancelBtnText: 'Schließen',
-});
+
+
+    const tipoCheckbox = document.querySelector('#tipoCheckbox');
+    const tipoSelect = document.querySelector('#tipoSelect');
+    const tipoInput = document.querySelector("#tipoInput");
+
+    tipoCheckbox.onchange = () => {
+      tipoSelect.disabled = !tipoCheckbox.checked;
+      tipoInput.disabled = !tipoCheckbox.checked;
+    }
+
+
+
+    const secretariaCheckbox = document.querySelector("#secretariaCheckbox");
+    const secretariaSelect = document.querySelector("#secretariaSelect");
+
+    secretariaCheckbox.onchange = () => {
+      secretariaSelect.disabled = !secretariaCheckbox.checked;
+      console.log(secretariaCheckbox.checked)
+    }
+
+
+
+
   </script>
-  
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
