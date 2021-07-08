@@ -8,7 +8,7 @@ module.exports = async (app) => {
     // URL'S PARA BUSCAR DADOS (MENSAGEM E FERIADOS) NA API
     const msgUrl = `${process.env.API_HOST}mensagem/ultima-mensagem`;
     const feriadosUrl = `${process.env.API_HOST}feriados/`;
-    // FUNÇÃO QUE VERIFICA SE A ÚLTIMA MENSAGEM DO BANCO ESTÁEXPIRADA
+    // FUNÇÃO QUE VERIFICA SE A ÚLTIMA MENSAGEM DO BANCO ESTÁ EXPIRADA
     const isMessageExpired = (expirationDate) => {
       const actualDate = new Date();
       const actualDateInSeconds = Date.parse(actualDate);
@@ -17,20 +17,22 @@ module.exports = async (app) => {
         ? true
         : false;
     }
-    // BLOCO UTILIZANDO ASYNC AWAIT
+    // BLOCO UTILIZANDO ASYNC AWAIT + AXIOS 
+    // O SPRING SEMPRE IRÁ RETORNAR A ÚLTIMA LINHA DA TABELA MENSAGEM
+    // UTILIZEI UMA QUERY PERSONALISADA.
     try {
-      const msgResponse = await (await axios.get(msgUrl)).data
+      const messageResponse = await (await axios.get(msgUrl)).data
       const mensagem = {
-        id: msgResponse.data.id,
-        titulo: msgResponse.data.titulo,
-        base64Img: msgResponse.data.mensagem,
-        dataExpiracao: msgResponse.data.dataExpiracao,
-        expirada: isMessageExpired(msgResponse.data.dataExpiracao)
+        id: messageResponse.data.id,
+        titulo: messageResponse.data.titulo,
+        base64Img: messageResponse.data.mensagem,
+        dataExpiracao: messageResponse.data.dataExpiracao,
+        expirada: isMessageExpired(messageResponse.data.dataExpiracao)
       }
 
-      const responseFeriados = await (await axios.get(feriadosUrl)).data;
+      const feriadosResponse = await (await axios.get(feriadosUrl)).data;
       // TRANSFORMANDO VALORES EM VALORES COMPATÍVEIS COM O FULL-CALLENDAR
-      const feriados = await responseFeriados.data.map(feriado => {
+      const feriados = await feriadosResponse.data.map(feriado => {
         return {
           id: feriado.id,
           title: feriado.titulo,
@@ -44,6 +46,7 @@ module.exports = async (app) => {
       // VERIFICA SE A MENSAGEM ESTÁ EXPIRADA
       // SE ESTIVER, ENVIA APENAS OS FERIADOS,
       // CASO NÃO TENHA EXPIRADO, ENVIA AMBOS
+      // utilizando operador ternário.
       console.log(feriados)
       mensagem.expirada
         ? res.render("public/index", { feriados })
