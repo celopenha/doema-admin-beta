@@ -97,4 +97,13 @@ module.exports = async function (app) {
     });
   });
 
+  app.post("/jornal/teste", (request, response)=>{
+    console.log(request.body)
+  })
+
+  app.get("/jornal/teste", (request, response)=>{
+    response.render("public/jornal/Resultado");
+  })
+
+
 }
