@@ -18,8 +18,8 @@ module.exports = async (app) => {
         : false;
     }
     // BLOCO UTILIZANDO ASYNC AWAIT + AXIOS 
-    // O SPRING SEMPRE IRÁ RETORNAR A ÚLTIMA LINHA DA TABELA MENSAGEM
-    // UTILIZEI UMA QUERY PERSONALISADA.
+    // O SPRING SEMPRE IRÁ RETORNAR A ÚLTIMA MENSAGEM
+    // através de UMA QUERY PERSONALISADA.
     try {
       const messageResponse = await (await axios.get(msgUrl)).data
       const mensagem = {
@@ -30,8 +30,8 @@ module.exports = async (app) => {
         expirada: isMessageExpired(messageResponse.data.dataExpiracao)
       }
 
-      const feriadosResponse = await (await axios.get(feriadosUrl)).data;
       // TRANSFORMANDO VALORES EM VALORES COMPATÍVEIS COM O FULL-CALLENDAR
+      const feriadosResponse = await (await axios.get(feriadosUrl)).data;
       const feriados = await feriadosResponse.data.map(feriado => {
         return {
           id: feriado.id,
@@ -47,7 +47,6 @@ module.exports = async (app) => {
       // SE ESTIVER, ENVIA APENAS OS FERIADOS,
       // CASO NÃO TENHA EXPIRADO, ENVIA AMBOS
       // utilizando operador ternário.
-      console.log(feriados)
       mensagem.expirada
         ? res.render("public/index", { feriados })
         : res.render("public/index", { mensagem, feriados })
@@ -77,7 +76,7 @@ module.exports = async (app) => {
   });
 
   app.get("/testando", (req, res) => {
-    res.render("index2")
+    res.render("public/Biblioteca")
   })
 
 }
