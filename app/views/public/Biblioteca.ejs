@@ -1,89 +1,176 @@
 <!DOCTYPE html>
+
+
+<!doctype html>
 <html lang="pt-br">
-<%- include ../template/head.ejs%>
-  <%- include ../template/topo-public.ejs %>
 
-    <style>
-      .card .body {
-        padding: 20px 20px 0 20px;
-      }
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      .card {
-        padding-bottom: 0;
-      }
-    </style>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="/css/style-public.css">
+
+  <title>Diário Oficial</title>
+</head>
 
 
-      <div style="margin-top: 120px;" class="container">
-        <div class="row clearfix">
-          <div class="col-sm-12 col-m2-12 col-lg-12" style="text-align: center;">
-            <div class="biblioteca-cabecalho">
-              <h1 style="color: #972632;font-size: 60px;">FORMULÁRIO DE CONSULTA</h1>
-            </div>
-          </div>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="/img/doema-logo-white.svg" width="150" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- ITEM INÍCIO -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/inicio">Início</a>
+          </li>
+          <!-- PUBLICAÇÕES DROPDOWN -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="drop-publicacoes" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Publicações
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="drop-publicacoes">
+              <li><a class="dropdown-item" href="/informativo/normas-publicacao">Normas de publicação</a></li>
+              <li><a class="dropdown-item" href="#">Modelo de publicação</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Prazo de publicação</a></li>
+            </ul>
+          </li>
+          <!-- INFORMATIVO DROPDOWN -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="drop-informativo" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Informativo
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="drop-informativo">
+              <li><a class="dropdown-item" href="#">História do Diário</a></li>
+              <li><a class="dropdown-item" href="#">Perguntas Frequêntes</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Como pesquisar</a></li>
+            </ul>
+          </li>
+          <!-- BIBLIOTECA DROPDOWN -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="drop-biblioteca" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Biblioteca
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="drop-biblioteca">
+              <li><a class="dropdown-item" href="/testando">Consulta no acervo</a></li>
+              <li><a class="dropdown-item" href="#">Livros Publicados</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Consulta de Ementários</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button class="mx-1 text-light btn-dark btn ">
+          Credenciamento
+        </button>
+      </div>
+    </div>
+  </nav>
+  <section class="bg-dark text-light py-5 text-center text-sm-start">
+    <div class="container-sm">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-4 col-sm-4 d-none d-md-block d-sm-block">
+          <img src="/img/books.svg" class="img-fluid">
         </div>
-        <div class="row clearfix">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <form id="" class="user" enctype="multipart/form-data">
+        <div class="col-lg-8 col-md-8 col-sm-8 my-auto mx-auto">
+          <h1 class=" display-1 lh-1" style="font-family: Corpid Black;">BIBLIOTECA
+            <span style="display: block;" class="display-6 text-warning">Diário Oficial do Maranhão</span>
+          </h1>
+          <p class="lead">
+            Para consultar uma informação publicada em datas anteriores ao ano de 1988,
+            utilize o formulário abaixo e preencha todas as informações corretamente para
+            facilitar a sua consulta em nosso acervo físico. A sua solicitação será respondida por e-mail em até dois
+            dias úteis
+          </p>
+          <button class="mx-1 btn-light btn btn-lg">
+            <i class="fas fa-book"></i> Como Funciona?
+          </button>
 
-              <div class="card">
-                <div class="header">
-                  <h2>Dados pessoais</h2>
-                </div>
-                <div class="body">
-                  <div class="row clearfix">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                      <div class="input-group-lg input-group">
-                        <span class="input-group-addon">
-                          <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                          <h6>NOME COMPLETO: *</h6>
-                          <input type="text" class="form-control" id="nome" name="nome" treatment="capitalize"
-                            required="">
-                        </div>
+
+        </div>
+
+
+      </div>
+  </section>
+
+  <section class="bg-light">
+    <div class="container-sm">
+      <div class="py-5">
+        <div class="row justify-content-center ">
+          <div class="col-lg-10">
+            <div class="card shadow">
+              <div class="card-body">
+                  <div class="row mb-4">
+                    <div class="col-lg-3">
+                      <label for="inputNome" class="form-label">Nome Completo</label>
+                      <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i> </span>
+                        <input type="text" class="form-control" id="nome" name="nome" treatment="capitalize"
+                          required="">
+                      </div>
+                      <div class="form-text">
+                        Informe seu nome completo
                       </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                      <div class="input-group-lg input-group">
-                        <span class="input-group-addon">
-                          <i class="material-icons">fingerprint</i>
-                        </span>
-                        <div class="form-line">
-                          <h6>CPF: *</h6>
-                          <input type="text" class="form-control" id="cpf" name="cpf" required="">
-                        </div>
+                    <div class="col-lg-3">
+                      <label for="inputNome" class="form-label">CPF</label>
+                      <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i> </span>
+                        <input type="text" class="form-control" id="cpf" name="cpf" required="">
+                      </div>
+                      <div class="form-text">
+                        Informe seu CPF
                       </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                      <div class="input-group-lg input-group">
-                        <span class="input-group-addon">
-                          <i class="material-icons">email</i>
-                        </span>
-                        <div class="form-line">
-                          <h6>E-MAIL: *</h6>
-                          <input type="email" class="form-control" id="email" name="email" required="">
-                        </div>
+                    <div class="col-lg-3">
+                      <label for="inputNome" class="form-label">E-mail</label>
+                      <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i> </span>
+                        <input type="email" class="form-control" id="email" name="email" required="">
+                      </div>
+                      <div class="form-text">
+                        Informe seu nome completo
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <label for="inputNome" class="form-label">Telefone</label>
+                      <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i> </span>
+                        <input type="text" id="inputTelefone" class="form-control">
+                      </div>
+                      <div class="form-text">
+                        Telefone com (DDD)
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="header">
-                  <h2>Informações de Consulta</h2>
-                </div>
-                <div class="body">
-                  <div class="row clearfix">
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                  <div class="row ">
+                    <div class="col-lg-4 ">
+                      <label for="inputNome" class="form-label">Tipo de pesquisa</label>
                       <div class=" input-group">
-                        <span class="input-group-addon">
-                          <span class="material-icons">book</span>
-                        </span>
-                        <h6>TIPO DE CONSULTA: </h6>
-                        <select class="form-control show-tick" name="pesquisa" id="pesquisa">
+                        <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-book"></i></label>
+                        <select class="form-control" name="pesquisa" id="pesquisa">
                           <option value=""> SELECIONE O TIPO </option>
                           <option value="NOMEACAO">NOMEAÇÃO</option>
                           <option value="APOSENTADORIA">ATO DE APOSENTADORIA</option>
@@ -95,240 +182,498 @@
                           <option value="PORTARIA">OUTROS</option>
                         </select>
                       </div>
+                      <div class="form-text">
+                        Selecione o tipo de consulta a ser enviada
+                      </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                          <h6>TERMO DE CONSULTA: </h6>
-                          <input placeholder="Lei nº 341, Decreto nº 2332" type="text" class="form-control" id="termo"
-                            name="termo">
-                        </div>
+                    <div class="col-lg-8">
+                      <label for="inputNome" class="form-label">Termo de Consulta</label>
+                      <div class="input-group input-group-lg">
+                        <input placeholder="Termo de Busca" type="text" class="form-control" placeholder=""
+                          aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <button class="btn btn-outline-primary" type="button" id="button-addon2"><i
+                            class="fas fa-search"></i></button>
+                      </div>
+                      <div class="form-text">
+                        Informe o nome, data, e outros detalhes de sua solicitação. Quanto mais informação, melhor
                       </div>
                     </div>
                   </div>
+
+
+
+                <div class="row">
+
+
                 </div>
               </div>
-              <div class="card">
-                <div class="header">
-                  <h2>Informações Adicionais</h2>
-                </div>
-                <div class="body">
-                  <div class="row clearfix">
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
-                      <div class="form-group">
-                        <div class="form-line">
-                          <textarea rows="6" class="form-control no-resize"
-                            placeholder="Descreva mais detalhes sobre a solicitação neste espaço..."></textarea>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button type="submit"
-                style="display: flex; align-items: center;justify-content: center; width: 100%; height: 60px;"
-                class="btn btn-lg btn-success">
-                <span style="margin-right: 20px;" class="material-icons">search</span>
-                ENVIAR SOLICITAÇÃO
 
-              </button>
-
-            </form>
-
+            </div>
           </div>
+
         </div>
-        <div class="row clearfix">
-          <div class="col-md-6">
-            <div class="boxinfo-biblioteca">
-              <span class="number-label">Contato</span>
-              <p class="biblio-info">
-                Informe os seus dados pessoais (nome, CPF e e-mail)
-                para a sua identificação na nossa base de dados
-              </p>
-            </div>
-          </div>
-          <div class=" col-md-6">
-            <div class="boxinfo-biblioteca">
-              <span class="number-label">Informações de Consulta</span>
-              <p class="biblio-info">
-                Informe o tipo do JORNAL (selecione a opção 'não incluir' caso não saiba).
-                Em seguida, selecione o tipo de consulta
-                que você deseja realizar para obter melhores resultados
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="boxinfo-biblioteca">
-              <span class="number-label">3º</span>
-              <p class="biblio-info">
-                RECURSOS HUMANOS
-                BOLETIM 030/2021 O GOVERNADOR DO ESTADO DO RIO GRANDE DO SUL, no uso de suas atribuições,
-                tendo
-                em
-                vista
-                o que consta no Processo nº 21/1204-0001955-3, DISPENSA, “a pedido”, a c...
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="boxinfo-biblioteca">
-              <span class="number-label">3º</span>
-              <p class="biblio-info">
-                RECURSOS HUMANOS
-                BOLETIM 030/2021 O GOVERNADOR DO ESTADO DO RIO GRANDE DO SUL, no uso de suas atribuições,
-                tendo
-                em
-                vista
-                o que consta no Processo nº 21/1204-0001955-3, DISPENSA, “a pedido”, a c...
-              </p>
-            </div>
-          </div>
-        </div>
-        <input type="file" accept="image/*" capture="camera">
-
       </div>
+    </div>
+
+  </section>
+  <!-- <section class="p-5 bg-dark">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md">
+          <div class=" card bg-dark text-light border-light ">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <i class="bi bi-laptop"></i>
+              </div>
+              <h3 class="card-title mb-3">Aviso de Licitações</h3>
+              <p class="card-text">
+                Fique por dentro de toda licitação feita através do Diário OFICIAL
+                Diretamente do seu whatsapp meu amigo, isto é muito louco
+              </p>
+              <a href="#" class="btn btn-outline-light">Acessar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card bg-light text-dark">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <i class="bi bi-person-square"></i>
+              </div>
+              <h3 class="card-title mb-3">Hybrid</h3>
+              <p class="card-text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Iure, quas quidem possimus dolorum esse eligendi?
+              </p>
+              <a href="#" class="btn btn-outline-dark">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card text-light bg-dark border-light">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <i class="bi bi-people"></i>
+              </div>
+              <h3 class="card-title mb-3">In Person</h3>
+              <p class="card-text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Iure, quas quidem possimus dolorum esse eligendi?
+              </p>
+              <a href="#" class="btn btn-outline-light">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
 
 
-      <!-- Jquery Core Js -->
-      <script src="/js/plugins/jquery/jquery.min.js"></script>
-      <!-- Bootstrap Core Js -->
-      <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
-      <!-- Slimscroll Plugin Js -->
-      <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-      <!-- Jquery Validation Plugin Css -->
-      <script src="/js/plugins/jquery-validation/jquery.validate.js"></script>
-      <!-- JQuery Steps Plugin Js -->
-      <script src="/js/plugins/jquery-steps/jquery.steps.js"></script>
-      <!-- Waves Effect Plugin Js -->
-      <script src="/js/plugins/node-waves/waves.js"></script>
-      <!-- Autosize Plugin Js -->
-      <script src="/js/plugins/autosize/autosize.js"></script>
-      <!-- Jquery Mask Js -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-      <!-- Moment Plugin Js -->
-      <script src="/js/plugins/momentjs/moment.js"></script>
-      <!-- Dropzone Js -->
-      <script src="/js/plugins/dropzone/dropzone.js"></script>
-      <!-- Bootstrap Material Datetime Picker Plugin Js -->
-      <script src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-      <!-- Bootstrap Datepicker Plugin Js -->
-      <script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-      <!-- Custom Js -->
-      <script src="/js/js/pages/forms/form-wizard.js"></script>
-      <!-- Select Plugin Js -->
-      <script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-      <!-- Inclusão de Máscaras Js-->
-      <script src="/js/shopping-crianca-mask.js"></script>
-      <!-- Custom Js -->
-      <script src="/js/js/admin.js"></script>
-      <!-- SWEET ALERT  -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <footer class="bd-footer py-5 mt-5 bg-light">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/"
+            aria-label="Bootstrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94"
+              role="img">
+              <title>Bootstrap</title>
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"></path>
+            </svg>
+            <span class="fs-5">Bootstrap</span>
+          </a>
+          <ul class="list-unstyled small text-muted">
+            <li class="mb-2">Designed and built with all the love in the world by the <a
+                href="/docs/5.0/about/team/">Bootstrap team</a> with the help of <a
+                href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
+            <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank"
+                rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/"
+                target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
+            <li class="mb-2">Currently v5.0.2.</li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/">Home</a></li>
+            <li class="mb-2"><a href="/docs/5.0/">Docs</a></li>
+            <li class="mb-2"><a href="/docs/5.0/examples/">Examples</a></li>
+            <li class="mb-2"><a href="https://opencollective.com/bootstrap">Themes</a></li>
+            <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Guides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/docs/5.0/getting-started/">Getting started</a></li>
+            <li class="mb-2"><a href="/docs/5.0/examples/starter-template/">Starter template</a></li>
+            <li class="mb-2"><a href="/docs/5.0/getting-started/webpack/">Webpack</a></li>
+            <li class="mb-2"><a href="/docs/5.0/getting-started/parcel/">Parcel</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Projects</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Bootstrap 5</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap-npm-starter">npm starter</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Community</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions">Discussions</a></li>
+            <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
+            <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
+            <li class="mb-2"><a href="https://bootstrap-slack.herokuapp.com/">Slack</a></li>
+            <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
 
-      <script>
-        const form = document.querySelector('form');
 
 
-        form.addEventListener('submit', (e) => {
+  <!-- Optional JavaScript; choose one of the two! -->
 
-          const formData = new FormData(form);
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-          $.ajax({
-            type: 'POST',
-            url: "/app/biblioteca/create/submit",
-            data: formData,
-            dataType: 'json',
-            success: function () { swal("Done!", "It was succesfully deleted!", "success"); },
-            processData: false
+  <script src="/js/plugins/jquery/jquery.min.js"></script>
 
-          })
-          e.preventDefault();
+  <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
+  <!-- Slimscroll Plugin Js -->
+  <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+  <!--Jquery Validation Plugin Css -->
+  <script src="/js/plugins/jquery-validation/jquery.validate.js"></script>
+  <!--JQuery Steps Plugin Js -->
+  <script src="/js/plugins/jquery-steps/jquery.steps.js"></script>
+  <!--Waves Effect Plugin Js -->
+  <script src="/js/plugins/node-waves/waves.js"></script>
+  <!--Autosize Plugin Js -->
+  <script src="/js/plugins/autosize/autosize.js"></script>
+  <!-- Jquery Mask Js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+  <!-- Moment Plugin Js -->
+  <script src="/js/plugins/momentjs/moment.js"></script>
+  <!-- Dropzone Js -->
+  <script src="/js/plugins/dropzone/dropzone.js"></script>
+  <!-- Bootstrap Material Datetime Picker Plugin Js -->
+  <script src="/js/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+  <!--Bootstrap Datepicker Plugin Js -->
+  <script src="/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <!--Custom Js -->
+  <script src="/js/js/pages/forms/form-wizard.js"></script>
+  <!--Select Plugin Js -->
+  <script src="/js/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+  <!--Inclusão de Máscaras Js-->
+  <script src="/js/shopping-crianca-mask.js"></script>
+  <!--Custom Js -->
+  <script src="/js/js/admin.js"></script>
+  <!--SWEET ALERT  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-
-        })
-
-
-
-      </script>
-
-
-      <script>
-        function validaCPF() {
-          var cpf = document.getElementById("cpf").value;
-          var cpfValido = true;
-
-          cpf = cpf.toString().replace(/\.|-/gm, '');
-
-          let Soma, Resto;
-          Soma = 0;
-
-          if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
-            cpfValido = false;
-          }
-
-          for (i = 1; i <= 9; i++) {
-            Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (11 - i);
-          }
-
-          Resto = (Soma * 10) % 11;
-          if ((Resto == 10) || (Resto == 11)) {
-            Resto = 0;
-          }
-
-          if (Resto != parseInt(cpf.substring(9, 10))) {
-            cpfValido = false;
-          }
-
-          Soma = 0;
-          for (i = 1; i <= 10; i++) {
-            Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (12 - i);
-          }
-
-          Resto = (Soma * 10) % 11;
-          if ((Resto == 10) || (Resto == 11)) {
-            Resto = 0;
-          }
-
-          if (Resto != parseInt(cpf.substring(10, 11))) {
-            cpfValido = false;
-          }
-
-          if (!cpfValido) {
-            $.notify({
-              icon: 'glyphicon glyphicon-warning-sign',
-              title: '<strong> Atenção!</strong>',
-              message: 'CPF Inválido! '
-            },
-              {
-                type: 'danger',
-                timer: 3000,
-                animate: {
-                  enter: 'animated bounceInRight',
-                  exit: 'animated bounceOutRight'
-                },
-                template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
-                  '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
-                  '<span data-notify="icon"></span> ' +
-                  '<span data-notify="title">{1}</span> ' +
-                  '<span data-notify="message">{2}</span>' +
-                  '<div class="progress" data-notify="progressbar">' +
-                  '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-                  '</div>' +
-                  '<a href="{3}" target="{4}" data-notify="url"></a>' +
-                  '</div>'
-              });
-            $('[type=submit]').prop('disabled', true);
-          } else {
-            $('[type=submit]').prop('disabled', false);
-          }
-        }
-      </script>
-    </body>
+</body>
 
 </html>
+
+
+<!-- <html lang="pt-br">
+
+
+<body>
+
+
+  <div style="margin-top: 120px;" class="container">
+    <div class="row clearfix">
+      <div class="col-sm-12 col-m2-12 col-lg-12" style="text-align: center;">
+        <div class="biblioteca-cabecalho">
+          <h1 style="color: #972632;font-size: 60px;">FORMULÁRIO DE CONSULTA</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form id="" class="user" enctype="multipart/form-data">
+
+          <div class="card">
+            <div class="header">
+              <h2>Dados pessoais</h2>
+            </div>
+            <div class="body">
+              <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="input-group-lg input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">person</i>
+                    </span>
+                    <div class="form-line">
+                      <h6>NOME COMPLETO: *</h6>
+                      <input type="text" class="form-control" id="nome" name="nome" treatment="capitalize" required="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="input-group-lg input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">fingerprint</i>
+                    </span>
+                    <div class="form-line">
+                      <h6>CPF: *</h6>
+                      <input type="text" class="form-control" id="cpf" name="cpf" required="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <div class="input-group-lg input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">email</i>
+                    </span>
+                    <div class="form-line">
+                      <h6>E-MAIL: *</h6>
+                      <input type="email" class="form-control" id="email" name="email" required="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="header">
+              <h2>Informações de Consulta</h2>
+            </div>
+            <div class="body">
+              <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                  <div class=" input-group">
+                    <select class="form-control" name="pesquisa" id="pesquisa">
+                      <option value=""> SELECIONE O TIPO </option>
+                      <option value="NOMEACAO">NOMEAÇÃO</option>
+                      <option value="APOSENTADORIA">ATO DE APOSENTADORIA</option>
+                      <option value="REFORMA">REFORMA</option>
+                      <option value="EXCLUSAO">EXCLUSÃO</option>
+                      <option value="LEI">LEI Nº</option>
+                      <option value="DECRETO">DECRETO Nº</option>
+                      <option value="PORTARIA">PORTARIA Nº</option>
+                      <option value="PORTARIA">OUTROS</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                  <div class="input-group input-group">
+                    <span class="input-group-addon">
+                      <i class="material-icons">person</i>
+                    </span>
+                    <div class="form-line">
+                      <h6>TERMO DE CONSULTA: </h6>
+                      <input placeholder="Lei nº 341, Decreto nº 2332" type="text" class="form-control" id="termo"
+                        name="termo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="header">
+              <h2>Informações Adicionais</h2>
+            </div>
+            <div class="body">
+              <div class="row clearfix">
+                <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                  <div class="form-group">
+                    <div class="form-line">
+                      <textarea rows="6" class="form-control no-resize"
+                        placeholder="Descreva mais detalhes sobre a solicitação neste espaço..."></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit"
+            style="display: flex; align-items: center;justify-content: center; width: 100%; height: 60px;"
+            class="btn btn-lg btn-success">
+            <span style="margin-right: 20px;" class="material-icons">search</span>
+            ENVIAR SOLICITAÇÃO
+
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-md-6">
+        <div class="boxinfo-biblioteca">
+          <span class="number-label">Contato</span>
+          <p class="biblio-info">
+            Informe os seus dados pessoais (nome, CPF e e-mail)
+            para a sua identificação na nossa base de dados
+          </p>
+        </div>
+      </div>
+      <div class=" col-md-6">
+        <div class="boxinfo-biblioteca">
+          <span class="number-label">Informações de Consulta</span>
+          <p class="biblio-info">
+            Informe o tipo do JORNAL (selecione a opção 'não incluir' caso não saiba).
+            Em seguida, selecione o tipo de consulta
+            que você deseja realizar para obter melhores resultados
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="boxinfo-biblioteca">
+          <span class="number-label">3º</span>
+          <p class="biblio-info">
+            RECURSOS HUMANOS
+            BOLETIM 030/2021 O GOVERNADOR DO ESTADO DO RIO GRANDE DO SUL, no uso de suas atribuições,
+            tendo
+            em
+            vista
+            o que consta no Processo nº 21/1204-0001955-3, DISPENSA, “a pedido”, a c...
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="boxinfo-biblioteca">
+          <span class="number-label">3º</span>
+          <p class="biblio-info">
+            RECURSOS HUMANOS
+            BOLETIM 030/2021 O GOVERNADOR DO ESTADO DO RIO GRANDE DO SUL, no uso de suas atribuições,
+            tendo
+            em
+            vista
+            o que consta no Processo nº 21/1204-0001955-3, DISPENSA, “a pedido”, a c...
+          </p>
+        </div>
+      </div>
+    </div>
+    <input type="file" accept="image/*" capture="camera">
+
+  </div>
+
+
+  <!--  -->
+
+
+
+
+<script>
+  const form = document.querySelector('form');
+
+
+  form.addEventListener('submit', (e) => {
+
+    const formData = new FormData(form);
+
+    $.ajax({
+      type: 'POST',
+      url: "/app/biblioteca/create/submit",
+      data: formData,
+      dataType: 'json',
+      success: function () { swal("Done!", "It was succesfully deleted!", "success"); },
+      processData: false
+
+    })
+    e.preventDefault();
+
+
+  })
+
+
+
+</script>
+
+
+<script>
+
+  $('#inputTelefone').mask('(00) 00000-0000');
+
+
+  function validaCPF() {
+    var cpf = document.getElementById("cpf").value;
+    var cpfValido = true;
+
+    cpf = cpf.toString().replace(/\.|-/gm, '');
+
+    let Soma, Resto;
+    Soma = 0;
+
+    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+      cpfValido = false;
+    }
+
+    for (i = 1; i <= 9; i++) {
+      Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+
+    Resto = (Soma * 10) % 11;
+    if ((Resto == 10) || (Resto == 11)) {
+      Resto = 0;
+    }
+
+    if (Resto != parseInt(cpf.substring(9, 10))) {
+      cpfValido = false;
+    }
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++) {
+      Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+
+    Resto = (Soma * 10) % 11;
+    if ((Resto == 10) || (Resto == 11)) {
+      Resto = 0;
+    }
+
+    if (Resto != parseInt(cpf.substring(10, 11))) {
+      cpfValido = false;
+    }
+
+    if (!cpfValido) {
+      $.notify({
+        icon: 'glyphicon glyphicon-warning-sign',
+        title: '<strong> Atenção!</strong>',
+        message: 'CPF Inválido! '
+      },
+        {
+          type: 'danger',
+          timer: 3000,
+          animate: {
+            enter: 'animated bounceInRight',
+            exit: 'animated bounceOutRight'
+          },
+          template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+            '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+            '<span data-notify="icon"></span> ' +
+            '<span data-notify="title">{1}</span> ' +
+            '<span data-notify="message">{2}</span>' +
+            '<div class="progress" data-notify="progressbar">' +
+            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+            '</div>' +
+            '<a href="{3}" target="{4}" data-notify="url"></a>' +
+            '</div>'
+        });
+      $('[type=submit]').prop('disabled', true);
+    } else {
+      $('[type=submit]').prop('disabled', false);
+    }
+  }
+</script>
+</body>
+
+</html> -->
