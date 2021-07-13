@@ -14,17 +14,16 @@
 
   <!-- datatable -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
-  <title>Hello, world!</title>
+  <title>Diário Oficial</title>
 
-  <style>
-    .principal {
-      background-image:linear-gradient(red, blue, green), url("/img/palacio-bg.jpg") ;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: calc(100vh - 59px);
-    }
-  </style>
 </head>
+
+<style>
+  .lead b{
+    color: #ffc107;
+    font-weight: 900;
+  }
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
@@ -46,12 +45,12 @@
             Publicações
           </a>
           <ul class="dropdown-menu" aria-labelledby="drop-publicacoes">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="/informativo/normas-publicacao">Normas de publicação</a></li>
+            <li><a class="dropdown-item" href="#">Modelo de publicação</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Prazo de publicação</a></li>
           </ul>
         </li>
         <!-- INFORMATIVO DROPDOWN -->
@@ -61,12 +60,12 @@
             Informativo
           </a>
           <ul class="dropdown-menu" aria-labelledby="drop-informativo">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">História do Diário</a></li>
+            <li><a class="dropdown-item" href="#">Perguntas Frequêntes</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Como pesquisar</a></li>
           </ul>
         </li>
         <!-- BIBLIOTECA DROPDOWN -->
@@ -76,29 +75,49 @@
             Biblioteca
           </a>
           <ul class="dropdown-menu" aria-labelledby="drop-biblioteca">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="/testando">Consulta no acervo</a></li>
+            <li><a class="dropdown-item" href="#">Livros Publicados</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Consulta de Ementários</a></li>
           </ul>
         </li>
-
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <button class="mx-1 text-light btn-dark btn ">
+        Credenciamento
+      </button>
     </div>
   </div>
 </nav>
 
 <body>
 
-  <section class="principal d-flex align-items-center">
-    <div class="container">
-      <div class="row justify-content-md-center ">
+  <section class="bg-dark text-light py-5 text-center text-sm-start">
+    <div class="container-sm">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 d-none d-md-block d-sm-block">
+          <img src="/img/search.svg" alt="" class="img-fluid">
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 my-auto mx-auto">
+          <h1 class=" display-1 lh-1" style="font-family: Corpid Black;">EXECUTIVO
+            <span style="display: block;" class="display-6 text-warning"><%-termo[0].titulo %></span>
+          </h1>
+          <p class="lead">
+            <%-termo[0].fragmento %>...
+          </p>
+          <a href="/inicio" class="btn btn-lg btn-outline-warning">
+            Pesquisar Novamente &#8592
+          </a>
+
+        </div>
+
+      </div>
+  </section>
+
+  <section class=" d-flex align-items-center">
+    <div class="container mt-5">
+      <div class="row ">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="card  shadow-lg  rounded">
 
