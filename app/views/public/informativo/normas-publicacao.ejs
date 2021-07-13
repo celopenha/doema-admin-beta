@@ -1,37 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<%- include ../../template/head.ejs %>
 
-  <body>
-    <style>
-      * {
-        hyphens: auto;
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-      .capitulo {}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-      .secao {}
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="/css/style-public.css">
 
-      .paragrafo {
-        font-size: 1.2em;
-      }
+  <title>Diário Oficial</title>
+</head>
 
-      .artigo {}
-
-      .section {
-        margin: 0 20px;
-      }
-    </style>
-
-    <%- include ../../template/topo-public.ejs %>
-
-  </body>
-  <div style="margin-top: 120px;  " class="container">
-    <div class="row">
-      <h1 style="text-align: center; font-weight: 900;">NORMAS PARA PUBLICAÇÃO</h1>
-      <h4>Normas para a publicação no DOE-MA baseadas na portaria XXXX-xxx de 20 de abril de 2015</h4>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="/img/doema-logo-white.svg" width="150" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- ITEM INÍCIO -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Início</a>
+          </li>
+          <!-- PUBLICAÇÕES DROPDOWN -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="drop-publicacoes" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Publicações
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="drop-publicacoes">
+              <li><a class="dropdown-item" href="/informativo/normas-publicacao">Normas de publicação</a></li>
+              <li><a class="dropdown-item" href="#">Modelo de publicação</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Prazo de publicação</a></li>
+            </ul>
+          </li>
+          <!-- INFORMATIVO DROPDOWN -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="drop-informativo" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Informativo
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="drop-informativo">
+              <li><a class="dropdown-item" href="#">História do Diário</a></li>
+              <li><a class="dropdown-item" href="#">Perguntas Frequêntes</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Como pesquisar</a></li>
+            </ul>
+          </li>
+          <!-- BIBLIOTECA DROPDOWN -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="drop-biblioteca" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Biblioteca
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="drop-biblioteca">
+              <li><a class="dropdown-item" href="/testando">Consulta no acervo</a></li>
+              <li><a class="dropdown-item" href="#">Livros Publicados</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Consulta de Ementários</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button class="mx-1 text-light btn-dark btn ">
+          Credenciamento
+        </button>
+      </div>
     </div>
+  </nav>
+  <section class="bg-dark text-light py-5 text-center text-sm-start">
+    <div class="container-sm">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-4 col-sm-4 d-none d-md-block d-sm-block">
+          <img width="80%" src="/img/rules.svg" class="img-fluid">
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 my-auto mx-auto">
+          <h1 class=" display-1 lh-1" style="font-family: Corpid Black;">PUBLICAÇÃO
+            <span style="display: block;" class="display-6 text-warning">Normas para publicação</span>
+          </h1>
+          <p class="lead">
+            Antes de enviar sua matéria, certifique-se de estar de acordo com as normas de publicação descritas na portaria 060 de 2015
+          </p>
+          <button class="mx-1 text-light btn-primary btn btn-lg">
+            <i class="fas fa-book"></i> Solicitar Consulta
+          </button>
+          <button class="  btn-warning btn btn-lg">
+            Mais informações
+          </button>
+
+        </div>
+
+
+      </div>
+  </section>
+
+  <div  " class="container mt-5">
+
     <section id="capitulo-1" class="capitulo-1">
       <h1 class="capitulo">CAPÍTULO 1</h1>
       <section class="section 1-publicacao">
@@ -392,51 +472,13 @@
 
     </section>
 
+  </div>
 
 
+</body>
 
-    <div class="scripts">
-      <!-- Jquery Core Js -->
-      <script src="/js/plugins/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-      <!-- Bootstrap Core Js -->
-      <script src="/js/plugins/bootstrap/js/bootstrap.js"></script>
-
-      <!-- Slimscroll Plugin Js -->
-      <script src="/js/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-      <!-- Waves Effect Plugin Js -->
-      <script src="/js/plugins/node-waves/waves.js"></script>
-
-      <!-- Jquery CountTo Plugin Js -->
-      <script src="/js/plugins/jquery-countto/jquery.countTo.js"></script>
-
-      <!-- Morris Plugin Js -->
-      <script src="/js/plugins/raphael/raphael.min.js"></script>
-      <script src="/js/plugins/morrisjs/morris.js"></script>
-
-      <!-- Light Gallery Plugin Js -->
-      <script src="/js/plugins/light-gallery/js/lightgallery-all.js"></script>
-
-      <!-- Custom Js -->
-      <script src="/js/js/pages/medias/image-gallery.js"></script>
-
-      <!-- Custom Js -->
-      <script src="/js/js/admin.js"></script>
-      <script src="/js/js/pages/index.js"></script>
-
-      <!-- Page level plugins -->
-      <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-      <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-      <!-- Page level custom scripts -->
-      <script src="/js/demo/datatables-demo.js"></script>
-
-      <!-- Jquery Mask Js -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-
-      <!-- Inclusão de Máscaras Js-->
-      <script src="/js/shopping-crianca-mask.js"></script>
-    </div>
 
 </html>
